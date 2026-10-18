@@ -1,0 +1,17 @@
+[
+  {
+    "name": "airport",
+    "url": "https://www.uber.com/global/pt-br/r/airports/cgh/",
+    "error": "HTTP Error 406: Not Acceptable"
+  },
+  {
+    "name": "courier",
+    "url": "https://www.uber.com/br/pt-br/b/courier-services/sao-paulo-sp-br/",
+    "error": "HTTP Error 406: Not Acceptable"
+  },
+  {
+    "name": "reserve",
+    "url": "https://www.uber.com/br/pt-br/ride/how-it-works/reserve/",
+    "error": "HTTP Error 406: Not Acceptable"
+  }
+]

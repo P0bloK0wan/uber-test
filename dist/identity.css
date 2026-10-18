@@ -1,0 +1,4553 @@
+/* Identity layer v3. Source provenance and screen coverage: docs/identity-v3.md. */
+@font-face {
+  font-family: iFood Text;
+  src: url("./assets/identity/ifood/iFoodRCTextos-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: iFood Text;
+  src: url("./assets/identity/ifood/iFoodRCTextos-Medium.woff2") format("woff2");
+  font-weight: 500 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: iFood Title;
+  src: url("./assets/identity/ifood/iFoodRCTitulos-Medium.woff2")
+    format("woff2");
+  font-weight: 500 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: iFood Title;
+  src: url("./assets/identity/ifood/iFoodRCTitulos-Bold.woff2") format("woff2");
+  font-weight: 700 900;
+  font-display: swap;
+}
+:root {
+  --ifood-red: #ea1d2c;
+  --ifood-text: #3e3e3e;
+  --ifood-gray: #717171;
+  --ifood-soft: #f7f7f7;
+  --club-purple: #7b1fa2;
+  --uber-ink: #000;
+  --uber-soft: #f3f3f3;
+  --tap-duration: 120ms;
+}
+.ifood,
+[data-brand="ifood"] {
+  font-family:
+    iFood Text,
+    Arial,
+    sans-serif;
+  color: var(--ifood-text);
+  font-weight: 400;
+}
+.ifood h1,
+.ifood h2,
+.ifood h3,
+[data-brand="ifood"] h2,
+[data-brand="ifood"] h3 {
+  font-family:
+    iFood Title,
+    iFood Text,
+    Arial,
+    sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+.ifood h1 {
+  font-size: 28px;
+}
+.ifood .btn,
+[data-brand="ifood"] .btn {
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.ifood .muted {
+  color: #717171;
+}
+.ifood .demo-note {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.app-footnote {
+  margin: 16px 0 4px;
+  text-align: center;
+}
+.brand-uber {
+  display: block;
+  width: 76px;
+  height: 28px;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  flex-shrink: 0;
+}
+.brand-uber > img {
+  position: absolute;
+  width: 126px;
+  height: 76.65px;
+  max-width: none;
+  left: -25px;
+  top: -25px;
+  object-fit: contain;
+}
+.brand-ifood {
+  font-size: 0;
+  width: 80px;
+  height: 43px;
+  padding: 0;
+  flex-shrink: 0;
+}
+.brand-ifood:after {
+  display: none;
+}
+.brand-ifood > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.uber .bottom-nav .icon {
+  fill: currentColor;
+  stroke: none;
+}
+.uber .bottom-nav a {
+  font-weight: 500;
+}
+.uber .bottom-nav a.active {
+  color: #000;
+}
+.ifood .bottom-nav a.active {
+  color: #3e3e3e;
+}
+.bottom-nav a {
+  transition: color 150ms;
+}
+.bottom-nav a:active {
+  opacity: 0.55;
+}
+/* Uber home, search and services */
+.uber-home-tabs {
+  display: none;
+}
+.destination-form {
+  margin-bottom: 12px;
+}
+.destination-pill {
+  display: flex;
+  align-items: center;
+  background: #f3f3f3;
+  border-radius: 30px;
+  min-width: 0;
+}
+.destination-pill .location-input {
+  background: none;
+  border: 0;
+  border-radius: 30px;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  gap: 10px;
+  padding: 9px 12px;
+  box-shadow: none;
+}
+.destination-pill .location-input input {
+  padding: 9px 0;
+  width: 100%;
+  min-width: 0;
+  font-size: 19px;
+  font-weight: 500;
+}
+.destination-pill .location-input > .icon {
+  width: 22px;
+  height: 22px;
+}
+.destination-pill .uber-schedule {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: white;
+  border-radius: 24px;
+  padding: 9px 11px;
+  margin: 0 8px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.uber-schedule > .icon {
+  width: 15px;
+  height: 15px;
+}
+.uber-schedule > .icon:last-child {
+  width: 13px;
+}
+.location-fields {
+  gap: 10px;
+}
+.location-fields:before {
+  display: none;
+}
+.origin-field {
+  border-radius: 8px;
+}
+.search-submit {
+  margin-top: 12px;
+}
+.recent-destinations {
+  margin: 15px 0 22px;
+}
+.recent-place {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 14px;
+  padding: 15px 0;
+  text-align: left;
+}
+.recent-place + .recent-place {
+  border-top: 1px solid #eee;
+}
+.recent-place-symbol {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f3f3f3;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.recent-place-symbol .icon {
+  width: 20px;
+  height: 20px;
+}
+.recent-place > span:nth-child(2) {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+.recent-place strong {
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recent-place small {
+  font-size: 12px;
+  color: #6b6b6b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recent-place > .icon {
+  width: 16px;
+  color: #777;
+}
+.section-title > a {
+  font-size: 13px;
+  font-weight: 500;
+}
+.uber .suggestion-grid {
+  gap: 12px;
+  margin: 14px 0 24px;
+}
+.suggestion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px 12px;
+  border-radius: 9px;
+  font-size: 14px;
+  background: #f3f3f3;
+}
+.suggestion > img {
+  width: 100%;
+  height: 72px;
+  object-fit: contain;
+  transition: transform 200ms var(--uber-enter);
+}
+.suggestion:active > img {
+  transform: scale(0.94);
+}
+.plan-heading {
+  margin-top: 24px;
+}
+.plan-heading h2 {
+  font-size: 22px;
+}
+.reserve-promo {
+  padding: 0;
+  display: block;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: white;
+}
+.reserve-promo-art {
+  height: 140px;
+  background: #e7f4ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.reserve-promo-art img {
+  height: 175px;
+  width: 230px;
+  object-fit: contain;
+}
+.reserve-promo > span {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0;
+}
+.reserve-promo strong {
+  font-size: 18px;
+  font-weight: 500;
+}
+.reserve-promo strong > .icon {
+  width: 18px;
+  margin-left: 5px;
+}
+.reserve-promo small {
+  font-size: 13px;
+  color: #6b6b6b;
+}
+.uber-search-title {
+  font-size: 32px;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.picker-title {
+  font-size: 22px;
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 0 -30px !important;
+  border-bottom: 1px solid #eee;
+  letter-spacing: 0 !important;
+}
+.picker-back {
+  margin-bottom: 18px;
+}
+.ride-picker {
+  margin: 8px 0 10px;
+}
+.ride-card img {
+  filter: none !important;
+  width: 80px;
+  height: 66px;
+}
+.ride-card.selected img {
+  width: 90px;
+  height: 80px;
+}
+.ride-card {
+  border-radius: 12px;
+  border-width: 2px;
+}
+.ride-card.selected {
+  background: #fff;
+}
+.ride-card h3 {
+  font-family:
+    Uber Move Text,
+    Arial,
+    sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+.ride-card .price {
+  font-weight: 500;
+}
+.ride-card small {
+  font-size: 12px;
+}
+.ride-description {
+  line-height: 15px;
+}
+.payment-row {
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  padding: 18px 0;
+}
+.payment-cash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 23px;
+  background: #8ac6a3;
+  border-radius: 3px;
+  border: 1px solid #42895d;
+}
+.payment-cash > .icon {
+  width: 20px;
+  height: 18px;
+  stroke: #165a31;
+}
+.picker-cta {
+  padding: 6px 0;
+}
+.reserve-clock {
+  width: 28px;
+  height: 28px;
+}
+.reservation-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f3f3f3;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 10px;
+  font-size: 12px;
+}
+.native-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 22px;
+}
+.service-heading {
+  font-size: 25px;
+  margin-top: 28px;
+}
+.native-service {
+  position: relative;
+  padding: 12px 20px 20px;
+  background: #f3f3f3;
+  border-radius: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.native-service > img {
+  height: 155px;
+  width: 100%;
+  object-fit: contain;
+}
+.native-service > span {
+  display: grid;
+  gap: 5px;
+}
+.native-service strong {
+  font-size: 19px;
+  font-weight: 500;
+}
+.native-service small {
+  font-size: 13px;
+  color: #555;
+}
+.service-explainer {
+  margin-top: 40px;
+}
+.service-explainer > h2 {
+  font-size: 25px;
+}
+.service-explainer > p {
+  margin: 8px 0 22px;
+  color: #6b6b6b;
+  font-size: 14px;
+}
+.service-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.service-options > button {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 9px;
+  text-align: left;
+  padding: 0 0 20px;
+  border-bottom: 1px solid #eee;
+}
+.service-options img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  background: #fafafa;
+  border-radius: 12px;
+  margin-bottom: 4px;
+}
+.service-options strong {
+  font-size: 18px;
+  font-weight: 500;
+}
+.service-options span {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #777;
+}
+.service-options > .icon {
+  width: 20px;
+}
+.page-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.activity-section-title {
+  margin: 28px 0 12px;
+}
+.activity-section-title h2,
+.activity-section-title {
+  font-size: 22px;
+}
+.activity-section-title > .muted {
+  font-size: 12px;
+}
+.activity-entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+.activity-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+.activity-image {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  background: #f3f3f3;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.activity-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.activity-details h3 {
+  font-family:
+    Uber Move Text,
+    Arial,
+    sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin-bottom: 5px;
+}
+.activity-details p {
+  font-size: 12px;
+  color: #6b6b6b;
+}
+.rebook-btn {
+  font-size: 12px;
+  background: #f3f3f3;
+  border-radius: 22px;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.rebook-btn > .icon {
+  width: 15px;
+  height: 15px;
+}
+.activity-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 0 36px;
+  gap: 10px;
+}
+.activity-empty img {
+  width: 190px;
+  height: 130px;
+  object-fit: contain;
+}
+.activity-empty h3 {
+  font-size: 20px;
+  max-width: 330px;
+}
+.activity-empty p {
+  font-size: 14px;
+  color: #6b6b6b;
+}
+.activity-empty .btn {
+  margin-top: 10px;
+}
+.activity-reserve {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f3f3f3;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 24px;
+}
+.activity-reserve > img {
+  width: 85px;
+  height: 65px;
+  object-fit: contain;
+}
+.activity-reserve > span {
+  flex: 1;
+}
+.activity-reserve h3 {
+  font-size: 17px;
+}
+.activity-reserve p {
+  font-size: 12px;
+  color: #6b6b6b;
+}
+.activity-reserve .icon-btn {
+  background: white;
+}
+/* Account screens use distinct structures and density for each brand. */
+.native-account {
+  max-width: 620px;
+  margin: auto;
+}
+.account-page-title {
+  font-size: 32px;
+  margin-bottom: 26px;
+}
+.account-identity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.account-person {
+  min-width: 0;
+}
+.account-person > h2 {
+  font-size: 32px;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #eee;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.profile-avatar > .icon {
+  width: 42px;
+  height: 42px;
+  stroke: none;
+  fill: #8d8d8d;
+}
+.account-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px;
+  background: #f3f3f3;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.account-rating > .icon {
+  width: 12px;
+  height: 12px;
+  fill: #111;
+  stroke: #111;
+}
+.account-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0 24px;
+}
+.account-shortcuts > button {
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 21px 8px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+.account-shortcuts .icon {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2;
+}
+.account-shortcuts strong {
+  font-size: 16px;
+  font-weight: 500;
+}
+.account-safety {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f3f3f3;
+  padding: 20px;
+  border-radius: 12px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 24px;
+}
+.account-safety > span {
+  flex: 1;
+}
+.account-safety strong {
+  display: block;
+  font-size: 19px;
+  font-weight: 500;
+}
+.account-safety small {
+  display: block;
+  margin-top: 7px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+}
+.account-safety > .icon {
+  width: 60px;
+  height: 60px;
+  fill: #0e8345;
+  color: #fff;
+  stroke-width: 1.5;
+}
+.safety-meter {
+  display: flex;
+  gap: 3px;
+  margin-top: 16px;
+}
+.safety-meter i {
+  height: 6px;
+  flex: 1;
+  background: #0e8345;
+  border-radius: 2px;
+}
+.safety-meter i:last-child {
+  background: #d7d7d7;
+}
+.account-row {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  width: 100%;
+  text-align: left;
+  padding: 21px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.account-row > .icon {
+  width: 23px;
+  height: 23px;
+  stroke-width: 1.8;
+}
+.account-row > span {
+  flex: 1;
+  min-width: 0;
+}
+.account-row > span > strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+}
+.account-row > span > small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #888;
+  margin-top: 3px;
+}
+.account-row > .icon:last-child {
+  width: 15px;
+  height: 15px;
+  color: #999;
+}
+.account-lab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 24px 0 18px;
+}
+.account-lab > button {
+  font-size: 11px;
+  color: #777;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.switch-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  margin-top: 20px;
+  color: #777;
+}
+.switch-account > .icon {
+  width: 15px;
+  height: 15px;
+}
+.edit-account {
+  color: #ea1d2c;
+  font-size: 14px;
+  padding: 8px 0;
+}
+.edit-account > .icon {
+  width: 14px;
+  height: 14px;
+}
+.food-account .profile-avatar {
+  order: -1;
+  width: 62px;
+  height: 62px;
+}
+.food-account .account-identity {
+  justify-content: flex-start;
+  gap: 18px;
+}
+.food-account .account-person > h2 {
+  font-size: 23px;
+  line-height: 1.25;
+}
+.food-account .profile-avatar > .icon {
+  width: 35px;
+  height: 35px;
+}
+.food-account .account-row {
+  padding: 18px 0;
+  gap: 17px;
+}
+.food-account .account-row strong {
+  font-family:
+    iFood Text,
+    Arial,
+    sans-serif;
+  font-weight: 400;
+}
+.food-account .account-row > .icon {
+  color: #3e3e3e;
+  width: 23px;
+}
+.food-account .account-row > .icon:last-child {
+  color: #aaa;
+  width: 14px;
+}
+.club-account {
+  background: #f9f2fc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  color: #6d2298;
+  margin-bottom: 20px;
+}
+.club-symbol {
+  width: 45px;
+  height: 45px;
+  background: #8232ac;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: white;
+}
+.club-symbol > .icon {
+  width: 26px;
+  height: 26px;
+}
+.club-account > span:nth-child(2) {
+  display: grid;
+  gap: 5px;
+  flex: 1;
+}
+.club-account strong {
+  font-size: 18px;
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-weight: 500;
+}
+.club-account small {
+  font-size: 12px;
+}
+.club-account > b {
+  font-size: 11px;
+  font-weight: 500;
+}
+.club-account > .icon {
+  width: 15px;
+  height: 15px;
+}
+.wallet-balance {
+  background: #f3f3f3;
+  padding: 24px;
+  border-radius: 12px;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.wallet-balance > span {
+  font-size: 18px;
+  font-weight: 500;
+}
+.wallet-balance > strong {
+  font-size: 40px;
+  font-family:
+    Uber Move,
+    Arial,
+    sans-serif;
+}
+.wallet-balance > small {
+  font-size: 12px;
+  color: #777;
+}
+.wallet-heading {
+  font-size: 18px;
+}
+.payment-method-row > .icon:first-child {
+  width: 28px;
+}
+.payment-method-row > .icon:last-child {
+  color: #000;
+  width: 22px;
+}
+.help-topics details {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+.help-topics summary {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.help-topics p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 14px;
+}
+.privacy-art {
+  display: grid;
+  place-items: center;
+  height: 130px;
+  background: #e6f2eb;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+.privacy-art > .icon {
+  width: 70px;
+  height: 70px;
+  color: #16713b;
+}
+.safety-hero {
+  height: 170px;
+  background: #dce8fd;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+}
+.safety-art {
+  width: 120px;
+  height: 140px;
+}
+.driver-message {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: 35px 0;
+}
+.driver-message > .icon {
+  width: 50px;
+  height: 50px;
+}
+.driver-message > p {
+  font-size: 14px;
+  color: #777;
+}
+/* Uber trip states */
+.trip-status-label {
+  font-size: 12px;
+  color: #666;
+}
+.trip-status > h1 {
+  font-size: 27px;
+  margin: 10px 0 18px;
+  line-height: 1.18;
+}
+.finding-driver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0 26px;
+}
+.finding-driver > img {
+  height: 130px;
+  width: 230px;
+  object-fit: contain;
+}
+.finding-driver > p {
+  font-size: 13px;
+  color: #777;
+}
+.driver-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 20px 0 12px;
+}
+.driver-visual {
+  height: 92px;
+  width: 170px;
+  position: relative;
+  flex-shrink: 0;
+}
+.driver-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #e3e3e3;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  left: 2px;
+  top: 5px;
+  border: 3px solid white;
+  z-index: 1;
+}
+.driver-avatar .icon {
+  width: 34px;
+  height: 34px;
+  fill: #aaa;
+  stroke: none;
+}
+.driver-visual > img {
+  position: absolute;
+  width: 145px;
+  height: 95px;
+  object-fit: contain;
+  right: 0;
+  bottom: 0;
+}
+.driver-description {
+  text-align: right;
+  display: grid;
+  justify-items: end;
+  gap: 3px;
+}
+.driver-description > h2 {
+  font-size: 20px;
+}
+.driver-description > span {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.driver-description .icon {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+.driver-description > strong {
+  font-size: 20px;
+  letter-spacing: 0.7px;
+  margin-top: 6px;
+}
+.driver-description > p {
+  font-size: 11px;
+  color: #777;
+}
+.driver-tools {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+.driver-tools > button {
+  background: #f3f3f3;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 14px;
+  flex: 1;
+}
+.driver-tools > button:last-child {
+  flex: 0;
+  width: 46px;
+  height: 46px;
+}
+.driver-tools .icon {
+  width: 19px;
+  height: 19px;
+}
+.trip-receipt {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin: 20px 0;
+  padding: 0 0 15px;
+}
+.trip-receipt .route-summary {
+  padding: 16px 0;
+  border: 0;
+  gap: 17px;
+  margin: 0 0 8px;
+}
+.trip-receipt .route-summary > .row {
+  font-size: 14px;
+}
+.trip-receipt > .spread {
+  font-size: 15px;
+}
+.trip-payment {
+  margin-top: 12px;
+  color: #6b6b6b;
+}
+.trip-payment > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+}
+.trip-payment .icon {
+  width: 16px;
+  height: 16px;
+}
+.trip-payment small {
+  font-size: 10px;
+}
+.trip-rating {
+  text-align: center;
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 8px 20px 20px;
+}
+.trip-rating > h3 {
+  margin-bottom: 16px;
+}
+.simulation-controls {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+.cancel-trip {
+  font-size: 14px;
+  color: #555;
+  padding: 8px;
+}
+.booking-screen .uber-panel {
+  scrollbar-width: thin;
+}
+.booking-screen .demo-note {
+  font-size: 10px;
+}
+/* iFood discovery */
+.food-header {
+  height: 86px;
+  gap: 30px;
+}
+.food-header .food-address strong {
+  font-weight: 500;
+  font-size: 14px;
+}
+.food-header .food-address > .small {
+  font-size: 10px;
+  letter-spacing: 0.4px;
+}
+.club-strip .greeting {
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 23px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+.club-strip .club-coupon {
+  font-size: 13px;
+  background: #f8effd;
+  color: #7b1fa2;
+}
+.club-strip button {
+  color: #7b1fa2;
+}
+.food-services .service-art {
+  background: #f6f6f6;
+  height: 92px;
+  border-radius: 9px;
+}
+.food-services .service-art > img {
+  width: 90%;
+  height: 95%;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+}
+.food-services > button {
+  font-size: 13px;
+  gap: 9px;
+  color: #3e3e3e;
+}
+.service-pharmacy > img {
+  width: 68% !important;
+}
+.service-drinks > img {
+  width: 73% !important;
+}
+.brand-service-hits {
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 43px;
+  letter-spacing: -3px;
+  font-weight: 700;
+  color: white;
+  background: #ea1d2c;
+  padding: 0 9px 3px;
+  border-radius: 12px;
+  transform: rotate(-9deg);
+  line-height: 1.1;
+}
+.brand-service-turbo {
+  font-size: 43px;
+  color: #ed8d1b;
+  line-height: 1;
+  filter: drop-shadow(2px 3px 1px #aa5b2440);
+}
+.brand-service-shopping {
+  width: 44px;
+  height: 49px;
+  background: #eb3246;
+  border-radius: 7px 7px 10px 10px;
+  display: grid;
+  place-items: center;
+  transform: rotate(-9deg);
+  box-shadow: 4px 4px 0 #c92535;
+}
+.brand-service-shopping > .icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+  stroke-width: 1.4;
+}
+.brand-service-club {
+  width: 46px;
+  height: 38px;
+  background: #8c42b1;
+  color: white;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  transform: rotate(-10deg);
+  box-shadow: 4px 3px 0 #682987;
+}
+.brand-service-club > .icon {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.4;
+}
+.food-services .service-club {
+  background: #f8f1fc;
+}
+.offer-slide {
+  background: #ea1d2c;
+  padding: 26px 34px;
+  height: 250px;
+  border-radius: 12px;
+  isolation: isolate;
+}
+.offer-slide:after {
+  content: "";
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: #fa4550;
+  right: -35px;
+  top: -40px;
+  z-index: -1;
+}
+.offer-slide strong {
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1.04;
+}
+.offer-slide strong b {
+  font-size: 35px;
+  font-weight: 700;
+}
+.offer-slide > img {
+  width: 340px;
+  height: 245px;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0 6% 0 0;
+  transform: rotate(-7deg);
+}
+.offer-slide small {
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+.offer-slide em {
+  font-size: 12px;
+  margin-top: 6px;
+}
+.offer-slide > span:first-child {
+  gap: 10px;
+}
+.offer-page {
+  bottom: 10px;
+}
+.offer-page i:first-child {
+  width: 13px;
+  height: 4px;
+}
+.recent-heading h2 {
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-weight: 500;
+}
+.recent-stores a {
+  font-size: 12px;
+  line-height: 1.4;
+}
+.food-topline h1 {
+  font-size: 26px;
+}
+.search-box {
+  border-radius: 8px;
+  border: 0;
+  background: #f7f7f7;
+}
+.search-box input {
+  font-family:
+    iFood Text,
+    Arial,
+    sans-serif;
+  font-size: 14px;
+}
+.food-category {
+  font-size: 13px;
+}
+.food-category.active .category-img {
+  border-color: #ea1d2c;
+}
+.food-section-heading h2 {
+  font-size: 23px;
+  font-weight: 500;
+}
+.ifood .pill {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 10px 15px;
+  border-color: #e5e5e5;
+}
+.ifood .pill.active {
+  background: #fff;
+  border-color: #ea1d2c;
+  color: #ea1d2c;
+}
+.ifood .pill .icon {
+  width: 16px;
+  height: 16px;
+}
+.restaurant-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: none !important;
+}
+.restaurant-info h3 {
+  font-family:
+    iFood Text,
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.restaurant-info .meta,
+.restaurant-info .delivery {
+  font-size: 12px;
+}
+.restaurant-info .rating {
+  color: #b58a28;
+}
+.restaurant-card:hover {
+  transform: none;
+  border-color: #ccc;
+}
+.fave .icon {
+  stroke-width: 1.5;
+}
+.search-page-heading {
+  display: block;
+  margin: 0 0 25px;
+}
+.search-page-heading h1 {
+  margin-bottom: 22px;
+}
+.search-page-heading .search-box {
+  width: 100%;
+}
+.search-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 0 0 30px;
+}
+.search-categories > .food-category {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 125px;
+  align-items: start;
+  justify-items: start;
+  font-size: 18px;
+  padding: 18px;
+  color: #333;
+  background: #f4f4f4;
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-weight: 500;
+  text-align: left;
+}
+.search-categories > .food-category .category-img {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  border-width: 0 !important;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.36;
+}
+.search-categories > .food-category .category-img:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, white, transparent);
+}
+.search-categories > .food-category .category-img img {
+  height: 100%;
+  width: 50%;
+  margin-left: 55%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.search-categories > .food-category {
+  isolation: isolate;
+}
+.search-categories > .food-category .category-img {
+  z-index: -1;
+}
+.hits-hero {
+  position: relative;
+  isolation: isolate;
+  background: #ea1d2c;
+  border-radius: 12px;
+  padding: 28px;
+  overflow: hidden;
+  min-height: 260px;
+  margin-bottom: 26px;
+  color: white;
+}
+.hits-wordmark {
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 43px;
+  letter-spacing: -3px;
+  font-weight: 700;
+  display: inline-block;
+  transform: rotate(-7deg);
+  margin-bottom: 12px;
+}
+.hits-hero h1 {
+  font-size: 32px !important;
+  max-width: 60%;
+  line-height: 1.08;
+  color: white;
+}
+.hits-hero > p {
+  font-size: 13px;
+  margin-top: 12px;
+  max-width: 60%;
+}
+.hits-hero > img {
+  position: absolute;
+  width: 300px;
+  right: -12px;
+  bottom: -15px;
+  z-index: -1;
+}
+/* iFood restaurant, item and bag */
+.restaurant-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.restaurant-nav > span {
+  flex: 1;
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.restaurant-nav .icon-btn {
+  background: white;
+  color: #ea1d2c;
+}
+.restaurant-nav > .icon-btn:last-child {
+  color: #3e3e3e;
+}
+.restaurant-banner {
+  height: 240px;
+  border-radius: 8px;
+  overflow: visible;
+  isolation: isolate;
+}
+.restaurant-banner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(0.83);
+}
+.restaurant-banner:after {
+  display: none;
+}
+.restaurant-identity {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  border: 4px solid white;
+  background: white;
+  bottom: -30px;
+  right: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 2px 5px #0001;
+}
+.restaurant-identity > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+}
+.restaurant-heading {
+  padding-top: 28px;
+}
+.restaurant-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+  padding: 0;
+  max-width: 85%;
+}
+.restaurant-title h1 {
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+.restaurant-title > .icon {
+  width: 17px;
+  color: #999;
+}
+.restaurant-heading > p {
+  font-size: 13px;
+  margin: 9px 0 13px;
+}
+.restaurant-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #888;
+}
+.restaurant-rating .rating {
+  font-size: 14px;
+  color: #bc8b26;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.restaurant-rating .icon {
+  width: 14px;
+  height: 14px;
+}
+.restaurant-rating .rating .icon {
+  fill: currentColor;
+}
+.restaurant-rating > button {
+  font-size: 12px;
+  color: #ea1d2c;
+  padding: 0;
+  margin-left: auto;
+}
+.restaurant-rating > button .icon {
+  width: 11px;
+}
+.delivery-selector {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 20px 0 0;
+  margin-top: 18px;
+  border-top: 1px solid #eee;
+  text-align: left;
+  font-size: 14px;
+}
+.delivery-selector > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+.delivery-selector > .icon {
+  width: 14px;
+  margin-left: auto;
+  color: #777;
+}
+.delivery-selector strong {
+  font-weight: 400;
+}
+.delivery-selector strong i {
+  font-style: normal;
+  margin: 0 10px;
+  color: #ccc;
+}
+.delivery-selector > span > .icon {
+  width: 18px;
+  color: #ea1d2c;
+}
+.restaurant-coupon {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 14px;
+  padding: 17px 20px;
+  background: #fff7f8;
+  border: 1px solid #f7dde0;
+  border-radius: 6px;
+  width: 100%;
+  margin: 0 0 22px;
+}
+.restaurant-coupon > .icon {
+  color: #ea1d2c;
+  width: 25px;
+  height: 25px;
+}
+.restaurant-coupon > span {
+  display: grid;
+  gap: 5px;
+  flex: 1;
+}
+.restaurant-coupon strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.restaurant-coupon small {
+  font-size: 12px;
+  color: #717171;
+}
+.restaurant-coupon > .icon:last-child {
+  width: 14px;
+  color: #999;
+}
+.menu-tabs {
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #eee;
+  margin: 0 0 28px;
+  position: sticky;
+  top: 86px;
+  background: white;
+  z-index: 4;
+}
+.menu-tabs > a {
+  font-size: 15px;
+  color: #555;
+  padding: 17px 0;
+}
+.menu-tabs > a:first-child {
+  color: #ea1d2c;
+  border-bottom: 3px solid #ea1d2c;
+}
+.menu-section {
+  scroll-margin-top: 160px;
+}
+.menu-section > h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+.menu-section > p {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 18px;
+}
+.menu-section + .menu-section {
+  margin-top: 32px;
+}
+.product-card {
+  border-radius: 6px;
+  padding: 20px;
+  min-height: 180px;
+}
+.product-card h3 {
+  font-family:
+    iFood Text,
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 3px 0 9px;
+}
+.product-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.product-card .price {
+  font-size: 15px;
+  font-weight: 500;
+}
+.product-card img {
+  border-radius: 5px;
+  width: 130px;
+  height: 130px;
+}
+.popular-badge {
+  font-size: 10px !important;
+  color: #9b721c !important;
+  background: #fff9e9 !important;
+  padding: 3px 6px;
+}
+.product-dialog {
+  padding: 0;
+  max-width: 540px;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+.product-dialog > .modal-head {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  margin: 0;
+  z-index: 5;
+}
+.product-dialog > .modal-head h2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.product-dialog > .modal-head .icon-btn {
+  background: white;
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 2px 6px #0002;
+}
+.product-dialog .product-photo {
+  display: block;
+  width: 100%;
+  height: 290px;
+  border-radius: 0;
+  margin: 0;
+  object-fit: cover;
+}
+.product-no-photo {
+  display: grid !important;
+  place-items: center;
+  background: #f3f3f3;
+}
+.product-no-photo .icon {
+  width: 80px;
+  height: 80px;
+  color: #bbb;
+}
+.product-detail-copy {
+  padding: 24px 26px 0;
+}
+.product-detail-copy > h2 {
+  font-size: 25px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.product-detail-copy > .modal-description {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+.product-base-price {
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+}
+.product-store {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #eee;
+  margin-top: 23px;
+  padding: 18px 0;
+  font-size: 13px;
+}
+.product-store > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.product-store > span {
+  flex: 1;
+}
+.product-store > .icon {
+  width: 14px;
+  color: #aaa;
+}
+.product-section-heading {
+  position: relative;
+  background: #f7f7f7;
+  padding: 17px 26px;
+}
+.product-section-heading h3 {
+  font-size: 17px;
+}
+.product-section-heading p {
+  font-size: 12px;
+  color: #777;
+  margin-top: 5px;
+}
+.product-section-heading > span {
+  position: absolute;
+  top: 18px;
+  right: 26px;
+  font-size: 11px;
+  color: #777;
+}
+.product-options {
+  padding: 0 26px;
+}
+.product-options .option-row {
+  padding: 18px 0;
+  font-size: 14px;
+  gap: 12px;
+}
+.product-options .option-row > span:first-child {
+  flex: 1;
+}
+.product-options .option-row > .price {
+  font-size: 13px;
+  flex-shrink: 0;
+  margin: 0;
+}
+.product-options input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.product-note-section {
+  padding: 24px 26px 20px;
+}
+.product-note-section > label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 16px;
+  margin-bottom: 13px;
+}
+.product-note-section .icon {
+  width: 18px;
+  color: #777;
+}
+.product-note-section textarea {
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 5px;
+  resize: vertical;
+  min-height: 82px;
+}
+.product-note-section > small {
+  font-size: 10px;
+  color: #aaa;
+  display: block;
+  text-align: right;
+  margin-top: 7px;
+}
+.product-dialog .modal-actions {
+  position: sticky;
+  bottom: 0;
+  margin: 0;
+  padding: 17px 24px;
+  box-shadow: 0 -3px 12px #00000008;
+  z-index: 4;
+}
+.product-dialog .modal-actions .qty {
+  border: 0;
+  padding: 0;
+  gap: 9px;
+}
+.product-dialog .modal-actions .btn {
+  font-size: 14px;
+  border-radius: 5px;
+  min-height: 49px;
+}
+.product-dialog .modal-actions .qty button {
+  width: 25px;
+  color: #ea1d2c;
+}
+.product-dialog .modal-actions .qty span {
+  font-size: 16px;
+}
+.cart-dialog {
+  padding: 24px;
+  max-width: 520px;
+}
+.cart-dialog .modal-head {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 22px;
+}
+.cart-dialog .modal-head h2 {
+  text-transform: uppercase;
+  font-family:
+    iFood Text,
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+.cart-dialog .modal-head .icon-btn {
+  background: white;
+  color: #ea1d2c;
+}
+.bag-restaurant > small {
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  color: #717171;
+}
+.bag-restaurant > h2 {
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 7px;
+}
+.bag-restaurant > a {
+  font-size: 12px;
+  color: #ea1d2c;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 9px;
+}
+.bag-restaurant > a > .icon {
+  width: 12px;
+}
+.bag-items {
+  margin-top: 15px;
+}
+.cart-line {
+  padding: 19px 0;
+  gap: 12px;
+}
+.cart-line > img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.cart-line h3 {
+  font-family:
+    iFood Text,
+    Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+.cart-line p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #888;
+}
+.cart-line .qty {
+  border: 0;
+  background: #fafafa;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+.cart-line .qty span {
+  font-size: 13px;
+}
+.cart-line .price {
+  font-weight: 400;
+  font-size: 13px;
+}
+.add-more-items {
+  display: block;
+  padding: 18px 0;
+  color: #ea1d2c;
+  font-size: 14px;
+  width: 100%;
+}
+.bag-divider {
+  height: 8px;
+  background: #f7f7f7;
+  margin: 0 -24px 22px;
+}
+.coupon-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.coupon-label > .icon {
+  width: 24px;
+  height: 24px;
+  color: #ea1d2c;
+}
+.coupon-label > strong {
+  font-size: 16px;
+  font-weight: 500;
+  flex: 1;
+}
+.coupon-label > span {
+  font-size: 11px;
+  color: #777;
+}
+.cart-dialog .coupon {
+  margin: 14px 0 6px;
+}
+.cart-dialog .coupon .field {
+  font-size: 13px;
+  border-radius: 5px;
+}
+.cart-dialog .coupon .btn {
+  background: #fff4f5;
+  color: #ea1d2c;
+  font-weight: 500;
+  border-radius: 5px;
+}
+.cart-totals {
+  padding: 24px 0;
+  gap: 14px;
+}
+.cart-totals .spread {
+  font-size: 14px;
+}
+.cart-totals .total {
+  font-size: 18px;
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-weight: 500;
+  margin-top: 1px;
+}
+.bag-checkout-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  bottom: -24px;
+  padding: 17px 24px;
+  background: white;
+  border-top: 1px solid #eee;
+  margin: 10px -24px -10px;
+}
+.bag-checkout-bar > span {
+  display: grid;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.bag-checkout-bar small {
+  font-size: 10px;
+  color: #777;
+}
+.bag-checkout-bar strong {
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+.bag-checkout-bar > .btn {
+  font-size: 12px;
+  flex: 1;
+  min-height: 48px;
+  padding: 11px 15px;
+  border-radius: 5px;
+}
+.empty-bag-art {
+  display: grid;
+  place-items: center;
+  margin: 25px auto 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff1f2;
+  color: #ea1d2c;
+}
+.empty-bag-art .icon {
+  width: 44px;
+  height: 44px;
+  stroke-width: 1.2;
+}
+.cart-dialog .empty {
+  padding-top: 25px;
+}
+.restaurant-about > img {
+  height: 170px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.restaurant-about > h3 {
+  font-size: 22px;
+}
+.restaurant-about > p {
+  font-size: 14px;
+  color: #777;
+  margin-top: 12px;
+}
+/* Checkout and tracking */
+.food-page-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 28px;
+}
+.food-page-top > h1 {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.food-page-top > .icon-btn {
+  background: white;
+  color: #ea1d2c;
+}
+.food-page-top > span {
+  flex: 1;
+  font-size: 16px;
+  text-align: center;
+}
+.food-page-top > .text-btn {
+  font-size: 13px;
+  font-weight: 400;
+}
+.checkout-grid {
+  grid-template-columns: minmax(0, 1fr) 410px;
+  gap: 45px;
+  align-items: start;
+}
+.checkout-sections {
+  gap: 30px;
+}
+.checkout-section {
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 26px;
+}
+.checkout-section > h2 {
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+.checkout-address {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  padding: 6px 0 22px;
+  border-bottom: 1px solid #eee;
+}
+.checkout-address > .icon:first-child {
+  color: #ea1d2c;
+  width: 22px;
+}
+.checkout-address > span {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+}
+.checkout-address strong {
+  font-size: 16px;
+  font-weight: 500;
+}
+.checkout-address small {
+  font-size: 12px;
+  color: #777;
+}
+.checkout-address > .icon:last-child {
+  color: #999;
+  width: 15px;
+}
+.delivery-method {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 21px;
+  border: 1px solid #ea1d2c;
+  border-radius: 6px;
+  padding: 18px;
+}
+.delivery-method > span:first-child {
+  flex: 1;
+  display: grid;
+  gap: 6px;
+}
+.delivery-method strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.delivery-method small {
+  font-size: 12px;
+  color: #777;
+}
+.selected-radio {
+  width: 18px;
+  height: 18px;
+  border: 5px solid #ea1d2c;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.section-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 7px;
+}
+.payment-option {
+  padding: 19px 0;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  border-radius: 0;
+  background: white !important;
+  font-size: 14px;
+  gap: 14px;
+}
+.payment-option:has(input:checked) {
+  border-color: #eee;
+}
+.payment-option > span {
+  flex: 1;
+}
+.payment-option > span > small {
+  display: block;
+  font-size: 11px;
+  color: #999;
+  margin-top: 5px;
+}
+.payment-option > .icon {
+  width: 24px;
+  height: 24px;
+}
+.payment-option input {
+  width: 19px;
+  height: 19px;
+  accent-color: #ea1d2c;
+}
+.checkout-summary {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 24px;
+}
+.checkout-summary .cart-line > img {
+  width: 52px;
+  height: 52px;
+}
+.coupon-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 19px 0;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+.coupon-summary > .icon:first-child {
+  color: #ea1d2c;
+}
+.coupon-summary > span {
+  flex: 1;
+  font-size: 13px;
+}
+.coupon-summary > .icon:last-child {
+  width: 13px;
+  color: #999;
+}
+.checkout-confirm .btn {
+  font-size: 15px;
+  min-height: 50px;
+}
+.checkout-confirm .demo-note {
+  text-align: center;
+  margin-top: 14px;
+}
+.orders-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 22px 0 12px;
+}
+.orders-title h2 {
+  font-size: 22px;
+}
+.orders-title > span {
+  font-size: 12px;
+  color: #999;
+}
+.native-order-card {
+  border: 1px solid #eee;
+  padding: 22px 24px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.order-date {
+  font-size: 12px;
+  color: #777;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eee;
+}
+.order-store {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+}
+.order-store > img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.order-store > span {
+  flex: 1;
+}
+.order-store h3 {
+  font-family:
+    iFood Text,
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.order-store small {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #777;
+  margin-top: 7px;
+}
+.order-store small > .icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2;
+}
+.order-store > .icon {
+  width: 15px;
+  height: 15px;
+  color: #999;
+}
+.order-product-summary {
+  display: grid;
+  gap: 10px;
+  padding: 0 0 20px;
+}
+.order-product-summary > span {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.order-product-summary b {
+  font-weight: 400;
+  background: #f5f5f5;
+  padding: 3px 5px;
+  line-height: 1;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.order-card-actions {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 17px;
+}
+.order-card-actions > * {
+  flex: 1;
+  text-align: center;
+  color: #ea1d2c;
+  font-size: 14px;
+  padding: 4px 0;
+}
+.order-card-actions > * + * {
+  border-left: 1px solid #eee;
+}
+.food-orders-empty {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  padding: 25px 0;
+}
+.food-orders-empty h2 {
+  font-size: 24px;
+  max-width: 350px;
+  line-height: 1.2;
+}
+.food-orders-empty p {
+  font-size: 14px;
+  color: #777;
+}
+.food-orders-empty .btn {
+  font-size: 14px;
+}
+.order-track {
+  max-width: 680px;
+}
+.order-track .food-page-top {
+  margin-bottom: 35px;
+}
+.order-arrival {
+  text-align: center;
+}
+.order-arrival > small {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: #777;
+}
+.order-arrival > strong {
+  display: block;
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 12px 0 20px;
+}
+.order-arrival > strong > span {
+  font-size: 22px;
+}
+.order-arrival > h1 {
+  font-size: 25px;
+  line-height: 1.2;
+  margin: 0 auto 10px;
+  max-width: 400px;
+  letter-spacing: -0.4px;
+}
+.order-arrival > p {
+  font-size: 13px;
+  color: #777;
+}
+.order-arrival .order-loader {
+  margin: 16px auto 0;
+}
+.order-terminal-icon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #f7f7f7;
+  color: #ea1d2c;
+  margin: 20px auto;
+}
+.order-terminal-icon > .icon {
+  width: 34px;
+  height: 34px;
+  stroke-width: 2;
+}
+.food-order-progress {
+  display: flex;
+  gap: 5px;
+  margin: 27px 0;
+}
+.food-order-progress > span {
+  height: 4px;
+  border-radius: 3px;
+  background: #f1f1f1;
+  flex: 1;
+  transition: background 300ms;
+}
+.food-order-progress > span.done {
+  background: #ea1d2c;
+}
+.order-store-summary {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin-top: 25px;
+}
+.order-store-summary > img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+.order-store-summary > span {
+  flex: 1;
+  display: grid;
+  gap: 5px;
+}
+.order-store-summary strong {
+  font-size: 15px;
+  font-weight: 500;
+}
+.order-store-summary small {
+  font-size: 11px;
+  color: #777;
+}
+.order-store-summary > .icon {
+  width: 14px;
+  color: #aaa;
+}
+.order-delivery-address {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 23px 0;
+  border-bottom: 1px solid #eee;
+}
+.order-delivery-address > .icon {
+  color: #ea1d2c;
+}
+.order-delivery-address strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.order-delivery-address p {
+  font-size: 12px;
+  color: #777;
+  margin-top: 5px;
+}
+.order-details {
+  padding: 20px 0;
+}
+.order-details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  cursor: pointer;
+  list-style: none;
+}
+.order-details > summary > .icon {
+  width: 16px;
+  color: #999;
+}
+.order-details > summary::-webkit-details-marker {
+  display: none;
+}
+.order-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 15px 0;
+  font-size: 13px;
+}
+.order-detail-row b {
+  font-weight: 400;
+  color: #888;
+}
+.order-detail-row strong {
+  font-weight: 400;
+  white-space: nowrap;
+}
+.order-paid {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #eee;
+  font-size: 15px;
+}
+.order-paid strong {
+  font-weight: 500;
+}
+.order-details > p {
+  font-size: 12px;
+  color: #777;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.order-details > p > .icon {
+  width: 18px;
+  height: 18px;
+}
+.order-track .simulation-controls {
+  margin-top: 8px;
+}
+.order-track .simulation-controls > .text-btn {
+  font-size: 13px;
+  font-weight: 400;
+}
+.ifood .food-footer {
+  font-size: 10px;
+  color: #999;
+}
+@media (max-width: 1050px) {
+  .checkout-grid {
+    grid-template-columns: minmax(0, 1fr) 350px;
+    gap: 25px;
+  }
+  .food-header {
+    gap: 20px;
+  }
+  .food-services .service-art {
+    height: 76px;
+  }
+  .food-services > button {
+    font-size: 12px;
+  }
+  .offer-slide > img {
+    margin-right: 0;
+    width: 280px;
+  }
+  .club-account > b {
+    display: none;
+  }
+  .service-options {
+    gap: 13px;
+  }
+  .uber-content {
+    max-width: 950px;
+  }
+}
+@media (max-width: 760px) {
+  .uber-header {
+    height: 59px;
+    padding: 10px 20px 9px;
+  }
+  .uber-header .brand-uber {
+    width: 65px;
+    height: 24px;
+  }
+  .uber-header .brand-uber > img {
+    width: 108px;
+    height: 65.7px;
+    left: -21.4px;
+    top: -21.4px;
+  }
+  .uber-header > .demo-badge {
+    font-size: 8px;
+    border-color: #eee;
+    color: #999;
+  }
+  .uber-panel {
+    padding: 12px 20px 24px;
+  }
+  .uber-home-tabs {
+    display: none;
+  }
+  .uber-search-title {
+    display: none;
+  }
+  .origin-field {
+    display: none !important;
+  }
+  .destination-form .location-fields {
+    margin: 0;
+  }
+  .destination-pill {
+    min-height: 58px;
+    border-radius: 32px;
+  }
+  .destination-pill .location-input {
+    padding: 9px 4px 9px 17px;
+    gap: 10px;
+  }
+  .destination-pill .location-input input {
+    font-size: 21px;
+    letter-spacing: -0.4px;
+    font-weight: 500;
+  }
+  .destination-pill .uber-schedule {
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+  .destination-pill .uber-schedule > .icon {
+    width: 14px;
+    height: 14px;
+  }
+  .destination-pill .uber-schedule > .icon:last-child {
+    width: 12px;
+  }
+  .destination-form .search-submit {
+    display: none;
+  }
+  .destination-form.has-destination .search-submit,
+  .editing-destination .search-submit {
+    display: flex;
+  }
+  .editing-destination .origin-field {
+    display: flex !important;
+    background: #f3f3f3;
+    border: 0;
+    min-height: 48px;
+  }
+  .editing-destination .origin-field input {
+    font-size: 15px;
+  }
+  .editing-destination .destination-pill {
+    border-radius: 8px;
+    border: 2px solid #111;
+    min-height: 48px;
+  }
+  .editing-destination .destination-pill .uber-schedule {
+    display: none;
+  }
+  .editing-destination .destination-pill .location-input input {
+    font-size: 16px;
+  }
+  .editing-destination .recent-destinations,
+  .editing-destination .reserve-promo,
+  .editing-destination .plan-heading,
+  .editing-destination .app-footnote {
+    display: none;
+  }
+  .editing-destination .place-results {
+    border: 0;
+    box-shadow: none;
+    max-height: none;
+  }
+  .place-option {
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .place-option > span:first-child {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f3f3f3;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .place-option .icon {
+    width: 18px;
+    height: 18px;
+  }
+  .place-option strong {
+    font-size: 16px;
+  }
+  .place-option small {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .recent-destinations {
+    margin: 11px 0 20px;
+  }
+  .recent-place {
+    padding: 16px 0;
+    gap: 13px;
+  }
+  .recent-place-symbol {
+    width: 39px;
+    height: 39px;
+  }
+  .recent-place strong {
+    font-size: 16px;
+  }
+  .recent-place small {
+    font-size: 12px;
+  }
+  .recent-place > .icon {
+    display: none;
+  }
+  .uber-panel .section-title {
+    margin: 24px 0 13px;
+  }
+  .uber-panel .section-title h2 {
+    font-size: 23px;
+    letter-spacing: -0.4px;
+  }
+  .section-title > a {
+    font-size: 13px;
+  }
+  .uber .suggestion-grid {
+    margin: 0 0 27px;
+    gap: 11px;
+  }
+  .suggestion {
+    font-size: 14px;
+    padding: 5px 3px 10px;
+  }
+  .suggestion > img {
+    height: 65px;
+  }
+  .reserve-promo-art {
+    height: 130px;
+    border-radius: 10px;
+    background: #e4f1e9;
+  }
+  .reserve-promo-art > img {
+    height: 170px;
+  }
+  .reserve-promo strong {
+    font-size: 17px;
+  }
+  .reserve-promo small {
+    font-size: 13px;
+  }
+  .reserve-promo > span {
+    padding: 13px 0;
+  }
+  .uber .app-footnote {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+  .uber-content {
+    padding: 24px 20px 100px;
+  }
+  .uber-content > h1,
+  .page-title-row > h1 {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+  }
+  .page-title-row {
+    margin-bottom: 28px;
+  }
+  .native-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 17px;
+  }
+  .native-service {
+    padding: 8px 14px 17px;
+    border-radius: 10px;
+  }
+  .native-service > img {
+    height: 95px;
+  }
+  .native-service strong {
+    font-size: 16px;
+  }
+  .native-service small {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .native-service:first-child {
+    grid-column: 1/-1;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 128px;
+    padding: 12px 20px;
+  }
+  .native-service:first-child > img {
+    height: 120px;
+    width: 170px;
+  }
+  .native-service:first-child strong {
+    font-size: 21px;
+  }
+  .native-service:first-child small {
+    font-size: 12px;
+  }
+  .service-heading {
+    font-size: 23px;
+    margin-top: 26px;
+  }
+  .service-explainer {
+    margin-top: 31px;
+  }
+  .service-explainer > h2 {
+    font-size: 23px;
+  }
+  .service-explainer > p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .service-options {
+    display: block;
+  }
+  .service-options > button {
+    display: grid;
+    grid-template-columns: 86px minmax(0, 1fr) 22px;
+    gap: 3px 13px;
+    padding: 18px 0;
+    align-items: center;
+    width: 100%;
+  }
+  .service-options img {
+    width: 86px;
+    height: 66px;
+    grid-row: 1/3;
+    grid-column: 1;
+    margin: 0;
+  }
+  .service-options strong {
+    font-size: 17px;
+    grid-column: 2;
+  }
+  .service-options span {
+    font-size: 12px;
+    grid-column: 2;
+  }
+  .service-options .icon {
+    grid-column: 3;
+    grid-row: 1/3;
+    width: 18px;
+  }
+  .activity-section-title {
+    margin-top: 24px;
+    font-size: 22px;
+  }
+  .activity-section-title h2 {
+    font-size: 23px;
+  }
+  .activity-section-title > .muted {
+    font-size: 11px;
+  }
+  .activity-entry {
+    gap: 10px;
+    padding: 17px 0;
+  }
+  .activity-details {
+    gap: 12px;
+  }
+  .activity-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+  }
+  .activity-details h3 {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  .activity-details p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .rebook-btn {
+    font-size: 11px;
+    padding: 8px 9px;
+  }
+  .rebook-btn .icon {
+    width: 13px;
+    height: 13px;
+  }
+  .activity-reserve {
+    padding: 14px;
+    gap: 9px;
+  }
+  .activity-reserve > img {
+    width: 65px;
+    height: 60px;
+  }
+  .activity-reserve h3 {
+    font-size: 16px;
+  }
+  .activity-reserve p {
+    font-size: 12px;
+  }
+  .activity-reserve .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+  .activity-empty h3 {
+    font-size: 21px;
+  }
+  .activity-empty p {
+    font-size: 13px;
+  }
+  .activity-empty .btn {
+    font-size: 14px;
+  }
+  .booking-screen .map-area {
+    height: 42dvh;
+  }
+  .booking-screen .uber-panel {
+    padding: 11px 18px 24px;
+    min-height: 60dvh;
+    margin-top: -18px;
+    border-radius: 18px 18px 0 0;
+  }
+  .sheet-grip {
+    margin-bottom: 14px;
+    width: 34px;
+    height: 4px;
+  }
+  .picker-back {
+    font-size: 11px !important;
+    margin: 0 0 9px !important;
+    gap: 3px;
+  }
+  .picker-back > .icon {
+    width: 13px;
+  }
+  .booking-screen .picker-title {
+    font-family:
+      Uber Move Text,
+      Arial,
+      sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 5px 0 17px;
+    margin: 0 -18px !important;
+    letter-spacing: 0 !important;
+  }
+  .ride-picker {
+    margin: 6px -7px 4px;
+  }
+  .ride-card {
+    height: 73px;
+    padding: 6px 9px;
+    gap: 9px;
+  }
+  .ride-card.selected {
+    height: 105px;
+  }
+  .ride-card img {
+    width: 76px;
+    height: 64px;
+  }
+  .ride-card.selected img {
+    width: 84px;
+    height: 77px;
+    transform: none;
+  }
+  .ride-card h3 {
+    font-size: 17px;
+  }
+  .ride-card .price {
+    font-size: 16px;
+  }
+  .ride-card small {
+    font-size: 11px;
+    line-height: 14px;
+  }
+  .ride-card .ride-description {
+    font-size: 11px;
+    line-height: 14px;
+    max-width: 170px;
+  }
+  .payment-row {
+    font-size: 13px;
+    padding: 15px 0;
+  }
+  .payment-row > .icon:last-child {
+    width: 13px;
+  }
+  .picker-cta {
+    padding: 3px 0;
+  }
+  .booking-screen .picker-cta > .btn {
+    font-size: 17px;
+    min-height: 52px;
+  }
+  .booking-screen .app-footnote {
+    font-size: 9px;
+    margin-top: 12px;
+  }
+  .booking-screen .trip-status > h1 {
+    font-size: 25px;
+    margin: 10px 0 18px;
+  }
+  .trip-status-label {
+    font-size: 11px;
+  }
+  .driver-visual {
+    width: 148px;
+  }
+  .driver-visual > img {
+    width: 130px;
+  }
+  .driver-description h2 {
+    font-size: 19px;
+  }
+  .driver-description > strong {
+    font-size: 18px;
+  }
+  .driver-description p {
+    font-size: 10px;
+    max-width: 145px;
+  }
+  .driver-tools {
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .driver-tools > button {
+    font-size: 12px;
+  }
+  .trip-receipt {
+    margin: 20px 0;
+  }
+  .trip-receipt > .spread {
+    font-size: 14px;
+  }
+  .trip-payment small {
+    font-size: 9px;
+  }
+  .trip-receipt .route-summary > .row {
+    font-size: 13px;
+  }
+  .simulation-controls > .btn {
+    font-size: 14px !important;
+  }
+  .trip-rating > h3 {
+    font-size: 20px;
+  }
+  .trip-rating .btn {
+    font-size: 14px;
+  }
+  .finding-driver > img {
+    height: 110px;
+  }
+  .finding-driver {
+    padding-bottom: 14px;
+  }
+  .ride-progress {
+    margin: 18px 0;
+  }
+  .native-account {
+    margin: 0;
+  }
+  .account-page-title {
+    font-size: 30px;
+    margin-bottom: 26px;
+  }
+  .uber-account .account-page-title {
+    display: none;
+  }
+  .account-identity {
+    margin-bottom: 24px;
+  }
+  .account-person > h2 {
+    font-size: 34px;
+    letter-spacing: -0.7px;
+  }
+  .profile-avatar {
+    width: 64px;
+    height: 64px;
+  }
+  .profile-avatar > .icon {
+    width: 38px;
+    height: 38px;
+  }
+  .account-shortcuts {
+    gap: 9px;
+    margin: 16px 0 22px;
+  }
+  .account-shortcuts > button {
+    padding: 20px 5px 18px;
+    border-radius: 11px;
+    gap: 10px;
+  }
+  .account-shortcuts strong {
+    font-size: 16px;
+  }
+  .account-shortcuts .icon {
+    width: 26px;
+    height: 26px;
+  }
+  .account-safety {
+    padding: 17px;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .account-safety strong {
+    font-size: 19px;
+  }
+  .account-safety small {
+    font-size: 11px;
+  }
+  .account-safety > .icon {
+    width: 55px;
+    height: 55px;
+  }
+  .account-row {
+    padding: 19px 0;
+    font-size: 16px;
+  }
+  .account-row > span > strong {
+    font-size: 16px;
+  }
+  .account-row > .icon {
+    width: 23px;
+    height: 23px;
+  }
+  .food-account .account-page-title {
+    text-align: center;
+    font-family:
+      iFood Text,
+      Arial,
+      sans-serif;
+    font-size: 18px;
+    margin: 5px 0 32px;
+  }
+  .food-account .account-person > h2 {
+    font-size: 22px;
+    letter-spacing: 0;
+  }
+  .food-account .account-identity {
+    margin-bottom: 25px;
+  }
+  .food-account .profile-avatar {
+    width: 58px;
+    height: 58px;
+  }
+  .edit-account {
+    font-size: 13px;
+    padding-top: 7px;
+  }
+  .club-account {
+    padding: 16px 14px;
+    gap: 11px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  .club-symbol {
+    width: 39px;
+    height: 39px;
+  }
+  .club-symbol .icon {
+    width: 24px;
+    height: 24px;
+  }
+  .club-account strong {
+    font-size: 17px;
+  }
+  .club-account small {
+    font-size: 11px;
+  }
+  .food-account .account-row {
+    padding: 18px 0;
+    gap: 17px;
+  }
+  .food-account .account-row strong {
+    font-size: 16px;
+  }
+  .food-account .account-row small {
+    font-size: 12px;
+  }
+  .account-lab {
+    gap: 15px;
+    padding-top: 26px;
+  }
+  .account-lab > button {
+    font-size: 10px;
+  }
+  .native-account > .demo-note {
+    font-size: 10px;
+  }
+  .wallet-balance {
+    padding: 22px;
+  }
+  .wallet-balance > strong {
+    font-size: 36px;
+  }
+  .wallet-dialog .modal-head h2 {
+    font-size: 24px;
+  }
+  .help-topics p {
+    font-size: 13px;
+  }
+  .food-header {
+    height: 56px;
+    padding: 0 18px;
+  }
+  .food-header .food-address strong {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .food-header .brand-ifood {
+    display: none;
+  }
+  .food-main {
+    padding: 10px 20px 100px;
+  }
+  .food-main.has-cart {
+    padding-bottom: 155px;
+  }
+  .club-strip {
+    margin: 4px 0 22px;
+  }
+  .club-strip .greeting {
+    font-size: 19px;
+    margin-bottom: 5px;
+  }
+  .club-strip button {
+    font-size: 11px;
+  }
+  .club-strip .club-coupon {
+    font-size: 11px;
+    padding: 9px 11px;
+  }
+  .food-services {
+    gap: 17px 13px;
+    margin-bottom: 26px;
+  }
+  .food-services .service-art {
+    height: 57px;
+    border-radius: 8px;
+  }
+  .food-services > button {
+    font-size: 11px;
+    gap: 6px;
+  }
+  .food-services .service-art > img {
+    width: 98%;
+    height: 98%;
+  }
+  .brand-service-hits {
+    font-size: 30px;
+    padding: 0 7px 2px;
+    border-radius: 9px;
+    letter-spacing: -2px;
+  }
+  .brand-service-turbo {
+    font-size: 34px;
+  }
+  .brand-service-shopping {
+    width: 31px;
+    height: 36px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 0 #c92535;
+  }
+  .brand-service-shopping > .icon {
+    width: 23px;
+    height: 23px;
+  }
+  .brand-service-club {
+    width: 34px;
+    height: 28px;
+    box-shadow: 3px 3px 0 #682987;
+  }
+  .brand-service-club > .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .offer-slide {
+    height: 165px;
+    border-radius: 9px;
+    padding: 18px 20px;
+  }
+  .offer-slide:after {
+    width: 220px;
+    height: 220px;
+    top: -20px;
+    right: -45px;
+  }
+  .offer-slide strong {
+    font-size: 23px;
+    line-height: 1.04;
+    letter-spacing: -0.2px;
+  }
+  .offer-slide strong b {
+    font-size: 24px;
+  }
+  .offer-slide small {
+    font-size: 7px;
+    letter-spacing: 0.4px;
+  }
+  .offer-slide em {
+    font-size: 9px;
+    margin-top: 3px;
+    white-space: nowrap;
+  }
+  .offer-slide > span:first-child {
+    gap: 7px;
+  }
+  .offer-slide > img {
+    position: absolute;
+    width: 200px;
+    height: 152px;
+    right: -30px;
+    bottom: -2px;
+    margin: 0;
+    transform: rotate(-7deg);
+    z-index: -1;
+  }
+  .offer-slide > span:first-child {
+    max-width: 60%;
+  }
+  .offer-carousel {
+    margin-bottom: 20px;
+  }
+  .recent-heading h2 {
+    font-size: 20px;
+  }
+  .recent-heading .text-btn {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .recent-stores {
+    gap: 14px;
+    padding-bottom: 24px;
+  }
+  .recent-stores a {
+    width: 66px;
+    font-size: 11px;
+  }
+  .recent-stores img {
+    width: 57px;
+    height: 57px;
+  }
+  .food-topline {
+    margin: 12px 0 22px;
+  }
+  .food-topline h1 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+  }
+  .food-topline .search-box {
+    border-radius: 6px;
+    min-height: 48px;
+    padding: 0 15px;
+  }
+  .search-box input {
+    font-size: 14px !important;
+  }
+  .search-box > .icon {
+    width: 21px;
+    height: 21px;
+  }
+  .food-categories {
+    gap: 15px;
+  }
+  .food-category {
+    font-size: 11px;
+    min-width: 72px;
+  }
+  .food-category .category-img {
+    height: 65px;
+    width: 72px;
+    border-radius: 8px;
+  }
+  .food-section-heading {
+    margin-top: 25px;
+  }
+  .food-section-heading h2 {
+    font-size: 21px;
+    letter-spacing: -0.2px;
+  }
+  .food-section-heading .text-btn {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .ifood .pill {
+    font-size: 12px;
+    padding: 9px 13px;
+  }
+  .ifood .chips {
+    gap: 8px;
+    padding-bottom: 15px;
+  }
+  .restaurant-card {
+    border: 0;
+    border-bottom: 1px solid #f2f2f2;
+    padding: 17px 0;
+    gap: 14px;
+    border-radius: 0;
+    min-height: 105px;
+  }
+  .restaurant-cover {
+    width: 60px;
+    height: 60px;
+    min-height: 60px;
+    border-radius: 50%;
+  }
+  .restaurant-cover > img {
+    width: 60px;
+    height: 60px;
+  }
+  .restaurant-info {
+    padding: 2px 20px 2px 0;
+  }
+  .restaurant-info h3 {
+    font-family:
+      iFood Text,
+      Arial,
+      sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+  .restaurant-info .meta {
+    font-size: 11px;
+    gap: 5px;
+  }
+  .restaurant-info .delivery {
+    font-size: 11px;
+    margin-top: 8px;
+    gap: 8px;
+  }
+  .restaurant-card > .fave {
+    width: 24px;
+    height: 24px;
+    top: 15px;
+    right: 0;
+  }
+  .restaurant-card > .fave .icon {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.3;
+  }
+  .search-page-heading {
+    margin: 4px 0 24px;
+  }
+  .search-page-heading h1 {
+    font-family:
+      iFood Text,
+      Arial,
+      sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 0 25px;
+  }
+  .search-categories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 24px;
+    padding: 0;
+    overflow: visible;
+  }
+  .search-categories > .food-category {
+    height: 105px;
+    font-size: 17px;
+    padding: 14px;
+    min-width: 0;
+    align-content: start;
+    justify-items: start;
+  }
+  .search-categories > .food-category .category-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .hits-hero {
+    margin: 0 -20px 25px;
+    padding: 24px 20px;
+    border-radius: 0;
+    min-height: 240px;
+  }
+  .hits-wordmark {
+    font-size: 37px;
+  }
+  .hits-hero h1 {
+    font-size: 27px !important;
+    max-width: 70%;
+    letter-spacing: 0;
+  }
+  .hits-hero > p {
+    font-size: 11px;
+    max-width: 58%;
+  }
+  .hits-hero > img {
+    width: 200px;
+    right: -24px;
+    bottom: 5px;
+  }
+  .ifood[data-page="search"] .food-header,
+  .ifood[data-page="orders"] .food-header,
+  .ifood[data-page="profile"] .food-header,
+  .ifood[data-page="restaurant"] .food-header,
+  .ifood[data-page="checkout"] .food-header,
+  .ifood[data-page="order"] .food-header {
+    display: none;
+  }
+  .ifood .bottom-nav {
+    height: 67px;
+  }
+  .ifood .bottom-nav a {
+    font-size: 10px;
+    gap: 4px;
+    font-weight: 400;
+  }
+  .ifood .bottom-nav a.active {
+    font-weight: 500;
+  }
+  .ifood .bottom-nav .icon {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.6;
+  }
+  .ifood .bottom-nav a.active > .icon {
+    stroke-width: 1;
+  }
+  .food-footer {
+    font-size: 9px !important;
+    margin-top: 32px;
+  }
+  .food-footer > span {
+    line-height: 1.5;
+  }
+  .restaurant-nav {
+    height: 53px;
+    margin: -10px -20px 0;
+    padding: 0 15px;
+    gap: 4px;
+    position: sticky;
+    top: 0;
+    z-index: 8;
+    background: white;
+  }
+  .restaurant-nav > span {
+    font-family:
+      iFood Text,
+      Arial,
+      sans-serif;
+    font-size: 15px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 8px;
+  }
+  .restaurant-nav .icon-btn {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+  .restaurant-nav .icon-btn > .icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.6;
+  }
+  .restaurant-banner {
+    height: 134px;
+    margin: 0 -20px;
+    border-radius: 0;
+  }
+  .restaurant-banner > img {
+    border-radius: 0;
+  }
+  .restaurant-identity {
+    width: 67px;
+    height: 67px;
+    bottom: -25px;
+    right: 20px;
+    border: 3px solid white;
+  }
+  .restaurant-heading {
+    padding: 24px 0 19px;
+  }
+  .restaurant-title {
+    max-width: 78%;
+    gap: 12px;
+  }
+  .restaurant-title h1 {
+    font-size: 25px;
+    letter-spacing: -0.5px;
+    line-height: 1.08;
+  }
+  .restaurant-title > .icon {
+    width: 14px;
+    flex-shrink: 0;
+  }
+  .restaurant-heading > p {
+    font-size: 11px;
+    margin: 10px 0 14px;
+    line-height: 1.5;
+  }
+  .restaurant-rating {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .restaurant-rating .rating {
+    font-size: 13px;
+    gap: 4px;
+  }
+  .restaurant-rating .icon {
+    width: 12px;
+    height: 12px;
+  }
+  .restaurant-rating > button {
+    font-size: 11px;
+  }
+  .delivery-selector {
+    gap: 13px;
+    margin-top: 18px;
+    padding-top: 17px;
+    font-size: 12px;
+  }
+  .delivery-selector > span {
+    gap: 6px;
+  }
+  .delivery-selector > span > .icon {
+    width: 16px;
+    height: 16px;
+  }
+  .delivery-selector strong i {
+    margin: 0 5px;
+  }
+  .restaurant-coupon {
+    padding: 13px 12px;
+    gap: 11px;
+    margin: 0 0 16px;
+    border-radius: 5px;
+  }
+  .restaurant-coupon strong {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .restaurant-coupon small {
+    font-size: 11px;
+  }
+  .restaurant-coupon > .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .menu-tabs {
+    margin: 0 -20px 24px;
+    padding: 0 20px;
+    gap: 28px;
+    top: 53px;
+    z-index: 7;
+  }
+  .menu-tabs > a {
+    font-size: 14px;
+    padding: 16px 0;
+  }
+  .menu-section {
+    scroll-margin-top: 125px;
+  }
+  .menu-section > h2 {
+    font-size: 21px;
+    margin-bottom: 6px;
+  }
+  .menu-section > p {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .menu-grid {
+    gap: 0;
+    grid-template-columns: 1fr;
+  }
+  .product-card {
+    padding: 20px 0;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+    gap: 15px;
+    min-height: 150px;
+  }
+  .product-card h3 {
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 4px 0 9px;
+  }
+  .product-card p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    -webkit-line-clamp: 3;
+  }
+  .product-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+  }
+  .product-card .price {
+    font-family:
+      iFood Text,
+      Arial,
+      sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .product-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+  }
+  .popular-badge {
+    font-size: 9px !important;
+    margin-bottom: 3px !important;
+  }
+  .menu-section + .menu-section {
+    margin-top: 28px;
+  }
+  .mobile-cart {
+    border-radius: 5px;
+    min-height: 52px;
+    padding: 15px 16px;
+    font-family:
+      iFood Text,
+      Arial,
+      sans-serif;
+    box-shadow: 0 3px 15px #ac101c22;
+  }
+  .mobile-cart strong {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .mobile-cart > span:last-child {
+    font-size: 14px;
+  }
+  .mobile-cart > span:first-child {
+    font-size: 12px;
+    border-radius: 3px;
+    background: #c61926;
+  }
+  .product-dialog {
+    padding: 0;
+    max-width: none;
+    max-height: 94dvh;
+    border-radius: 14px 14px 0 0;
+  }
+  .product-dialog:before {
+    display: none;
+  }
+  .product-dialog > .modal-head {
+    top: 15px;
+    right: 15px;
+  }
+  .product-dialog .product-photo {
+    height: 250px;
+  }
+  .product-detail-copy {
+    padding: 22px 20px 0;
+  }
+  .product-detail-copy > h2 {
+    font-size: 25px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .product-detail-copy > .modal-description {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .product-base-price {
+    font-size: 22px;
+  }
+  .product-store {
+    margin-top: 21px;
+    padding: 16px 0;
+  }
+  .product-section-heading {
+    padding: 16px 20px;
+  }
+  .product-section-heading h3 {
+    font-size: 17px;
+  }
+  .product-section-heading > span {
+    right: 20px;
+    font-size: 11px;
+  }
+  .product-options {
+    padding: 0 20px;
+  }
+  .product-options .option-row {
+    padding: 18px 0;
+    font-size: 14px;
+  }
+  .product-options .option-row > .price {
+    font-size: 13px;
+  }
+  .product-note-section {
+    padding: 24px 20px 20px;
+  }
+  .product-note-section > label {
+    font-size: 16px;
+  }
+  .product-note-section textarea {
+    font-size: 13px;
+  }
+  .product-dialog .modal-actions {
+    padding: 16px 18px max(17px, env(safe-area-inset-bottom));
+    gap: 17px;
+  }
+  .product-dialog .modal-actions .btn {
+    font-size: 14px;
+    min-height: 50px;
+    padding: 12px 14px;
+  }
+  .product-dialog .modal-actions .qty {
+    gap: 8px;
+  }
+  .product-dialog .modal-actions .qty button {
+    width: 23px;
+    height: 30px;
+  }
+  .product-dialog .modal-actions .qty span {
+    min-width: 19px;
+    font-size: 16px;
+  }
+  .cart-dialog {
+    padding: 24px 20px 20px;
+    max-height: 95dvh;
+  }
+  .cart-dialog:before {
+    display: none;
+  }
+  .cart-dialog .modal-head {
+    margin: 0 -20px 22px;
+    padding: 0 20px 19px;
+    justify-content: center;
+    min-height: 32px;
+  }
+  .cart-dialog .modal-head h2 {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .cart-dialog .modal-head .icon-btn {
+    position: absolute;
+    right: 16px;
+    top: -7px;
+    width: 32px;
+    height: 32px;
+  }
+  .bag-restaurant > h2 {
+    font-size: 22px;
+  }
+  .bag-restaurant > small {
+    font-size: 10px;
+  }
+  .bag-divider {
+    margin: 0 -20px 22px;
+  }
+  .cart-line {
+    padding: 20px 0;
+    gap: 12px;
+  }
+  .cart-line h3 {
+    font-size: 14px;
+    line-height: 1.25;
+  }
+  .cart-line p {
+    font-size: 11px;
+  }
+  .cart-line .qty {
+    padding: 2px 3px;
+  }
+  .cart-line .qty button {
+    width: 25px;
+    height: 25px;
+  }
+  .cart-line .qty span {
+    font-size: 13px;
+  }
+  .cart-totals .spread {
+    font-size: 13px;
+  }
+  .cart-totals .total {
+    font-size: 18px;
+  }
+  .bag-checkout-bar {
+    bottom: -20px;
+    margin: 10px -20px -6px;
+    padding: 17px 20px;
+    gap: 18px;
+  }
+  .bag-checkout-bar > .btn {
+    font-size: 12px;
+    padding: 10px 12px;
+    line-height: 1.3;
+  }
+  .bag-checkout-bar strong {
+    font-size: 21px;
+  }
+  .cart-dialog .app-footnote {
+    font-size: 9px;
+    padding-top: 8px;
+  }
+  .bag-items + .add-more-items {
+    font-size: 14px;
+    padding: 18px 0;
+  }
+  .restaurant-about > img {
+    height: 150px;
+  }
+  .food-page-top {
+    min-height: 50px;
+    margin: -10px -20px 20px;
+    padding: 0 14px;
+    position: relative;
+    justify-content: center;
+    gap: 10px;
+  }
+  .food-page-top > h1 {
+    font-family:
+      iFood Text,
+      Arial,
+      sans-serif;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: center;
+    flex: 1;
+    font-weight: 500;
+    padding: 0 30px;
+  }
+  .food-page-top > .icon-btn {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+    width: 36px;
+    height: 36px;
+  }
+  .food-page-top > .icon-btn > .icon {
+    width: 20px;
+  }
+  .checkout-grid {
+    display: block;
+  }
+  .checkout-sections {
+    gap: 0;
+    display: block;
+  }
+  .checkout-section {
+    padding: 4px 0 24px;
+    border: 0;
+    border-bottom: 8px solid #f7f7f7;
+    border-radius: 0;
+    margin: 0 -20px 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .checkout-section > h2 {
+    font-size: 21px;
+    margin-bottom: 20px;
+  }
+  .checkout-address {
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+  .checkout-address strong {
+    font-size: 15px;
+  }
+  .checkout-address small {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .checkout-address > .icon:first-child {
+    width: 20px;
+    height: 20px;
+  }
+  .delivery-method {
+    padding: 17px 14px;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  .delivery-method strong {
+    font-size: 14px;
+  }
+  .delivery-method small {
+    font-size: 12px;
+  }
+  .section-subtitle {
+    font-size: 13px;
+  }
+  .payment-option {
+    font-size: 14px;
+    padding: 19px 0;
+  }
+  .payment-option > span > small {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  .checkout-summary {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+  }
+  .checkout-summary .bag-restaurant > h2 {
+    font-size: 22px;
+  }
+  .checkout-summary .cart-line > img {
+    width: 58px;
+    height: 58px;
+  }
+  .checkout-confirm {
+    margin-top: 5px;
+  }
+  .checkout-confirm .btn {
+    font-size: 15px;
+    min-height: 52px;
+    border-radius: 5px;
+  }
+  .checkout-confirm .demo-note {
+    font-size: 10px;
+    margin-top: 12px;
+  }
+  .ifood[data-page="checkout"] .bottom-nav,
+  .ifood[data-page="order"] .bottom-nav {
+    display: none;
+  }
+  .ifood[data-page="checkout"] .food-main,
+  .ifood[data-page="order"] .food-main {
+    padding-bottom: 35px;
+  }
+  .ifood[data-page="checkout"] .food-footer,
+  .ifood[data-page="order"] .food-footer {
+    margin-top: 28px;
+  }
+  .ifood[data-page="orders"] .food-page-top {
+    margin-bottom: 30px;
+  }
+  .ifood[data-page="orders"] .food-page-top h1 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .orders-title {
+    margin: 0 0 20px;
+  }
+  .orders-title h2 {
+    font-size: 22px;
+  }
+  .orders-title > span {
+    font-size: 11px;
+  }
+  .native-order-card {
+    border: 1px solid #eaeaea;
+    padding: 17px 17px 15px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+  }
+  .order-date {
+    font-size: 11px;
+    padding-bottom: 15px;
+  }
+  .order-store {
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .order-store > img {
+    width: 43px;
+    height: 43px;
+  }
+  .order-store h3 {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .order-store small {
+    font-size: 10px;
+    gap: 4px;
+    line-height: 1.5;
+  }
+  .order-store > .icon {
+    width: 13px;
+  }
+  .order-product-summary {
+    gap: 10px;
+    padding-bottom: 19px;
+  }
+  .order-product-summary > span {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .order-card-actions > * {
+    font-size: 13px;
+  }
+  .food-orders-empty {
+    padding: 12px 0;
+    gap: 18px;
+  }
+  .food-orders-empty h2 {
+    font-size: 23px;
+    line-height: 1.2;
+  }
+  .food-orders-empty p {
+    font-size: 13px;
+  }
+  .food-orders-empty .btn {
+    font-size: 14px;
+  }
+  .order-track .food-page-top {
+    margin-bottom: 31px;
+    padding: 0 16px 0 50px;
+  }
+  .order-track .food-page-top > span {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .order-track .food-page-top > .text-btn {
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  .order-arrival > small {
+    font-size: 10px;
+  }
+  .order-arrival > strong {
+    font-size: 44px;
+    margin: 12px 0 21px;
+  }
+  .order-arrival > strong > span {
+    font-size: 21px;
+  }
+  .order-arrival > h1 {
+    font-size: 24px;
+    line-height: 1.14;
+    max-width: 300px;
+    margin-bottom: 12px;
+  }
+  .order-arrival > p {
+    font-size: 13px;
+  }
+  .order-arrival .order-loader {
+    width: 63px;
+    height: 26px;
+    margin-top: 14px;
+  }
+  .food-order-progress {
+    margin: 24px 0;
+  }
+  .order-store-summary {
+    margin-top: 21px;
+    padding: 19px 0;
+  }
+  .order-store-summary strong {
+    font-size: 15px;
+  }
+  .order-store-summary small {
+    font-size: 11px;
+  }
+  .order-delivery-address {
+    padding: 22px 0;
+  }
+  .order-details > summary {
+    font-size: 16px;
+  }
+  .order-detail-row {
+    font-size: 13px;
+    gap: 14px;
+    line-height: 1.45;
+  }
+  .order-paid {
+    font-size: 14px;
+  }
+  .order-details > p {
+    font-size: 12px;
+  }
+  .order-track .simulation-controls {
+    margin-top: 7px;
+    gap: 11px;
+  }
+  .order-track .simulation-controls > .btn {
+    min-height: 50px;
+  }
+  .order-terminal-icon {
+    width: 58px;
+    height: 58px;
+  }
+  .order-track .app-footnote {
+    font-size: 9px;
+  }
+  .order-track .food-footer {
+    font-size: 9px;
+  }
+}
+@media (max-width: 370px) {
+  .uber-panel,
+  .uber-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .uber-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .destination-pill .location-input input {
+    font-size: 20px;
+  }
+  .destination-pill .uber-schedule {
+    padding: 8px;
+    font-size: 11px;
+  }
+  .recent-place strong {
+    font-size: 15px;
+  }
+  .recent-place small {
+    font-size: 11px;
+  }
+  .native-service:first-child > img {
+    width: 145px;
+  }
+  .native-service:first-child {
+    padding-left: 17px;
+  }
+  .rebook-btn > .icon {
+    display: none;
+  }
+  .activity-details {
+    gap: 10px;
+  }
+  .activity-image {
+    width: 54px;
+    height: 54px;
+  }
+  .activity-details h3 {
+    font-size: 14px;
+  }
+  .food-main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .food-services {
+    gap: 16px 11px;
+  }
+  .food-services > button {
+    font-size: 10px;
+  }
+  .service-art {
+    height: 54px;
+  }
+  .offer-slide {
+    padding: 17px;
+  }
+  .offer-slide strong {
+    font-size: 22px;
+  }
+  .offer-slide strong b {
+    font-size: 23px;
+  }
+  .offer-slide > img {
+    width: 183px;
+    right: -25px;
+  }
+  .offer-slide em {
+    font-size: 8px;
+  }
+  .restaurant-nav {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+  .restaurant-banner {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  .menu-tabs {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .product-card img,
+  .product-placeholder {
+    width: 92px;
+    height: 98px;
+  }
+  .food-page-top {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  .checkout-section {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .restaurant-title h1 {
+    font-size: 23px;
+  }
+  .restaurant-heading > p {
+    font-size: 10px;
+  }
+  .driver-visual {
+    width: 128px;
+  }
+  .driver-visual > img {
+    width: 115px;
+  }
+  .driver-description > strong {
+    font-size: 17px;
+  }
+  .driver-description p {
+    max-width: 135px;
+  }
+  .club-account {
+    gap: 9px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .club-account strong {
+    font-size: 16px;
+  }
+  .club-account small {
+    font-size: 10px;
+  }
+  .account-person > h2 {
+    font-size: 31px;
+  }
+  .food-account .account-person > h2 {
+    font-size: 22px;
+  }
+  .native-order-card {
+    padding: 15px;
+  }
+  .hits-hero {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  .ride-card.selected img {
+    width: 75px;
+  }
+  .ride-card img {
+    width: 68px;
+  }
+  .ride-card .price {
+    font-size: 15px;
+  }
+  .ride-card h3 {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.brand-service-turbo > .icon {
+  width: 42px;
+  height: 46px;
+  fill: #ffa514;
+  stroke: #e78f08;
+  stroke-width: 1.2;
+  transform: rotate(9deg);
+}
+@media (max-width: 760px) {
+  .brand-service-turbo > .icon {
+    width: 31px;
+    height: 36px;
+  }
+}
+.offer-slide {
+  isolation: isolate;
+}
+.offer-slide:after {
+  z-index: -1;
+}
+.offer-slide > img {
+  z-index: 0;
+}
+.offer-slide > span:first-child {
+  position: relative;
+  z-index: 1;
+}
+.uber .bottom-nav a:nth-child(3) .icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.coupon-ticket {
+  border: 1px solid #eadde9;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 18px 0 25px;
+  background: #fff;
+}
+.coupon-ticket-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px;
+  background: #fff2f3;
+}
+.coupon-ticket-heading > .icon {
+  width: 42px;
+  height: 42px;
+  color: #ea1d2c;
+}
+.coupon-ticket-heading > span {
+  display: grid;
+  gap: 5px;
+}
+.coupon-ticket-heading strong {
+  font-family:
+    iFood Title,
+    Arial,
+    sans-serif;
+  font-size: 29px;
+  color: #ea1d2c;
+}
+.coupon-ticket-heading small {
+  font-size: 12px;
+  color: #717171;
+}
+.coupon-ticket-body {
+  padding: 22px;
+  border-top: 1px dashed #e7bcc1;
+}
+.coupon-ticket-body strong {
+  display: block;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-bottom: 11px;
+}
+.coupon-ticket-body p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #717171;
+}
+.coupon-dialog > .modal-head h2 {
+  font-size: 23px;
+}
+@media (max-width: 370px) {
+  .recent-stores {
+    margin-right: -16px;
+    padding-right: 16px;
+  }
+}

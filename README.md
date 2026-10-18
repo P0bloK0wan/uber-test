@@ -5,7 +5,9 @@ Aplicação web independente, responsiva que pode ser publicada em qualquer hosp
 - Origem/destino em São Paulo; estimativas por UberX, Comfort e Black.
 - Reserva futura, pagamento simulado, solicitação, acompanhamento e cancelamento.
 - Histórico, avaliação, locais salvos e persistência local.
-- Fontes Uber Move/Text, pulso original, mapa OpenStreetMap e seleção de categoria com expansão animada de 300 ms.
+- Identidade visual em início, busca, categorias, acompanhamento, serviços, atividade, conta e carteira.
+- Logo original, fontes Uber Move/Text e artes distintas de UberX/Comfort/Black/Reserve.
+- Pulso original, mapa OpenStreetMap e seleção de categoria com expansão animada de 300 ms.
 
 ## Executar
 
@@ -26,13 +28,15 @@ python3 -m playwright install chromium
 TEST_OUTPUT=verification-local npm run test:browser
 ```
 
-`BASE_URL` permite testar outra porta. `CHROMIUM_PATH` seleciona um navegador instalado. Os testes cobrem os fluxos principais, telas de 360/390/1440 px, persistência, erros JavaScript, movimento reduzido e integridade SHA-256 dos JSONs originais. `verification/` guarda os resultados e imagens desta entrega. A rede deste ambiente de desenvolvimento exigiu `ALLOW_TEST_PROXY_CERT=1` para validar tiles externos atrás do proxy; essa opção existe apenas nos testes e não modifica o aplicativo.
+`BASE_URL` permite testar outra porta. `CHROMIUM_PATH` seleciona um navegador instalado. Os testes cobrem os fluxos principais, telas de 360/390/1440 px, persistência, erros JavaScript, movimento reduzido e integridade SHA-256 das animações e dos recursos visuais. `verification/` guarda os resultados e imagens desta entrega. `npm run test:visual` produz a auditoria dos estados preenchidos. Em ambientes cujo Chromium não herda o certificado confiável do proxy, `USE_SYSTEM_CA_PROXY=1` encaminha apenas os tiles públicos pelo cliente Python, com verificação TLS habilitada; não altera o aplicativo.
 
 ## Movimento e fidelidade
 
 Acesse **Perfil/Conta → Animações originais** para revisar os recursos recuperados. O player mantém os arquivos, frames e velocidade 1×. A preferência de movimento reduzido é respeitada. O manifesto em `dist/assets/motion/manifest.json` registra origem, hash, FPS e duração.
 
-As telas completas dos APKs truncados não puderam ser executadas. Campanhas, produtos, ícones não recuperados e transições entre telas continuam sendo adaptações. Não há promessa de identidade pixel a pixel de todas as versões. Consulte [a matriz de fidelidade](docs/fidelity.md), [a pesquisa de Uber](references/uber/research.md) e [os créditos](NOTICE.md).
+A identidade visual foi aplicada a todas as telas implementadas e seus diálogos. As telas completas dos APKs truncados não puderam ser executadas. Campanhas, produtos, ícones não recuperados e transições entre telas continuam sendo adaptações. Não há validação de identidade pixel a pixel de todas as versões. Consulte [a cobertura visual v3](docs/identity-v3.md), [a matriz de fidelidade](docs/fidelity.md), [a pesquisa de Uber](references/uber/research.md) e [os créditos](NOTICE.md).
+
+![Início em celular](verification/uber-390.png)
 
 ## Arquivos
 
@@ -44,7 +48,3 @@ As telas completas dos APKs truncados não puderam ser executadas. Campanhas, pr
 - `verification/`: resultados e capturas da aplicação entregue.
 
 REA original: https://github.com/morluto/rea, commit `69324b0f86cc9a209905831b12a18d43afe3657d`; CLI 6.5.0, JADX 0.7.1. O REA foi uma ferramenta de análise; não é uma dependência necessária para abrir o site.
-
-## Captura da aplicação
-
-![uber no celular](verification/uber-390.png)

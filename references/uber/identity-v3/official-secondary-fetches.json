@@ -1,0 +1,17 @@
+[
+  {
+    "name": "developer",
+    "url": "https://developer.uber.com/docs/riders/guides/design-guidelines",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "travel",
+    "url": "https://travel.uber.com/",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "help",
+    "url": "https://help.uber.com/riders",
+    "error": "HTTP Error 404: Not Found"
+  }
+]

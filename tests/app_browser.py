@@ -1,3 +1,4 @@
+from browser_support import trust_system_ca
 """Portable acceptance checks for either standalone repository.
 
 Start npm start first. Install requirements-test.txt and Playwright Chromium.
@@ -20,7 +21,8 @@ def passed(text):
 
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('chromium'),args=['--no-sandbox'])
-    page = browser.new_page(viewport={'width':1440,'height':1000},ignore_https_errors=os.environ.get('ALLOW_TEST_PROXY_CERT')=='1')
+    page = browser.new_page(viewport={'width':1440,'height':1000})
+    trust_system_ca(page)
     page.set_default_timeout(15000)
     errors = []
     page.on('pageerror',lambda e:errors.append(str(e)))

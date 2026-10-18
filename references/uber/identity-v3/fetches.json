@@ -1,0 +1,40 @@
+[
+  {
+    "name": "uber-home-br",
+    "url": "https://www.uber.com/br/pt-br/",
+    "error": "HTTP Error 406: Not Acceptable"
+  },
+  {
+    "name": "uberx",
+    "url": "https://www.uber.com/br/pt-br/ride/uberx/",
+    "error": "HTTP Error 406: Not Acceptable"
+  },
+  {
+    "name": "comfort",
+    "url": "https://www.uber.com/br/pt-br/ride/uber-comfort/",
+    "bytes": 827425,
+    "status": 200
+  },
+  {
+    "name": "black",
+    "url": "https://www.uber.com/br/pt-br/ride/uberblack/",
+    "error": "HTTP Error 406: Not Acceptable"
+  },
+  {
+    "name": "design-components",
+    "url": "https://www.uber.design/_components/v2/cd66702a8107e8252dfd83e5ffcee17958857e8b.js",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "name": "apple-br",
+    "url": "https://itunes.apple.com/lookup?id=368677368&country=br",
+    "bytes": 12514,
+    "status": 200
+  },
+  {
+    "name": "google-play-br",
+    "url": "https://play.google.com/store/apps/details?id=com.ubercab&hl=pt_BR&gl=BR",
+    "bytes": 1341515,
+    "status": 200
+  }
+]

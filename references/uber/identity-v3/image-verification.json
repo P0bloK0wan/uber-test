@@ -1,0 +1,252 @@
+[
+  {
+    "file": "assets/play-br-1-original.jpg",
+    "format": "JPEG",
+    "width": 288,
+    "height": 512,
+    "mode": "RGB",
+    "sha256": "784d1f616f4bfbf12ff54c1f400df611bf728aa2a2d050e4406cd4630318780a"
+  },
+  {
+    "file": "assets/reserve.png",
+    "format": "PNG",
+    "width": 414,
+    "height": 233,
+    "mode": "RGBA",
+    "sha256": "6f32d2be607be6fa22f56fb64d95f8f22af21bb575d4f25e503ce03de469d5eb",
+    "alpha_bbox": [
+      109,
+      43,
+      283,
+      204
+    ]
+  },
+  {
+    "file": "assets/apple-br-2.png",
+    "format": "PNG",
+    "width": 392,
+    "height": 696,
+    "mode": "RGBA",
+    "sha256": "5832f06b46066d0f78b226876e9e95bbab32f3eb62e2803abd72c2beee8d8e88",
+    "alpha_bbox": [
+      0,
+      0,
+      392,
+      696
+    ]
+  },
+  {
+    "file": "assets/apple-br-6.png",
+    "format": "PNG",
+    "width": 392,
+    "height": 696,
+    "mode": "RGBA",
+    "sha256": "f20e549c1b7c6922ff04e3bfceb1ed05f18f6084e67e816ef6e34abbbfe0ff26",
+    "alpha_bbox": [
+      0,
+      0,
+      392,
+      696
+    ]
+  },
+  {
+    "file": "assets/comfort.png",
+    "format": "PNG",
+    "width": 414,
+    "height": 233,
+    "mode": "RGBA",
+    "sha256": "d6af1075eb3ae06002d7cf0dab0d1a03a3466e21f0561efa36545b32d3768ed8",
+    "alpha_bbox": [
+      98,
+      67,
+      342,
+      193
+    ]
+  },
+  {
+    "file": "assets/play-br-6-original.jpg",
+    "format": "JPEG",
+    "width": 288,
+    "height": 512,
+    "mode": "RGB",
+    "sha256": "600bc8d49552575a48949f56c97cac915ba6c04ecacb1be7b3b935ae83e31307"
+  },
+  {
+    "file": "assets/baseweb-uber-logo.png",
+    "format": "PNG",
+    "width": 600,
+    "height": 365,
+    "mode": "RGBA",
+    "sha256": "20fe4dcf130bd5d4ee2431ee3b008d80822c0e49b120fc996e3c4081a4f1e4da",
+    "alpha_bbox": [
+      119,
+      119,
+      481,
+      248
+    ]
+  },
+  {
+    "file": "assets/play-br-2-original.jpg",
+    "format": "JPEG",
+    "width": 288,
+    "height": 512,
+    "mode": "RGB",
+    "sha256": "1512bc764cd0ecf0c90a911a729a33582f464707e2d18e7d63f26fcf540aac52"
+  },
+  {
+    "file": "assets/black.png",
+    "format": "PNG",
+    "width": 414,
+    "height": 233,
+    "mode": "RGBA",
+    "sha256": "e4c0823cb08e4ea18b88f60abcd756cb1e7d5f1167b7eb5f5ab9263ed89fcde9",
+    "alpha_bbox": [
+      86,
+      62,
+      329,
+      181
+    ]
+  },
+  {
+    "file": "assets/play-br-4-original.jpg",
+    "format": "JPEG",
+    "width": 288,
+    "height": 512,
+    "mode": "RGB",
+    "sha256": "73c22577253194c6b4983516f7f472eeb753636d9b52845bf5cf6b8f00feb689"
+  },
+  {
+    "file": "assets/play-br-4.jpg",
+    "format": "JPEG",
+    "width": 333,
+    "height": 592,
+    "mode": "RGB",
+    "sha256": "f8aaad43a69e917eeb911569e359e18c0aee689d0ebd56f63667f6c04d546835"
+  },
+  {
+    "file": "assets/apple-br-5.png",
+    "format": "PNG",
+    "width": 392,
+    "height": 696,
+    "mode": "RGBA",
+    "sha256": "0fb585c0697903ceb07df1cde44c2c6351b7ec8598e92e33d9123856716203c1",
+    "alpha_bbox": [
+      0,
+      0,
+      392,
+      696
+    ]
+  },
+  {
+    "file": "assets/apple-br-1.png",
+    "format": "PNG",
+    "width": 392,
+    "height": 696,
+    "mode": "RGBA",
+    "sha256": "6599a0be0f8c665018700daa6b6108db992d41a00f9bc3cd97edce03348e4ba6",
+    "alpha_bbox": [
+      0,
+      0,
+      392,
+      696
+    ]
+  },
+  {
+    "file": "assets/play-br-5.jpg",
+    "format": "JPEG",
+    "width": 333,
+    "height": 592,
+    "mode": "RGB",
+    "sha256": "a5834d5042ac3fc3f0c12a76abde6d0bd528bbd00f3cdca98b05e430b76f9710"
+  },
+  {
+    "file": "assets/uberx.png",
+    "format": "PNG",
+    "width": 414,
+    "height": 233,
+    "mode": "RGBA",
+    "sha256": "7d4aa8031753ce649ae9dfeb09daac65c66feaf442b13e7d663a676d73940542",
+    "alpha_bbox": [
+      89,
+      63,
+      332,
+      200
+    ]
+  },
+  {
+    "file": "assets/apple-br-3.png",
+    "format": "PNG",
+    "width": 392,
+    "height": 696,
+    "mode": "RGBA",
+    "sha256": "63950dc0d70fbf6f01cf1d2fa78883ec69bfee9f181a86cace85586f2b3062a8",
+    "alpha_bbox": [
+      0,
+      0,
+      392,
+      696
+    ]
+  },
+  {
+    "file": "assets/play-br-6.jpg",
+    "format": "JPEG",
+    "width": 333,
+    "height": 592,
+    "mode": "RGB",
+    "sha256": "9474f8e4c64a3737b782bc2650c8832ceb395c98d846e0e922a58e39b336d040"
+  },
+  {
+    "file": "assets/apple-br-4.png",
+    "format": "PNG",
+    "width": 392,
+    "height": 696,
+    "mode": "RGBA",
+    "sha256": "4e41b28bc5684d95ac4233ae5bde1f652a94aa4e9ca058c242a7b14fcd648ce5",
+    "alpha_bbox": [
+      0,
+      0,
+      392,
+      696
+    ]
+  },
+  {
+    "file": "assets/play-br-3-original.jpg",
+    "format": "JPEG",
+    "width": 288,
+    "height": 512,
+    "mode": "RGB",
+    "sha256": "50166332d19ca60a72134ad5469faab5f6a2027732a69039281514114fc2c371"
+  },
+  {
+    "file": "assets/play-br-2.jpg",
+    "format": "JPEG",
+    "width": 333,
+    "height": 592,
+    "mode": "RGB",
+    "sha256": "2dbd785de336878e5af9317cd8652059a904928e645d85c4e60bcf6331b6fee5"
+  },
+  {
+    "file": "assets/play-br-1.jpg",
+    "format": "JPEG",
+    "width": 333,
+    "height": 592,
+    "mode": "RGB",
+    "sha256": "f2b8b54b11b1c0d51d455b173869cd698f7fda47346d1ad31346e8fd792a9b97"
+  },
+  {
+    "file": "assets/play-br-3.jpg",
+    "format": "JPEG",
+    "width": 333,
+    "height": 592,
+    "mode": "RGB",
+    "sha256": "a553e487cf80d98e36632dafd885fe21328e9f0ad6d1e0ae59efd827027cee46"
+  },
+  {
+    "file": "assets/play-br-5-original.jpg",
+    "format": "JPEG",
+    "width": 288,
+    "height": 512,
+    "mode": "RGB",
+    "sha256": "a4d8ec38425a5c9d5f7fd6e3a3c836f5bf80880d5e2be5823be80da2b548266e"
+  }
+]

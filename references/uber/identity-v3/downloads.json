@@ -1,0 +1,145 @@
+[
+  {
+    "file": "assets/comfort.png",
+    "url": "https://tb-static.uber.com/prod/udam-assets/57d6cbee-df5d-4c9f-b3d3-2f797c009adb.png",
+    "title": "Uber Comfort",
+    "bytes": 27670,
+    "mime": "image/png",
+    "sha256": "d6af1075eb3ae06002d7cf0dab0d1a03a3466e21f0561efa36545b32d3768ed8"
+  },
+  {
+    "file": "assets/uberx.png",
+    "url": "https://tb-static.uber.com/prod/udam-assets/434f52fd-e990-49f5-9a20-95a8e8f6312a.png",
+    "title": "UberX",
+    "bytes": 29422,
+    "mime": "image/png",
+    "sha256": "7d4aa8031753ce649ae9dfeb09daac65c66feaf442b13e7d663a676d73940542"
+  },
+  {
+    "file": "assets/black.png",
+    "url": "https://tb-static.uber.com/prod/udam-assets/b7f38920-f0d1-4951-be96-580619859fc0.png",
+    "title": "Uber Black",
+    "bytes": 23256,
+    "mime": "image/png",
+    "sha256": "e4c0823cb08e4ea18b88f60abcd756cb1e7d5f1167b7eb5f5ab9263ed89fcde9"
+  },
+  {
+    "file": "assets/reserve.png",
+    "url": "https://tb-static.uber.com/prod/udam-assets/c2505121-a320-4d58-b297-ea44909ca5c1.png",
+    "title": "Uber Reserve",
+    "bytes": 21107,
+    "mime": "image/png",
+    "sha256": "6f32d2be607be6fa22f56fb64d95f8f22af21bb575d4f25e503ce03de469d5eb"
+  },
+  {
+    "file": "assets/apple-br-1.png",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/59/e8/b4/59e8b470-22c0-8d0c-e898-db02e8268427/b5bc59fe-db01-41c3-8342-9781bf7d521e_SS01.png/392x696bb.png",
+    "title": "Apple BR listing screenshot",
+    "bytes": 53562,
+    "mime": "image/png",
+    "sha256": "6599a0be0f8c665018700daa6b6108db992d41a00f9bc3cd97edce03348e4ba6"
+  },
+  {
+    "file": "assets/apple-br-2.png",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/b2/b5/98/b2b59854-f75e-644f-422a-abcd7671ef22/ca24b277-21f9-4871-b21f-fdb85f8a2db2_SS02.png/392x696bb.png",
+    "title": "Apple BR listing screenshot",
+    "bytes": 66477,
+    "mime": "image/png",
+    "sha256": "5832f06b46066d0f78b226876e9e95bbab32f3eb62e2803abd72c2beee8d8e88"
+  },
+  {
+    "file": "assets/apple-br-3.png",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/da/d8/2c/dad82ca2-e8e1-c3db-d087-97c2075bc734/09ca27c3-41dd-433d-b3ed-7b5ceedf62b8_SS03.png/392x696bb.png",
+    "title": "Apple BR listing screenshot",
+    "bytes": 108847,
+    "mime": "image/png",
+    "sha256": "63950dc0d70fbf6f01cf1d2fa78883ec69bfee9f181a86cace85586f2b3062a8"
+  },
+  {
+    "file": "assets/apple-br-4.png",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/36/97/c6/3697c6ae-3742-8b5e-27a6-f3ba9602068c/591c1468-aa87-439c-b6b0-1541142336ad_SS04.png/392x696bb.png",
+    "title": "Apple BR listing screenshot",
+    "bytes": 143642,
+    "mime": "image/png",
+    "sha256": "4e41b28bc5684d95ac4233ae5bde1f652a94aa4e9ca058c242a7b14fcd648ce5"
+  },
+  {
+    "file": "assets/apple-br-5.png",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/3d/c9/1c/3dc91c9b-8c7f-0f41-5540-771a0ddf2797/9f48f89a-d1ae-47cd-a4b6-44c778290aa3_SS05.png/392x696bb.png",
+    "title": "Apple BR listing screenshot",
+    "bytes": 99741,
+    "mime": "image/png",
+    "sha256": "0fb585c0697903ceb07df1cde44c2c6351b7ec8598e92e33d9123856716203c1"
+  },
+  {
+    "file": "assets/apple-br-6.png",
+    "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/19/75/47/19754772-81c1-c8b6-482f-1c017a700ff1/23e67d61-3c2a-48a3-bee1-34354532f3e3_SS06.png/392x696bb.png",
+    "title": "Apple BR listing screenshot",
+    "bytes": 86611,
+    "mime": "image/png",
+    "sha256": "f20e549c1b7c6922ff04e3bfceb1ed05f18f6084e67e816ef6e34abbbfe0ff26"
+  },
+  {
+    "file": "assets/play-br-1.jpg",
+    "url": "https://play-lh.googleusercontent.com/r7z2TfZghzCF7_NOwNMoGvgTa0298X0MaFrFu6BmgDgO16kexqhvZR7MxcuCKZMTv6YMEO-Qh8c-v7KBrH1Swg=w1052-h592",
+    "title": "Google Play BR listing screenshot",
+    "bytes": 46187,
+    "mime": "image/jpeg",
+    "sha256": "f2b8b54b11b1c0d51d455b173869cd698f7fda47346d1ad31346e8fd792a9b97"
+  },
+  {
+    "file": "assets/play-br-2.jpg",
+    "url": "https://play-lh.googleusercontent.com/areqKJeT8YSLTu-Gh0wrsRYHq__vRoPuLuqyiyzNC0fg0ycmjwKN8HF0K2AdEatDg21ygMlDR6Xa8kmUnO5r=w1052-h592",
+    "title": "Google Play BR listing screenshot",
+    "bytes": 44444,
+    "mime": "image/jpeg",
+    "sha256": "2dbd785de336878e5af9317cd8652059a904928e645d85c4e60bcf6331b6fee5"
+  },
+  {
+    "file": "assets/play-br-3.jpg",
+    "url": "https://play-lh.googleusercontent.com/uMB-xOTHcXGHoUxwp-JdSp9eTsv3bNXFfxSkfyDsg5mYFybLY9s7lfSURjOn-nC-pEOvfeplvlqzbDEyRekZFLk=w1052-h592",
+    "title": "Google Play BR listing screenshot",
+    "bytes": 30109,
+    "mime": "image/jpeg",
+    "sha256": "a553e487cf80d98e36632dafd885fe21328e9f0ad6d1e0ae59efd827027cee46"
+  },
+  {
+    "file": "assets/play-br-4.jpg",
+    "url": "https://play-lh.googleusercontent.com/bB1LlOdmNffA9z7yKcvemXgecZ1DuhfftzRtAdvGyrMFvcDysiUFUhgPLKVBaiK87FI9OmHCZBfvugtM5dDEaw=w1052-h592",
+    "title": "Google Play BR listing screenshot",
+    "bytes": 44157,
+    "mime": "image/jpeg",
+    "sha256": "f8aaad43a69e917eeb911569e359e18c0aee689d0ebd56f63667f6c04d546835"
+  },
+  {
+    "file": "assets/play-br-5.jpg",
+    "url": "https://play-lh.googleusercontent.com/jg1z4cZd3a-f1Fpv8-er-k90eBqErSILsChEvZ5J0GeUbq50kp0s3CLuIKYj6LEcjfMCdB9Hk79UirPRdetyeA=w1052-h592",
+    "title": "Google Play BR listing screenshot",
+    "bytes": 36981,
+    "mime": "image/jpeg",
+    "sha256": "a5834d5042ac3fc3f0c12a76abde6d0bd528bbd00f3cdca98b05e430b76f9710"
+  },
+  {
+    "file": "assets/play-br-6.jpg",
+    "url": "https://play-lh.googleusercontent.com/Q6pSHUhdSfs_HVr2e7jEzju4LczI4ZlS4aQufdjIUYeSvHoqPx7_ier_mcEVDq32NzptiQxwVG-XmP2I4xGRxiU=w1052-h592",
+    "title": "Google Play BR listing screenshot",
+    "bytes": 33616,
+    "mime": "image/jpeg",
+    "sha256": "9474f8e4c64a3737b782bc2650c8832ceb395c98d846e0e922a58e39b336d040"
+  },
+  {
+    "file": "design-index.json",
+    "url": "https://www.uber.design/_json/70d9c8ff-1b8e-484b-8f30-4e174c269a21/_index.json",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "file": "mobile-home.html",
+    "url": "https://m.uber.com/",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "newsroom-assets.html",
+    "url": "https://www.uber.com/newsroom/media-assets/",
+    "error": "HTTP Error 406: Not Acceptable"
+  }
+]

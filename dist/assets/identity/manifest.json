@@ -1,0 +1,42 @@
+[
+  {
+    "app": "uber",
+    "path": "assets/identity/uber/uberx.png",
+    "sha256": "7d4aa8031753ce649ae9dfeb09daac65c66feaf442b13e7d663a676d73940542",
+    "bytes": 29422,
+    "url": "https://tb-static.uber.com/prod/udam-assets/434f52fd-e990-49f5-9a20-95a8e8f6312a.png",
+    "source_kind": "official Uber CDN marketing category art"
+  },
+  {
+    "app": "uber",
+    "path": "assets/identity/uber/comfort.png",
+    "sha256": "d6af1075eb3ae06002d7cf0dab0d1a03a3466e21f0561efa36545b32d3768ed8",
+    "bytes": 27670,
+    "url": "https://tb-static.uber.com/prod/udam-assets/57d6cbee-df5d-4c9f-b3d3-2f797c009adb.png",
+    "source_kind": "official Uber CDN marketing category art"
+  },
+  {
+    "app": "uber",
+    "path": "assets/identity/uber/black.png",
+    "sha256": "e4c0823cb08e4ea18b88f60abcd756cb1e7d5f1167b7eb5f5ab9263ed89fcde9",
+    "bytes": 23256,
+    "url": "https://tb-static.uber.com/prod/udam-assets/b7f38920-f0d1-4951-be96-580619859fc0.png",
+    "source_kind": "official Uber CDN marketing category art"
+  },
+  {
+    "app": "uber",
+    "path": "assets/identity/uber/reserve.png",
+    "sha256": "6f32d2be607be6fa22f56fb64d95f8f22af21bb575d4f25e503ce03de469d5eb",
+    "bytes": 21107,
+    "url": "https://tb-static.uber.com/prod/udam-assets/c2505121-a320-4d58-b297-ea44909ca5c1.png",
+    "source_kind": "official Uber CDN marketing category art"
+  },
+  {
+    "app": "uber",
+    "path": "assets/identity/uber/logo.png",
+    "sha256": "20fe4dcf130bd5d4ee2431ee3b008d80822c0e49b120fc996e3c4081a4f1e4da",
+    "bytes": 16506,
+    "url": "https://raw.githubusercontent.com/uber/baseweb/ed21081e33f7db2770922b4e04d16dcf5bbdfa85/documentation-site/public/images/uber-logo.png",
+    "source_kind": "official Uber organization Base Web repository"
+  }
+]

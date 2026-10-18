@@ -14,13 +14,18 @@ O REA foi usado para analisar os APKs fornecidos, recuperar entradas completas e
 
 | Área | Evidência | Aplicação web | Limite |
 | --- | --- | --- | --- |
-| iFood home | Screenshots promocionais oficiais da Play Store | Endereço central, Clube roxo, grade 2×4 e cinco abas | Campanhas, fotos, catálogo e ilustrações não são idênticos; a fonte nativa não foi recuperada |
+| iFood home | Screenshots promocionais oficiais da Play Store | Endereço central, Clube roxo, grade 2×4 e cinco abas; artes oficiais da landing page | Campanhas, fotos, catálogo e algumas ilustrações são adaptações |
+| iFood tipografia e logo | Metadados da família RC e repositório público de estudo de caso | RC Textos/Títulos e wordmark vetorial | Arquivos obtidos em espelhos públicos; versão exata do APK não confirmada |
+| Uber identidade | CDN oficial, Base Web e screenshots oficiais brasileiros | Logo original, artes distintas por categoria, paleta, hierarquia, serviços, atividade e conta | Artes web oficiais não comprovam igualdade com todos os thumbnails Android |
+| Telas secundárias dos dois apps | Referências e identidade de cada marca | Revisão completa de restaurante, produto, sacola, finalização, pedido, viagem, perfil e diálogos | Composição reconstruída; nem todas as telas contam com screenshot nativo equivalente |
 | Uber categoria | Gravação pública do app iOS no 60fps | Cartão expande/recolhe em 300 ms e mantém mapa/DOM | Medida observada de 250–350 ms; não é uma especificação Android |
 | Uber fontes/movimento | Uber Design e código oficial Base Web | Fontes originais e easing `cubic-bezier(.22,1,.36,1)` | Tokens de web não comprovam todas as curvas nativas |
 | Painéis e navegação | Referências visuais e comportamento web | Painéis inferiores, entrada de 300 ms e saída de 180 ms | Tempos escolhidos para a adaptação, sem medida nativa correspondente |
 | Mapa | OpenStreetMap e OSRM | Ruas reais, pontos locais e oito trajetos pré-calculados saindo da Paulista | Não é o mapa proprietário da Uber; outras combinações mostram pontos sem inventar um trajeto viário |
 
 A galeria “Animações originais”, no perfil, permite revisar os arquivos e suas durações. A preferência do sistema por movimento reduzido tem prioridade: animações mostram um frame estático e transições são desativadas. A abertura do iFood roda uma vez por sessão e pode ser pulada ou revista pelo perfil.
+
+O [registro da identidade visual v3](identity-v3.md) descreve a cobertura das telas, as fontes dos recursos e a auditoria de celular/desktop.
 
 Não há evidência suficiente para afirmar identidade pixel a pixel de todas as telas, gestos e transições. Para essa validação seriam necessárias capturas/gravações da mesma versão, plataforma, região e estados do app original. Os relatórios de pesquisa distinguem fonte oficial, gravação de terceiros, metadados originais e decisões de implementação.
 

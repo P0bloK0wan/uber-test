@@ -29,10 +29,11 @@ import {
   orderLabels,
 } from "./data.js";
 const paths = {
+  bolt: "M14 2 4 14h7l-1 8 10-13h-7Z",
   bell: "M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9 M10 21h4",
   search: "m21 21-5-5 M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0",
   home: "m3 10 9-7 9 7v11h-6v-7H9v7H3Z",
-  grid: "M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z",
+  grid: "M3 3h4v4H3z M10 3h4v4h-4z M17 3h4v4h-4z M3 10h4v4H3z M10 10h4v4h-4z M17 10h4v4h-4z M3 17h4v4H3z M10 17h4v4h-4z M17 17h4v4h-4z",
   clock: "M12 8v5l3 2 M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0",
   user: "M20 21v-2a7 7 0 0 0-14 0v2 M16 6a4 4 0 1 1-8 0 4 4 0 0 1 8 0",
   pin: "M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z M15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0",
@@ -194,7 +195,7 @@ function bottomNav(appName, active) {
     : [
         ["home", "Início", ""],
         ["grid", "Serviços", "services"],
-        ["clock", "Atividade", "activity"],
+        ["receipt", "Atividade", "activity"],
         ["user", "Conta", "profile"],
       ]
   )
@@ -205,10 +206,10 @@ function bottomNav(appName, active) {
     .join("")}</nav>`;
 }
 function uberHeader(active = "") {
-  return `<header class="uber-header"><a class="brand-uber" href="#/uber" aria-label="Uber início">Uber</a><nav class="uber-tabs" aria-label="Navegação Uber">${[
+  return `<header class="uber-header"><a class="brand-uber" href="#/uber" aria-label="Uber início"><img src="./assets/identity/uber/logo.png" alt=""></a><nav class="uber-tabs" aria-label="Navegação Uber">${[
     ["car", "Viajar", ""],
     ["grid", "Serviços", "services"],
-    ["clock", "Atividade", "activity"],
+    ["receipt", "Atividade", "activity"],
   ]
     .map(
       ([ic, l, s]) =>
@@ -236,18 +237,40 @@ function placeOptions(query = "", focus = "to") {
     : `<p class="muted small" style="padding:16px 0">Nenhum local encontrado. Experimente Paulista, Ibirapuera ou Congonhas.</p>`;
 }
 function uberSearch() {
-  return `<h1 class="uber-search-title">Vá a qualquer lugar</h1><div class="uber-home-tabs"><strong>${icon("car")} Viagens</strong><a href="#/uber/services">${icon("bag")} Serviços</a></div><button class="uber-schedule" data-action="schedule">${icon("clock")}${ui.schedule ? esc(dateLabel(ui.schedule)) : "Sair agora"}${icon("down")}</button><div class="location-fields"><label class="location-input" aria-label="Local de partida"><span><i class="location-dot"></i></span><input id="origin" placeholder="Local de partida" value="${esc(ui.fromText)}" autocomplete="off" aria-label="Local de partida">${icon("location")}</label><label class="location-input"><span><i class="location-square"></i></span><input id="destination" placeholder="Para onde?" value="${esc(ui.toText)}" autocomplete="off" aria-label="Destino"></label></div>${btn("Ver preços", "see-prices", "full")}<div class="place-results" id="place-results">${ui.placeFocus ? placeOptions("", ui.placeFocus) : ""}</div><div class="spread section-title"><h2>Sugestões</h2><a class="small" href="#/uber/services">Ver tudo</a></div><div class="suggestion-grid"><button class="suggestion" data-action="focus-destination"><img src="./assets/uber-ride.png" alt="Carro Uber">Viajar</button><button class="suggestion" data-action="schedule"><span class="service-symbol">${icon("calendar")}</span>Reservar</button><button class="suggestion" data-action="airport"><span class="service-symbol">${icon("bag")}</span>Aeroporto</button></div><div class="welcome-card"><h3>Seu próximo destino começa aqui.</h3><p>Escolha um lugar e descubra uma nova forma de chegar.</p><img src="./assets/uber-welcome.png" alt="Ilustração de uma pessoa explorando destinos"></div><p class="demo-note" style="margin-top:16px">Demonstração independente. Não solicita corridas reais.</p>`;
+  const recent = [
+    ...state.rides.map((r) => r.destination),
+    places[1],
+    places[3],
+  ]
+    .filter((p, i, all) => all.findIndex((q) => q.id === p.id) === i)
+    .slice(0, 2);
+  return `<h1 class="uber-search-title">Vá a qualquer lugar</h1>
+    <div class="uber-home-tabs"><strong>${icon("car")} Viagens</strong><a href="#/uber/services">${icon("grid")} Serviços</a></div>
+    <div class="destination-form ${ui.to ? "has-destination" : ""}">
+      <div class="location-fields">
+        <label class="location-input origin-field"><span><i class="location-dot"></i></span><input id="origin" placeholder="Local de partida" value="${esc(ui.fromText)}" autocomplete="off" aria-label="Local de partida">${icon("location")}</label>
+        <div class="destination-pill"><label class="location-input destination-field">${icon("search")}<input id="destination" placeholder="Para onde?" value="${esc(ui.toText)}" autocomplete="off" aria-label="Destino"></label><button class="uber-schedule" data-action="schedule">${icon("clock")}<span>${ui.schedule ? new Date(ui.schedule).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }) : "Agora"}</span>${icon("down")}</button></div>
+      </div>
+      <div class="place-results" id="place-results">${ui.placeFocus ? placeOptions("", ui.placeFocus) : ""}</div>
+      ${btn("Ver preços", "see-prices", "full search-submit")}
+    </div>
+    <div class="recent-destinations">${recent.map((p, i) => `<button class="recent-place" data-action="recent-destination" data-id="${p.id}"><span class="recent-place-symbol">${icon(i ? "pin" : "clock")}</span><span><strong>${esc(p.name)}</strong><small>${esc(p.address)}</small></span>${icon("arrow")}</button>`).join("")}</div>
+    <div class="spread section-title"><h2>Sugestões</h2><a href="#/uber/services">Ver tudo</a></div>
+    <div class="suggestion-grid"><button class="suggestion" data-action="focus-destination"><img src="./assets/identity/uber/uberx.png" alt="">Viajar</button><button class="suggestion" data-action="schedule"><img src="./assets/identity/uber/reserve.png" alt="">Reservar</button><button class="suggestion" data-action="airport"><img src="./assets/identity/uber/comfort.png" alt="">Aeroporto</button></div>
+    <div class="spread section-title plan-heading"><h2>Planeje sua próxima viagem</h2></div>
+    <button class="reserve-promo" data-action="schedule"><div class="reserve-promo-art"><img src="./assets/identity/uber/reserve.png" alt=""></div><span><strong>Viaje com tranquilidade ${icon("arrow")}</strong><small>Reserve e escolha o horário de sair.</small></span></button>
+    <p class="demo-note app-footnote">Demonstração independente. Não solicita corridas reais.</p>`;
 }
 function uberSelect() {
   const dist = distance(ui.from, ui.to);
-  return `<button class="back" data-action="back-search">${icon("back")}Alterar trajeto</button><h1>Escolha uma viagem</h1><p class="muted small">${esc(ui.to.name)} · ${dist.toFixed(1).replace(".", ",")} km estimados</p><div class="ride-picker">${rideTypes
+  return `<button class="back picker-back" data-action="back-search">${icon("back")}Alterar trajeto</button><h1 class="picker-title">Escolha uma viagem</h1><div class="ride-picker">${rideTypes
     .map((r) => {
       const q = rideQuote(dist, r.id);
-      return `<button class="ride-card ${ui.rideType === r.id ? "selected" : ""}" data-action="ride-type" data-id="${r.id}" aria-pressed="${ui.rideType === r.id}"><img src="./assets/uber-ride.png" alt=""><span class="grow"><h3>${r.name} <span class="small ride-seats">${icon("user")} ${r.seats}</span></h3><small>${q.minutes} min de distância</small><small class="ride-description">${r.description}</small></span><span class="price">${money(q.price)}</span></button>`;
+      return `<button class="ride-card ${ui.rideType === r.id ? "selected" : ""}" data-action="ride-type" data-id="${r.id}" aria-pressed="${ui.rideType === r.id}"><img src="./assets/identity/uber/${r.id === "x" ? "uberx" : r.id}.png" alt=""><span class="grow"><h3>${r.name} <span class="small ride-seats">${icon("user")} ${r.seats}</span></h3><small>${q.minutes} min de distância</small><small class="ride-description">${r.description}</small></span><span class="price">${money(q.price)}</span></button>`;
     })
     .join(
       "",
-    )}</div><button class="payment-row" data-action="uber-payment">${icon(ui.payment === "Dinheiro" ? "wallet" : "card")}<strong>${ui.payment}</strong>${icon("arrow")}</button>${ui.schedule ? `<div class="notice" style="margin-bottom:15px">${icon("calendar")} Agendada para ${esc(dateLabel(ui.schedule))}</div>` : ""}${btn("Confirmar " + rideTypes.find((r) => r.id === ui.rideType).name, "request-ride", "full")}<p class="demo-note" style="margin-top:15px">Valores demonstrativos. Nenhuma cobrança será realizada.</p>`;
+    )}</div><button class="payment-row" data-action="uber-payment"><span class="payment-cash">${icon(ui.payment === "Dinheiro" ? "wallet" : "card")}</span><strong>${ui.payment}</strong>${icon("arrow")}</button>${ui.schedule ? `<div class="reservation-detail">${motion("uber", "clock_animation", "reserve-clock", false)}<span>Reserva para ${esc(dateLabel(ui.schedule))}</span></div>` : ""}<div class="picker-cta">${btn("Confirmar " + rideTypes.find((r) => r.id === ui.rideType).name, "request-ride", "full")}</div><p class="demo-note app-footnote">Valores de demonstração · Sem cobrança</p>`;
 }
 function routeSummary(ride) {
   return `<div class="route-summary"><div class="row">${icon("location")}<span>${esc(ride.origin.name)}</span></div><div class="row">${icon("pin")}<span>${esc(ride.destination.name)}</span></div></div>`;
@@ -255,38 +278,46 @@ function routeSummary(ride) {
 function uberRide(ride) {
   const s = ride.status,
     done = s === "completed",
-    cancelled = s === "cancelled";
-  const n = ["requested", "arriving", "traveling", "completed"].indexOf(s);
-  return `<a class="back" href="#/uber/activity">${icon("back")}Suas viagens</a><span class="badge ${done ? "green" : ""}">${done ? "Finalizada" : cancelled ? "Cancelada" : "Viagem de demonstração"}</span><h1 style="margin-top:18px">${rideLabels[s]}</h1>${!done && !cancelled ? `<div class="ride-progress">${[0, 1, 2, 3].map((i) => `<span class="${i <= n ? "done" : ""}"></span>`).join("")}</div>` : ""}${s === "requested" ? `<div class="row">${motion("uber", "dots", "trip-loader")}<p class="small muted">Procurando uma opção perto de você...</p></div>` : ""}${!cancelled && s !== "requested" ? `<div class="driver"><div class="avatar">RS</div><div class="grow"><h3>Rafael S.</h3><p class="small muted">★ 4,97 · Motorista fictício</p></div><div style="text-align:right"><div class="car-number">DEMO • 01</div><p class="small muted">Sedã prata</p></div></div>` : ""}${routeSummary(ride)}<div class="spread"><span class="muted">${ride.typeName}</span><strong>${money(ride.price)}</strong></div><p class="small muted" style="margin:12px 0 24px">${ride.payment} · ${ride.schedule ? "Reserva: " + esc(dateLabel(ride.schedule)) : dateLabel(ride.created)}</p>${done ? `${motion("uber", "circle_check", "trip-completed", false)}<div class="surface"><h3>${ride.rating ? "Sua avaliação: " + ride.rating + " ★" : "Como foi sua viagem?"}</h3>${ride.rating ? "" : `${btn("Avaliar viagem", "rate-ride", "secondary full", 'data-id="' + ride.id + '"')}`}</div>` : ""}${!done && !cancelled ? `${btn({ requested: "Simular motorista encontrado", arriving: "Iniciar trajeto de demonstração", traveling: "Simular chegada ao destino" }[s], "advance-ride", "full", 'data-id="' + ride.id + '"')}<button class="text-btn" style="color:#666;width:100%;margin-top:8px" data-action="cancel-ride" data-id="${ride.id}">Cancelar viagem</button>` : btn("Fazer outra viagem", "new-ride", "full")}<p class="demo-note" style="margin-top:18px">Esta experiência usa motorista, trajeto e pagamentos simulados.</p>`;
+    cancelled = s === "cancelled",
+    active = !done && !cancelled;
+  const step = ["requested", "arriving", "traveling", "completed"].indexOf(s);
+  return `<a class="back" href="#/uber/activity">${icon("back")}Suas viagens</a><div class="trip-status"><span class="trip-status-label">${done ? "Viagem concluída" : cancelled ? "Viagem cancelada" : "Viagem em andamento"}</span><h1>${rideLabels[s]}</h1>${active ? `<div class="ride-progress">${[0, 1, 2, 3].map((i) => `<span class="${i <= step ? "done" : ""}"></span>`).join("")}</div>` : ""}</div>${s === "requested" ? `<div class="finding-driver"><img src="./assets/identity/uber/${ride.type === "x" ? "uberx" : ride.type}.png" alt="">${motion("uber", "dots", "trip-loader")}<p>Buscando uma opção perto de você</p></div>` : ""}${s !== "requested" && !cancelled ? `<div class="driver-card"><div class="driver-visual"><div class="driver-avatar">${icon("user")}</div><img src="./assets/identity/uber/${ride.type === "x" ? "uberx" : ride.type}.png" alt=""></div><div class="driver-description"><h2>Rafael S.</h2><span>${icon("star")} 4,97</span><strong>DEMO • 01</strong><p>Sedã prata · Motorista fictício</p></div></div>${active ? `<div class="driver-tools"><button data-action="driver-chat">${icon("phone")} Falar com motorista</button><button data-action="safety" aria-label="Recursos de segurança">${icon("shield")}</button></div>` : ""}` : ""}${done ? `<div class="trip-rating">${motion("uber", "circle_check", "trip-completed", false)}<h3>${ride.rating ? "Sua avaliação: " + ride.rating + " ★" : "Como foi sua viagem?"}</h3>${ride.rating ? "" : btn("Avaliar viagem", "rate-ride", "secondary full", 'data-id="' + ride.id + '"')}</div>` : ""}<div class="trip-receipt">${routeSummary(ride)}<div class="spread"><span>${ride.typeName}</span><strong>${money(ride.price)}</strong></div><div class="spread trip-payment"><span>${icon(ride.payment === "Dinheiro" ? "wallet" : "card")}${ride.payment}</span><small>${ride.schedule ? "Reserva" : dateLabel(ride.created)}</small></div></div><div class="simulation-controls">${active ? `${btn({ requested: "Simular motorista encontrado", arriving: "Iniciar trajeto de demonstração", traveling: "Simular chegada ao destino" }[s], "advance-ride", "full", 'data-id="' + ride.id + '"')}<button class="cancel-trip" data-action="cancel-ride" data-id="${ride.id}">Cancelar viagem</button>` : btn("Fazer outra viagem", "new-ride", "full")}</div><p class="demo-note app-footnote">Motorista, trajeto e pagamentos simulados.</p>`;
 }
 function uberActivity() {
-  return `<div class="spread"><h1>Atividade</h1>${btn("Nova viagem", "new-ride", "compact")}</div><h2 class="section-title">Suas viagens</h2>${state.rides.length ? state.rides.map((r) => `<a class="history-row" href="#/uber/ride/${r.id}"><span class="history-img"><img src="./assets/uber-ride.png" alt=""></span><span class="grow"><h3>${esc(r.destination.name)}</h3><small>${dateLabel(r.created)}</small><small>${rideLabels[r.status]}</small></span><span class="price">${money(r.price)}</span>${icon("arrow")}</a>`).join("") : empty("Seu próximo destino está esperando", "As viagens que você fizer nesta demonstração aparecerão aqui.", "new-ride", "Começar uma viagem")}`;
+  const active = state.rides.filter(
+    (r) => !["completed", "cancelled"].includes(r.status),
+  );
+  const past = state.rides.filter((r) =>
+    ["completed", "cancelled"].includes(r.status),
+  );
+  const rows = (items) =>
+    items
+      .map(
+        (r) =>
+          `<article class="activity-entry"><a class="activity-details" href="#/uber/ride/${r.id}"><span class="activity-image"><img src="./assets/identity/uber/${r.type === "x" ? "uberx" : r.type}.png" alt=""></span><span class="grow"><h3>${esc(r.destination.name)}</h3><p>${dateLabel(r.created)}</p><p>${money(r.price)}${r.status === "cancelled" ? " · Cancelada" : ""}</p></span></a><button class="rebook-btn" data-action="recent-destination" data-id="${r.destination.id}">${icon("clock")} Refazer</button></article>`,
+      )
+      .join("");
+  return `<div class="page-title-row"><h1>Atividade</h1><button class="icon-btn" data-action="activity-filter" aria-label="Filtrar atividade">${icon("filter")}</button></div>${active.length ? `<h2 class="activity-section-title">Em andamento</h2>${rows(active)}` : ""}<div class="spread activity-section-title"><h2>Anteriores</h2><span class="muted">Todas as viagens</span></div>${past.length ? rows(past) : `<div class="activity-empty"><img src="./assets/identity/uber/uberx.png" alt=""><h3>Você ainda não tem viagens anteriores</h3><p>Suas viagens vão aparecer aqui.</p>${btn("Começar uma viagem", "new-ride", "secondary")}</div>`}<div class="activity-reserve"><img src="./assets/identity/uber/reserve.png" alt=""><span><h3>Planeje com antecedência</h3><p>Reserve sua próxima viagem.</p></span><button class="icon-btn" data-action="schedule" aria-label="Reservar viagem">${icon("arrow")}</button></div>`;
 }
 function uberServices() {
-  return `<h1>Serviços</h1><p class="muted" style="margin:12px 0 30px">Vá a qualquer lugar. Do seu jeito.</p><div class="service-grid"><button class="service-tile" data-action="new-ride"><h2>Viajar</h2><p class="small muted">Uma viagem para onde você precisar.</p><span class="btn secondary compact">Começar ${icon("arrow")}</span><img src="./assets/uber-ride.png" alt="Carro"></button><button class="service-tile" data-action="schedule"><h2>Reservar</h2><p class="small muted">Planeje sua próxima viagem com antecedência.</p><span class="btn secondary compact">Agendar ${icon("arrow")}</span>${icon("calendar")}</button><button class="service-tile" data-action="airport"><h2>Aeroporto</h2><p class="small muted">Deixe seu trajeto para Congonhas planejado.</p><span class="btn secondary compact">Planejar ${icon("arrow")}</span>${icon("bag")}</button></div><div class="notice" style="margin-top:28px">${icon("info")} Todos os serviços operam em modo de demonstração.</div>`;
-}
-function profile(appName) {
-  const f = appName === "ifood";
-  return `<div class="profile-card"><h1>${f ? "Meu perfil" : "Conta"}</h1><div class="row"><div class="avatar">${esc(state.profile.name.slice(0, 2).toUpperCase())}</div><div class="grow"><h2>${esc(state.profile.name)}</h2><p class="small muted">${esc(state.profile.email) || "Seu espaço, do seu jeito."}</p></div><button class="icon-btn" data-action="edit-profile" aria-label="Editar perfil">${icon("arrow")}</button></div><div>${(f
-    ? [
-        ["pin", "Meus endereços", "address"],
-        ["heart", "Restaurantes favoritos", "favorites"],
-        ["gift", "Cupons disponíveis", "coupons"],
-        ["receipt", "Meus pedidos", "food-orders"],
-      ]
-    : [
-        ["pin", "Locais salvos", "saved-places"],
-        ["wallet", "Carteira", "uber-payment"],
-        ["clock", "Minhas viagens", "uber-activity"],
-      ]
-  )
+  return `<h1>Serviços</h1><h2 class="service-heading">Vá a qualquer lugar</h2><div class="native-services">${[
+    ["Viajar", "uberx", "new-ride", "Chegue ao seu destino"],
+    ["Reservar", "reserve", "schedule", "Escolha quando sair"],
+    ["Aeroporto", "comfort", "airport", "Planeje sua ida ao aeroporto"],
+  ]
     .map(
-      ([ic, t, a]) =>
-        `<button class="menu-row" data-action="${a}">${icon(ic)}<span>${t}</span>${icon("arrow")}</button>`,
+      ([title, img, action, desc]) =>
+        `<button class="native-service" data-action="${action}"><img src="./assets/identity/uber/${img}.png" alt=""><span><strong>${title}</strong><small>${desc}</small></span></button>`,
     )
     .join(
       "",
-    )}<button class="menu-row" data-action="motion-gallery">${icon("grid")}<span>Animações originais</span>${icon("arrow")}</button>${f ? `<button class="menu-row" data-action="replay-splash">${icon("food")}<span>Rever abertura</span>${icon("arrow")}</button>` : ""}<button class="menu-row" data-action="about">${icon("info")}<span>Sobre esta experiência</span>${icon("arrow")}</button></div><div class="notice">Seus dados de demonstração ficam salvos apenas neste navegador. Não use senhas ou dados de pagamento reais.</div>${APP_CONFIG.app === "combined" ? `<a class="text-btn" href="#/${f ? "uber" : "ifood"}">Explorar ${f ? "Uber" : "iFood"} ${icon("arrow")}</a>` : ""}</div>`;
+    )}</div><div class="service-explainer"><h2>Uma viagem do seu jeito</h2><p>De um compromisso no dia a dia a um momento especial.</p><div class="service-options">${rideTypes.map((r) => `<button data-action="service-category" data-id="${r.id}"><img src="./assets/identity/uber/${r.id === "x" ? "uberx" : r.id}.png" alt=""><strong>${r.name}</strong><span>${r.description}</span>${icon("arrow")}</button>`).join("")}</div></div><p class="demo-note app-footnote">Serviços em modo de demonstração.</p>`;
+}
+function profile(appName) {
+  const f = appName === "ifood";
+  const row = (ic, title, action, desc = "") =>
+    `<button class="account-row" data-action="${action}">${icon(ic)}<span><strong>${title}</strong>${desc ? `<small>${desc}</small>` : ""}</span>${icon("arrow")}</button>`;
+  return `<section class="native-account ${f ? "food-account" : "uber-account"}"><h1 class="account-page-title">${f ? "Perfil" : "Conta"}</h1><div class="account-identity"><div class="account-person"><h2>${esc(state.profile.name)}</h2>${f ? `<button class="edit-account" data-action="edit-profile">Editar perfil ${icon("arrow")}</button>` : `<span class="account-rating">${icon("star")} 5,0</span>`}</div><button class="profile-avatar" data-action="edit-profile" aria-label="Editar perfil">${icon("user")}</button></div>${f ? `<button class="club-account" data-action="coupons"><span class="club-symbol">${icon("gift")}</span><span><strong>Clube iFood</strong><small>Economize em cada pedido</small></span><b>Ver benefícios</b>${icon("arrow")}</button><div class="account-group">${row("bell", "Notificações", "notifications", "Confira suas novidades")}${row("gift", "Cupons", "coupons", "Seu próximo pedido com desconto")}${row("heart", "Favoritos", "favorites", "Seus restaurantes preferidos")}${row("receipt", "Meus pedidos", "food-orders")}${row("card", "Pagamentos", "food-payment", "Formas de pagamento da demonstração")}${row("pin", "Endereços", "address", "Seus endereços de entrega")}${row("user", "Meus dados", "edit-profile")}${row("info", "Ajuda", "help")}</div>` : `<div class="account-shortcuts"><button data-action="help">${icon("info")}<strong>Ajuda</strong></button><button data-action="uber-payment">${icon("wallet")}<strong>Carteira</strong></button><button data-action="uber-activity">${icon("receipt")}<strong>Atividade</strong></button></div><button class="account-safety" data-action="safety"><span><strong>Confira sua segurança</strong><small>Conheça os recursos para suas viagens.</small><span class="safety-meter"><i></i><i></i><i></i><i></i></span></span>${icon("shield")}</button><div class="account-group">${row("pin", "Locais salvos", "saved-places")}${row("calendar", "Reservar uma viagem", "schedule")}${row("user", "Gerenciar conta", "edit-profile")}${row("shield", "Privacidade", "privacy")}</div>`}<div class="account-lab"><button data-action="motion-gallery">Animações originais</button>${f ? '<button data-action="replay-splash">Rever abertura</button>' : ""}<button data-action="about">Sobre esta experiência</button></div><p class="demo-note">Demonstração independente · Dados salvos neste navegador.</p>${APP_CONFIG.app === "combined" ? `<a class="switch-account" href="#/${f ? "uber" : "ifood"}">Abrir ${f ? "Uber" : "iFood"} ${icon("arrow")}</a>` : ""}</section>`;
 }
 function renderUber(parts) {
   const page = parts[1] || "";
@@ -302,7 +333,7 @@ function renderUber(parts) {
     if (ui.stage === "select" && (!ui.from || !ui.to)) ui.stage = "search";
     content = `<main class="uber-layout"><section class="uber-panel">${ui.stage === "select" ? '<div class="sheet-grip" aria-hidden="true"></div>' : ""}${ui.stage === "select" ? uberSelect() : uberSearch()}</section>${mapSVG()}</main>`;
   }
-  app.innerHTML = `<div class="uber ${page === "ride" || ui.stage === "select" ? "booking-screen" : ""}">${uberHeader(page)}${content}${bottomNav("uber", page)}</div>`;
+  app.innerHTML = `<div class="uber ${page === "ride" || (!page && ui.stage === "select") ? "booking-screen" : ""}" data-page="${page || "home"}">${uberHeader(page)}${content}${bottomNav("uber", page)}</div>`;
   document.title = "Uber · Demonstração web";
 }
 function cartRestaurant() {
@@ -313,7 +344,7 @@ function totals() {
 }
 function foodHeader(active = "") {
   const t = totals();
-  return `<header class="food-header"><a href="#/ifood" class="brand-ifood" aria-label="iFood início">ifood</a><nav aria-label="Navegação iFood"><a class="${["", "restaurant", "search"].includes(active) ? "active" : ""}" href="#/ifood">Restaurantes</a><a class="${active === "orders" ? "active" : ""}" href="#/ifood/orders">Pedidos</a><a class="${active === "favorites" ? "active" : ""}" href="#/ifood/favorites">Favoritos</a></nav><span class="grow"></span><button class="food-address" data-action="address"><span class="small muted">ENTREGAR EM</span><strong>${esc(addressText())} ${icon("down")}</strong></button><button class="food-notifications icon-btn" data-action="notifications" aria-label="Notificações">${icon("bell")}<i></i></button><span class="demo-badge">Demo</span>${APP_CONFIG.app === "combined" ? `<a class="app-switch" href="#/uber">${icon("switch")}Ir para Uber</a>` : ""}<a class="profile-link" href="#/ifood/profile" aria-label="Meu perfil">${icon("user")}</a><button class="cart-header" data-action="cart" aria-label="Abrir sacola">${icon("bag")}<span><strong>${money(t.total)}</strong><small>${t.count} ${t.count === 1 ? "item" : "itens"}</small></span></button></header>`;
+  return `<header class="food-header"><a href="#/ifood" class="brand-ifood" aria-label="iFood início"><img src="./assets/identity/ifood/logo.svg" alt=""></a><nav aria-label="Navegação iFood"><a class="${["", "restaurant", "search"].includes(active) ? "active" : ""}" href="#/ifood">Restaurantes</a><a class="${active === "orders" ? "active" : ""}" href="#/ifood/orders">Pedidos</a><a class="${active === "favorites" ? "active" : ""}" href="#/ifood/favorites">Favoritos</a></nav><span class="grow"></span><button class="food-address" data-action="address"><span class="small muted">ENTREGAR EM</span><strong>${esc(addressText())} ${icon("down")}</strong></button><button class="food-notifications icon-btn" data-action="notifications" aria-label="Notificações">${icon("bell")}<i></i></button><span class="demo-badge">Demo</span>${APP_CONFIG.app === "combined" ? `<a class="app-switch" href="#/uber">${icon("switch")}Ir para Uber</a>` : ""}<a class="profile-link" href="#/ifood/profile" aria-label="Meu perfil">${icon("user")}</a><button class="cart-header" data-action="cart" aria-label="Abrir sacola">${icon("bag")}<span><strong>${money(t.total)}</strong><small>${t.count} ${t.count === 1 ? "item" : "itens"}</small></span></button></header>`;
 }
 function restaurantCard(r) {
   return `<article class="restaurant-card"><a class="restaurant-cover" href="#/ifood/restaurant/${r.id}" aria-label="Abrir ${r.name}">${foodImg(r.img)}<span class="badge">${r.tag}</span></a><button class="icon-btn white fave ${state.favorites.includes(r.id) ? "active" : ""}" data-action="favorite" data-id="${r.id}" aria-label="${state.favorites.includes(r.id) ? "Remover" : "Adicionar"} ${r.name} ${state.favorites.includes(r.id) ? "dos" : "aos"} favoritos" aria-pressed="${state.favorites.includes(r.id)}">${icon("heart")}</button><a class="restaurant-info" href="#/ifood/restaurant/${r.id}"><h3>${r.name}</h3><div class="meta"><span class="rating">★ ${r.rating}</span><span>·</span><span>${r.category}</span><span>·</span><span>1,2 km</span></div><div class="delivery"><span>${r.time} min</span><span class="${r.delivery ? "" : "free"}">${r.delivery ? money(r.delivery) : "Entrega grátis"}</span></div></a></article>`;
@@ -342,32 +373,56 @@ function restaurantResults(favorites = false) {
     : `${favorites ? motion("ifood", "favorite-empty-state", "favorites-art") : ""}${empty(favorites ? "Nenhum favorito por aqui" : "Não encontramos restaurantes", favorites ? "Toque no coração de um restaurante para encontrá-lo aqui." : "Tente outra busca ou remova os filtros.", "clear-filters", favorites ? "Explorar restaurantes" : "Limpar filtros")}`;
 }
 function foodHome(search = false, favorites = false) {
-  const home = !search && !favorites && route()[1] !== "hits";
   const hits = route()[1] === "hits";
+  const home = !search && !favorites && !hits;
+  const categories = restaurants
+    .map(
+      (r) =>
+        `<button class="food-category ${ui.category === r.category ? "active" : ""}" data-action="category" data-id="${r.category}" aria-pressed="${ui.category === r.category}"><span class="category-img" style="background:${r.color}">${foodImg(r.img)}</span>${r.category}</button>`,
+    )
+    .join("");
   return `${
     home
-      ? `<div class="club-strip"><div><h1>Olá, ${esc(state.profile.name.split(" ")[0])}</h1><button data-action="coupons">Ver meu Clube ${icon("arrow")}</button></div><button class="club-coupon" data-action="coupons">${icon("gift")} 1 cupom ${icon("arrow")}</button></div><div class="food-services">${[
-          ["Restaurantes", "food", "burger"],
-          ["Mercados", "bag", "salad"],
-          ["Farmácias", "plus", null],
-          ["Bebidas", "gift", null],
-          ["Hits", "gift", "pizza"],
-          ["Turbo", "clock", null],
-          ["Shopping", "bag", null],
-          ["Clube", "star", null],
+      ? `<div class="club-strip"><div><span class="greeting">Olá, ${esc(state.profile.name.split(" ")[0])}</span><button data-action="coupons">Ver meu Clube ${icon("arrow")}</button></div><button class="club-coupon" data-action="coupons">${icon("gift")} 1 cupom ${icon("arrow")}</button></div><div class="food-services">${[
+          ["Restaurantes", "restaurant"],
+          ["Mercados", "market"],
+          ["Farmácias", "pharmacy"],
+          ["Bebidas", "drinks"],
+          ["Hits", "hits"],
+          ["Turbo", "turbo"],
+          ["Shopping", "shopping"],
+          ["Clube", "club"],
         ]
           .map(
-            ([label, ic, img]) =>
-              `<button data-action="food-service" data-service="${label}"><span class="service-art service-${label.toLowerCase()}">${img ? foodImg(img) : icon(ic)}</span><span>${label}</span></button>`,
+            ([label, art]) =>
+              `<button data-action="food-service" data-service="${label}"><span class="service-art service-${art}">${["restaurant", "market", "pharmacy", "drinks"].includes(art) ? `<img src="./assets/identity/ifood/${art}.png" alt="">` : `<span class="brand-service-${art}">${art === "hits" ? "hits" : art === "turbo" ? icon("bolt") : art === "shopping" ? icon("bag") : icon("gift")}</span>`}</span><span>${label}</span></button>`,
           )
           .join(
             "",
-          )}</div><section class="offer-carousel" aria-label="Ofertas"><button class="offer-slide" data-action="coupons"><span><small>COMBINA COM SEU DIA</small><strong>Seu próximo<br>pedido com<br><b>10% OFF</b></strong><em>Use BEMVINDO · até R$ 10</em></span>${foodImg("pizza")}<span class="offer-page"><i></i><i></i><i></i></span></button></section><div class="spread recent-heading"><h2>Lojas para você</h2><button class="text-btn" data-action="browse-restaurants">Ver mais</button></div><div class="recent-stores">${restaurants.map((r) => `<a href="#/ifood/restaurant/${r.id}">${foodImg(r.img)}<span>${r.name}</span></a>`).join("")}</div>`
+          )}</div><section class="offer-carousel" aria-label="Ofertas"><button class="offer-slide" data-action="coupons"><span><small>SEU PRÓXIMO PEDIDO</small><strong>Tá com fome?<br>Tem desconto<br><b>pra você.</b></strong><em>BEMVINDO · 10% OFF até R$ 10</em></span><img src="./assets/identity/ifood/restaurant.png" alt=""><span class="offer-page"><i></i></span></button></section><div class="spread recent-heading"><h2>Lojas para você</h2><button class="text-btn" data-action="browse-restaurants">Ver mais</button></div><div class="recent-stores">${restaurants.map((r) => `<a href="#/ifood/restaurant/${r.id}">${foodImg(r.img)}<span>${r.name}</span></a>`).join("")}</div>`
       : ""
-  }<div class="food-topline"><div class="grow"><h1>${favorites ? "Seus favoritos" : hits ? "Hits do dia" : search ? "O que você está procurando?" : "Restaurantes"}</h1>${home ? "" : `<p>${favorites ? "Seus sabores preferidos, sempre por perto." : hits ? "Os mais pedidos no catálogo de demonstração." : "Encontre seu próximo pedido."}</p>`}</div><label class="search-box">${icon("search")}<input id="food-search" type="search" placeholder="Busque por restaurante ou comida" aria-label="Buscar restaurantes ou comida" value="${esc(ui.query)}"></label></div>${favorites ? "" : `<div class="food-categories">${restaurants.map((r) => `<button class="food-category ${ui.category === r.category ? "active" : ""}" data-action="category" data-id="${r.category}" aria-pressed="${ui.category === r.category}"><span class="category-img" style="background:${r.color}">${foodImg(r.img)}</span>${r.category}</button>`).join("")}</div>`}<div class="spread food-section-heading"><h2>${favorites ? "Restaurantes salvos" : ui.category === "Todos" ? "Restaurantes para você" : ui.category}</h2><button class="text-btn small" data-action="sort">Ordenar ${icon("down")}</button></div><div class="chips"><button class="pill ${ui.filter === "all" && ui.category === "Todos" ? "active" : ""}" data-action="clear-filters">${icon("filter")}Todos</button><button class="pill ${ui.filter === "free" ? "active" : ""}" data-action="filter" data-id="free">Entrega grátis</button><button class="pill ${ui.filter === "fast" ? "active" : ""}" data-action="filter" data-id="fast">Até 30 min</button><button class="pill ${ui.sort === "rating" ? "active" : ""}" data-action="sort-rating">${icon("star")}Melhor avaliação</button></div><div id="restaurant-results">${restaurantResults(favorites)}</div>`;
+  }
+    ${hits ? `<section class="hits-hero"><span class="hits-wordmark">hits</span><h1>Comida boa.<br>Preço melhor ainda.</h1><p>Encontre os favoritos do nosso catálogo.</p><img src="./assets/identity/ifood/restaurant.png" alt=""></section>` : ""}
+    <div class="food-topline ${search ? "search-page-heading" : ""}"><div class="grow"><h1>${favorites ? "Favoritos" : hits ? "Hits do dia" : search ? "Busca" : "Restaurantes"}</h1>${favorites ? "<p>Seus restaurantes preferidos em um só lugar.</p>" : ""}</div><label class="search-box">${icon("search")}<input id="food-search" type="search" placeholder="${search ? "O que você quer pedir?" : "Busque por restaurante ou comida"}" aria-label="Buscar restaurantes ou comida" value="${esc(ui.query)}"></label></div>
+    ${!favorites ? `<div class="food-categories ${search ? "search-categories" : ""}">${categories}</div>` : ""}
+    <div class="spread food-section-heading"><h2>${favorites ? "Restaurantes salvos" : ui.category === "Todos" ? "Restaurantes para você" : ui.category}</h2><button class="text-btn small" data-action="sort">Ordenar ${icon("down")}</button></div><div class="chips"><button class="pill ${ui.filter === "all" && ui.category === "Todos" ? "active" : ""}" data-action="clear-filters">${icon("filter")}Todos</button><button class="pill ${ui.filter === "free" ? "active" : ""}" data-action="filter" data-id="free">Entrega grátis</button><button class="pill ${ui.filter === "fast" ? "active" : ""}" data-action="filter" data-id="fast">Até 30 min</button><button class="pill ${ui.sort === "rating" ? "active" : ""}" data-action="sort-rating">${icon("star")}Melhor avaliação</button></div><div id="restaurant-results">${restaurantResults(favorites)}</div>`;
 }
 function foodRestaurant(r) {
-  return `<a class="back" href="#/ifood">${icon("back")}Restaurantes</a><div class="restaurant-banner">${foodImg(r.img)}<span class="badge">${r.tag}</span></div><div class="restaurant-heading"><div class="spread"><h1>${r.name}</h1><button class="icon-btn fave ${state.favorites.includes(r.id) ? "active" : ""}" data-action="favorite" data-id="${r.id}" aria-label="Favoritar restaurante">${icon("heart")}</button></div><p>${r.description}</p><div class="restaurant-details"><span class="rating">★ ${r.rating} <span class="muted">(avaliação ilustrativa)</span></span><span>${r.category}</span><span>${r.time} min</span><span class="${r.delivery ? "" : "free"}">${r.delivery ? money(r.delivery) + " de entrega" : "Entrega grátis"}</span><span>Mínimo ${money(r.min)}</span></div></div><div class="notice" style="margin-bottom:25px">${icon("gift")} Use <strong>BEMVINDO</strong> e ganhe 10% de desconto, até R$ 10, no seu pedido de demonstração.</div><h2 style="margin:26px 0 18px">Feito para dar vontade</h2><div class="menu-grid">${r.products.map((p) => `<button class="product-card" data-action="product" data-restaurant="${r.id}" data-id="${p.id}"><span class="grow">${p.popular ? '<span class="badge">MAIS PEDIDO</span>' : ""}<h3>${p.name}</h3><p>${p.description}</p><span class="price">${money(p.price)}</span></span>${foodImg(p.img)}</button>`).join("")}</div>`;
+  const dishes = r.products.filter((p) => p.id !== "soda"),
+    drinks = r.products.filter((p) => p.id === "soda");
+  const cards = (products) =>
+    products
+      .map(
+        (p) =>
+          `<button class="product-card" data-action="product" data-restaurant="${r.id}" data-id="${p.id}"><span class="grow">${p.popular ? '<span class="badge popular-badge">MAIS PEDIDO</span>' : ""}<h3>${p.name}</h3><p>${p.description}</p><span class="price">${money(p.price)}</span></span>${foodImg(p.img)}</button>`,
+      )
+      .join("");
+  return `<div class="restaurant-nav"><a class="icon-btn" href="#/ifood" aria-label="Voltar aos restaurantes">${icon("back")}</a><span>${r.name}</span><button class="icon-btn" data-action="restaurant-info" data-id="${r.id}" aria-label="Informações do restaurante">${icon("info")}</button><button class="icon-btn fave ${state.favorites.includes(r.id) ? "active" : ""}" data-action="favorite" data-id="${r.id}" aria-label="Favoritar restaurante" aria-pressed="${state.favorites.includes(r.id)}">${icon("heart")}</button></div>
+    <div class="restaurant-banner">${foodImg(r.img)}<span class="restaurant-identity">${foodImg(r.img)}</span></div>
+    <div class="restaurant-heading"><button class="restaurant-title" data-action="restaurant-info" data-id="${r.id}"><h1>${r.name}</h1>${icon("arrow")}</button><p>${r.category} · 1,2 km · Mínimo ${money(r.min)}</p><div class="restaurant-rating"><span class="rating">${icon("star")} ${r.rating}</span><span>Avaliação ilustrativa</span><button data-action="restaurant-info" data-id="${r.id}">Ver mais ${icon("arrow")}</button></div><button class="delivery-selector" data-action="address"><span>${icon("location")} Entrega</span><strong>${r.time} min <i>•</i> <span class="${r.delivery ? "" : "free"}">${r.delivery ? money(r.delivery) : "Grátis"}</span></strong>${icon("down")}</button></div>
+    <button class="restaurant-coupon" data-action="coupons">${icon("gift")}<span><strong>10% de desconto pra você</strong><small>Use BEMVINDO · até R$ 10</small></span>${icon("arrow")}</button>
+    <nav class="menu-tabs" aria-label="Categorias do cardápio"><a href="#menu-dishes" data-menu-scroll="menu-dishes">Mais pedidos</a><a href="#menu-dishes" data-menu-scroll="menu-dishes">Cardápio</a>${drinks.length ? '<a href="#menu-drinks" data-menu-scroll="menu-drinks">Bebidas</a>' : ""}</nav>
+    <section class="menu-section" id="menu-dishes"><h2>Mais pedidos</h2><p>Os favoritos de quem pede por aqui</p><div class="menu-grid">${cards(dishes)}</div></section>${drinks.length ? `<section class="menu-section" id="menu-drinks"><h2>Bebidas</h2><div class="menu-grid">${cards(drinks)}</div></section>` : ""}`;
 }
 function cartLines() {
   return state.cart
@@ -385,19 +440,16 @@ function openCart() {
   if (!state.cart.length || !r) {
     openModal(
       "Sua sacola",
-      empty(
-        "Sua sacola está vazia",
-        "Escolha um restaurante e adicione seus favoritos.",
-        "explore-food",
-        "Ver restaurantes",
-      ),
+      `<div class="empty-bag-art">${icon("bag")}</div>${empty("Sua sacola está vazia", "Adicione itens de um restaurante para começar.", "explore-food", "Ver restaurantes")}`,
+      "cart-dialog",
     );
     return;
   }
   const t = totals();
   openModal(
     "Sua sacola",
-    `<p class="small muted">Seu pedido em <strong>${r.name}</strong></p>${cartLines()}<form id="coupon-form" class="coupon"><input class="field" name="coupon" aria-label="Código do cupom" placeholder="Cupom de desconto" value="${esc(state.coupon)}" maxlength="30"><button class="btn secondary compact" type="submit">Aplicar</button></form><p class="small muted" style="margin-top:8px">Experimente BEMVINDO: 10% até R$ 10.</p>${state.coupon ? motion("ifood", "outline_cupom_aplicado", "coupon-motion", false) : ""}${totalsHTML(t)}${t.subtotal < r.min ? `<p class="error">Faltam ${money(r.min - t.subtotal)} para o pedido mínimo.</p>` : ""}${btn("Escolher entrega e pagamento", "checkout", "red full", t.subtotal < r.min ? "disabled" : "")}<p class="demo-note" style="margin-top:12px">Catálogo fictício. Nenhuma compra real.</p>`,
+    `<div class="bag-restaurant"><small>SEU PEDIDO EM</small><h2>${r.name}</h2><a href="#/ifood/restaurant/${r.id}">Ver cardápio ${icon("arrow")}</a></div><div class="bag-items">${cartLines()}</div><button class="add-more-items" data-action="continue-shopping" data-id="${r.id}">Adicionar mais itens</button><div class="bag-divider"></div><div class="coupon-label">${icon("gift")}<strong>Cupom</strong><span>10% até R$ 10</span></div><form id="coupon-form" class="coupon"><input class="field" name="coupon" aria-label="Código do cupom" placeholder="Digite BEMVINDO" value="${esc(state.coupon)}" maxlength="30"><button class="btn secondary compact" type="submit">Aplicar</button></form>${state.coupon ? motion("ifood", "outline_cupom_aplicado", "coupon-motion", false) : ""}${totalsHTML(t)}${t.subtotal < r.min ? `<p class="error">Faltam ${money(r.min - t.subtotal)} para o pedido mínimo.</p>` : ""}<div class="bag-checkout-bar"><span><small>Total com entrega</small><strong>${money(t.total)}</strong></span>${btn("Escolher entrega e pagamento", "checkout", "red", t.subtotal < r.min ? "disabled" : "")}</div><p class="demo-note app-footnote">Catálogo de demonstração · Sem cobrança</p>`,
+    "cart-dialog",
   );
 }
 function foodCheckout() {
@@ -409,16 +461,17 @@ function foodCheckout() {
       "explore-food",
       "Ver restaurantes",
     );
-  return `<a class="back" href="#/ifood/restaurant/${r.id}">${icon("back")}Continuar comprando</a><h1 style="margin-bottom:28px">Falta pouco para pedir</h1><div class="checkout-grid"><section class="stack"><div class="surface"><div class="spread"><h2>Endereço de entrega</h2><button class="text-btn small" data-action="address">Alterar</button></div><div class="row" style="margin:22px 0 10px">${icon("pin")}<div><h3>${esc(addressText())}</h3><p class="small muted">${esc(state.address.detail) || "Bela Vista, São Paulo — SP"}</p></div></div><span class="badge green">${r.time} min · Entrega padrão</span></div><div class="surface"><h2 style="margin-bottom:20px">Pagamento</h2><div class="stack">${["Pix de demonstração", "Cartão de demonstração", "Dinheiro na entrega"].map((p, i) => `<label class="payment-option"><input type="radio" name="food-payment" value="${p}" ${ui.foodPayment === p ? "checked" : ""}>${icon(i === 2 ? "wallet" : "card")}<span>${p}</span></label>`).join("")}</div><p class="demo-note" style="margin-top:18px">Não é necessário informar dados bancários. Nenhum valor será cobrado.</p></div></section><aside class="surface"><p class="small muted">SEU PEDIDO EM</p><h3 style="margin-top:8px">${r.name}</h3>${cartLines()}${totalsHTML(totals())}${btn("Fazer pedido de demonstração", "place-order", "red full", totals().subtotal < r.min ? "disabled" : "")}<button class="text-btn small" data-action="cart">Editar sacola ou cupom</button></aside></div>`;
+  return `<div class="food-page-top"><a class="icon-btn" href="#/ifood/restaurant/${r.id}" aria-label="Continuar comprando">${icon("back")}</a><h1>Falta pouco para pedir</h1></div><div class="checkout-grid"><section class="stack checkout-sections"><div class="checkout-section"><h2>Entrega</h2><button class="checkout-address" data-action="address">${icon("pin")}<span><strong>${esc(addressText())}</strong><small>${esc(state.address.detail) || "Bela Vista, São Paulo — SP"}</small></span>${icon("arrow")}</button><div class="delivery-method"><span><strong>Padrão</strong><small>Hoje, ${r.time} min</small></span><strong class="${r.delivery ? "" : "free"}">${r.delivery ? money(r.delivery) : "Grátis"}</strong><span class="selected-radio"></span></div></div><div class="checkout-section"><h2>Pagamento</h2><p class="section-subtitle">Pague pelo app</p><div class="payment-list">${["Pix de demonstração", "Cartão de demonstração", "Dinheiro na entrega"].map((p, i) => `<label class="payment-option">${icon(i === 2 ? "wallet" : "card")}<span>${p}<small>${i === 0 ? "Aprovação instantânea na simulação" : i === 1 ? "Sem inserir dados de cartão" : "Pagamento demonstrativo"}</small></span><input type="radio" name="food-payment" value="${p}" ${ui.foodPayment === p ? "checked" : ""}></label>`).join("")}</div></div></section><aside class="checkout-summary"><div class="bag-restaurant"><small>SEU PEDIDO EM</small><h2>${r.name}</h2></div>${cartLines()}<button class="coupon-summary" data-action="cart">${icon("gift")}<span>${state.coupon ? "Cupom BEMVINDO aplicado" : "Adicionar cupom"}</span>${icon("arrow")}</button>${totalsHTML(totals())}<div class="checkout-confirm">${btn("Fazer pedido de demonstração", "place-order", "red full", totals().subtotal < r.min ? "disabled" : "")}<p class="demo-note">Nenhuma compra ou cobrança será realizada.</p></div></aside></div>`;
 }
 function foodOrders() {
-  return `<h1>Meus pedidos</h1><p class="muted small" style="margin:12px 0 25px">Seus bons momentos, todos por aqui.</p>${state.orders.length ? state.orders.map((o) => `<a class="order-item" href="#/ifood/order/${o.id}">${foodImg(o.img)}<span class="grow"><span class="badge ${o.status === "completed" ? "green" : o.status === "cancelled" ? "" : "red"}">${orderLabels[o.status]}</span><h3 style="margin-top:8px">${esc(o.restaurant)}</h3><p>${dateLabel(o.created)} · ${o.items.reduce((s, i) => s + i.qty, 0)} itens</p></span><strong class="small">${money(o.total)}</strong>${icon("arrow")}</a>`).join("") : empty("Bateu a fome?", "Quando você fizer um pedido, ele vai aparecer aqui.", "explore-food", "Explorar restaurantes")}`;
+  return `<div class="food-page-top"><h1>Pedidos</h1></div><div class="orders-title"><h2>Histórico</h2><span>Seus últimos pedidos</span></div>${state.orders.length ? state.orders.map((o) => `<article class="native-order-card"><p class="order-date">${dateLabel(o.created)}</p><a class="order-store" href="#/ifood/order/${o.id}">${foodImg(o.img)}<span><h3>${esc(o.restaurant)}</h3><small>${icon(o.status === "cancelled" ? "close" : "check")}${orderLabels[o.status]} · Nº ${o.id.slice(-5).toUpperCase()}</small></span>${icon("arrow")}</a><div class="order-product-summary">${o.items.map((i) => `<span><b>${i.qty}</b>${esc(i.name)}</span>`).join("")}</div><div class="order-card-actions"><a href="#/ifood/order/${o.id}">Ver detalhes</a><button data-action="reorder" data-id="${o.id}">Pedir de novo</button></div></article>`).join("") : `<div class="food-orders-empty"><span class="empty-bag-art">${icon("receipt")}</span><h2>Que tal fazer seu primeiro pedido?</h2><p>Seu histórico vai aparecer aqui.</p>${btn("Explorar restaurantes", "explore-food", "red")}</div>`}`;
 }
 function foodOrder(o) {
-  const statuses = ["confirmed", "preparing", "delivering", "completed"];
-  const n = statuses.indexOf(o.status),
-    terminal = ["completed", "cancelled"].includes(o.status);
-  return `<div class="order-track"><a class="back" href="#/ifood/orders">${icon("back")}Meus pedidos</a><div class="spread"><span class="badge red">Pedido #${o.id.slice(-5).toUpperCase()}</span><span class="small muted">${dateLabel(o.created)}</span></div><h1 style="margin:20px 0 10px">${orderLabels[o.status]}</h1><p class="muted small">${terminal ? "Obrigada por experimentar esta demonstração." : "Acompanhe cada etapa até chegar até você."}</p><div class="row" style="margin:25px 0">${foodImg(o.img)}<h3>${esc(o.restaurant)}</h3></div>${!terminal ? motion("ifood", "loading", "order-loader") : ""}${o.status !== "cancelled" ? `<div class="timeline">${statuses.map((s, i) => `<div class="timeline-row ${i <= n ? "done" : ""}"><span class="timeline-dot">${i <= n ? icon("check") : ""}</span><div><h3>${orderLabels[s]}</h3><p>${["O restaurante recebeu o pedido.", "Tudo sendo feito com cuidado.", "Seu pedido está a caminho.", "Agora é só aproveitar!"][i]}</p></div></div>`).join("")}</div>` : ""}<div class="surface"><div class="row">${icon("pin")}<div><h3 class="small">${esc(o.address)}</h3><p class="small muted">${esc(o.payment)}</p></div></div><div class="divider"></div>${o.items.map((i) => `<div class="spread small" style="margin:12px 0"><span>${i.qty}× ${esc(i.name)}</span><strong>${money((i.price + i.extras.reduce((s, e) => s + e.price, 0)) * i.qty)}</strong></div>`).join("")}<div class="divider"></div><div class="spread"><strong>Total pago na demonstração</strong><strong>${money(o.total)}</strong></div></div><div class="stack" style="margin-top:24px">${!terminal ? `${btn({ confirmed: "Simular início do preparo", preparing: "Simular saída para entrega", delivering: "Simular entrega concluída" }[o.status], "advance-order", "red full", 'data-id="' + o.id + '"')}<button class="text-btn" data-action="cancel-order" data-id="${o.id}">Cancelar pedido</button>` : btn("Pedir novamente", "reorder", "red full", 'data-id="' + o.id + '"')}</div><p class="demo-note" style="margin-top:18px">Este acompanhamento é simulado. Não há entrega ou cobrança real.</p></div>`;
+  const statuses = ["confirmed", "preparing", "delivering", "completed"],
+    n = statuses.indexOf(o.status),
+    terminal = ["completed", "cancelled"].includes(o.status),
+    r = restaurants.find((r) => r.id === o.restaurantId);
+  return `<div class="order-track"><div class="food-page-top"><a class="icon-btn" href="#/ifood/orders" aria-label="Meus pedidos">${icon("back")}</a><span>${esc(o.restaurant)}</span><button class="text-btn" data-action="help">Ajuda</button></div><div class="order-arrival"><small>${terminal ? "RESUMO DO PEDIDO" : "PREVISÃO DE ENTREGA"}</small>${!terminal ? `<strong>${r?.time || "25–35"} <span>min</span></strong>` : `<span class="order-terminal-icon">${icon(o.status === "completed" ? "check" : "close")}</span>`}<h1>${orderLabels[o.status]}</h1><p>${{ confirmed: "O restaurante recebeu seu pedido.", preparing: "Tudo sendo preparado com cuidado.", delivering: "Falta pouco para chegar até você.", completed: "Bom apetite! Obrigado por experimentar.", cancelled: "Nenhum valor foi cobrado." }[o.status]}</p>${!terminal ? motion("ifood", "loading", "order-loader") : ""}</div>${o.status !== "cancelled" ? `<div class="food-order-progress">${statuses.map((s, i) => `<span class="${i <= n ? "done" : ""}" aria-label="${orderLabels[s]}"></span>`).join("")}</div>` : ""}<div class="order-store-summary">${foodImg(o.img)}<span><strong>${esc(o.restaurant)}</strong><small>Pedido #${o.id.slice(-5).toUpperCase()}</small></span>${icon("arrow")}</div><div class="order-delivery-address">${icon("pin")}<span><strong>Entregar em</strong><p>${esc(o.address)}</p></span></div><details class="order-details" open><summary>Detalhes do pedido ${icon("down")}</summary>${o.items.map((i) => `<div class="order-detail-row"><span><b>${i.qty}×</b> ${esc(i.name)}</span><strong>${money((i.price + i.extras.reduce((s, e) => s + e.price, 0)) * i.qty)}</strong></div>`).join("")}<div class="spread order-paid"><span>Total da demonstração</span><strong>${money(o.total)}</strong></div><p>${icon("card")} ${esc(o.payment)}</p></details><div class="simulation-controls">${!terminal ? `${btn({ confirmed: "Simular início do preparo", preparing: "Simular saída para entrega", delivering: "Simular entrega concluída" }[o.status], "advance-order", "red full", 'data-id="' + o.id + '"')}<button class="text-btn" data-action="cancel-order" data-id="${o.id}">Cancelar pedido</button>` : btn("Pedir novamente", "reorder", "red full", 'data-id="' + o.id + '"')}</div><p class="demo-note app-footnote">Acompanhamento simulado · Sem entrega ou cobrança real</p></div>`;
 }
 function renderFood(parts) {
   const page = parts[1] || "";
@@ -448,7 +501,7 @@ function renderFood(parts) {
   } else if (page === "profile") content = profile("ifood");
   else content = foodHome(page === "search", page === "favorites");
   const t = totals();
-  app.innerHTML = `<div class="ifood">${foodHeader(page)}<main class="food-main ${t.count ? "has-cart" : ""}">${content}<footer class="food-footer"><span>Experiência de demonstração · Catálogo fictício · Não realiza pedidos reais</span><a href="./assets/PHOTO-CREDITS.txt" target="_blank" rel="noopener">Créditos das fotos</a></footer></main>${bottomNav("ifood", page)}${t.count && page !== "checkout" ? `<button class="mobile-cart" data-action="cart"><span>${t.count}</span><strong>Ver sacola</strong><span>${money(t.total)}</span></button>` : ""}</div>`;
+  app.innerHTML = `<div class="ifood" data-page="${page || "home"}">${foodHeader(page)}<main class="food-main ${t.count ? "has-cart" : ""}">${content}<footer class="food-footer"><span>Experiência de demonstração · Catálogo fictício · Não realiza pedidos reais</span><a href="./assets/PHOTO-CREDITS.txt" target="_blank" rel="noopener">Créditos das fotos</a></footer></main>${bottomNav("ifood", page)}${t.count && page !== "checkout" ? `<button class="mobile-cart" data-action="cart"><span>${t.count}</span><strong>Ver sacola</strong><span>${money(t.total)}</span></button>` : ""}</div>`;
   document.title = "iFood · Demonstração web";
 }
 function render() {
@@ -492,7 +545,8 @@ function openProduct(restaurantId, productId) {
   const opts = r.id === "burger" && p.id !== "soda" ? extras : [];
   openModal(
     p.name,
-    `${p.img ? foodImg(p.img, "product-photo") : ""}<p class="modal-description">${p.description}</p><strong>${money(p.price)}</strong>${opts.length ? `<h3 style="margin-top:25px">Do seu jeito</h3><p class="small muted">Adicionais opcionais</p>${opts.map((e) => `<label class="option-row"><input type="checkbox" name="extra" value="${e.id}"><span>${e.name}</span><span class="price">+ ${money(e.price)}</span></label>`).join("")}` : ""}<label style="margin-top:22px">Alguma observação?<textarea id="product-note" class="field" rows="2" placeholder="Ex.: retirar cebola, enviar talheres..." maxlength="200"></textarea></label><div class="modal-actions"><div class="qty"><button data-action="product-minus" aria-label="Diminuir quantidade">${icon("minus")}</button><span id="product-qty">1</span><button data-action="product-plus" aria-label="Aumentar quantidade">${icon("plus")}</button></div>${btn("Adicionar · " + money(p.price), "add-cart", "red grow", 'id="add-product-button"')}</div>`,
+    `${p.img ? foodImg(p.img, "product-photo") : `<div class="product-photo product-no-photo">${icon("food")}</div>`}<div class="product-detail-copy"><h2>${p.name}</h2><p class="modal-description">${p.description}</p><strong class="product-base-price">${money(p.price)}</strong><div class="product-store">${foodImg(r.img)}<span>${r.name}</span>${icon("arrow")}</div></div>${opts.length ? `<div class="product-section-heading"><h3>Deixe do seu jeito</h3><p>Escolha seus adicionais</p><span>Opcional</span></div><div class="product-options">${opts.map((e) => `<label class="option-row"><span>${e.name}</span><span class="price">+ ${money(e.price)}</span><input type="checkbox" name="extra" value="${e.id}"></label>`).join("")}</div>` : ""}<div class="product-note-section"><label for="product-note">${icon("receipt")} Alguma observação?</label><textarea id="product-note" class="field" rows="3" placeholder="Ex.: tirar a cebola, ponto da carne..." maxlength="200"></textarea><small>0–200 caracteres</small></div><div class="modal-actions"><div class="qty"><button data-action="product-minus" aria-label="Diminuir quantidade">${icon("minus")}</button><span id="product-qty">1</span><button data-action="product-plus" aria-label="Aumentar quantidade">${icon("plus")}</button></div>${btn("Adicionar · " + money(p.price), "add-cart", "red grow", 'id="add-product-button"')}</div>`,
+    "product-dialog",
   );
 }
 function chosenExtras() {
@@ -542,11 +596,104 @@ function confirmCancel(kind, id) {
   );
 }
 document.addEventListener("click", (event) => {
+  const sectionLink = event.target.closest("[data-menu-scroll]");
+  if (sectionLink) {
+    event.preventDefault();
+    document
+      .getElementById(sectionLink.dataset.menuScroll)
+      ?.scrollIntoView({
+        behavior: matchMedia("(prefers-reduced-motion:reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+    return;
+  }
   const el = event.target.closest("[data-action]");
   if (!el || el.disabled) return;
   const a = el.dataset.action;
   const id = el.dataset.id;
   switch (a) {
+    case "recent-destination": {
+      const p = places.find((p) => p.id === id);
+      if (!p) break;
+      ui.from = ui.from || places[0];
+      ui.fromText = ui.from.name;
+      if (p.id === ui.from.id) {
+        toast("Escolha um destino diferente da partida.");
+        break;
+      }
+      ui.to = p;
+      ui.toText = p.name;
+      ui.placeFocus = null;
+      ui.stage = "select";
+      if (route()[0] !== "uber" || route()[1]) {
+        ui.pendingRecent = true;
+        location.hash = "#/uber";
+      }
+      render();
+      break;
+    }
+    case "service-category":
+      ui.rideType = id;
+      ui.stage = "search";
+      ui.to = null;
+      ui.toText = "";
+      go("uber");
+      break;
+    case "activity-filter":
+      openModal(
+        "Suas viagens",
+        `<p class="modal-description">${state.rides.length} viagens nesta demonstração.</p><div class="payment-list"><button class="account-row" data-action="close-modal">${icon("check")}<span>Todas as viagens</span></button></div>`,
+      );
+      break;
+    case "continue-shopping":
+      closeModal(true);
+      go("ifood/restaurant/" + id);
+      break;
+    case "restaurant-info": {
+      const r = restaurants.find((r) => r.id === id);
+      if (r)
+        openModal(
+          r.name,
+          `<div class="restaurant-about">${foodImg(r.img)}<h3>${r.category}</h3><p>${r.description}</p><div class="account-row">${icon("clock")}<span>${r.time} minutos</span></div><div class="account-row">${icon("location")}<span>Entrega ${r.delivery ? money(r.delivery) : "grátis"}</span></div><div class="account-row">${icon("bag")}<span>Pedido mínimo ${money(r.min)}</span></div><p class="demo-note">Restaurante fictício do catálogo de demonstração.</p></div>`,
+        );
+      break;
+    }
+    case "food-payment":
+      openModal(
+        "Formas de pagamento",
+        `<div class="payment-list">${["Pix de demonstração", "Cartão de demonstração", "Dinheiro na entrega"].map((p) => `<button class="account-row" data-action="choose-food-payment" data-payment="${p}">${icon(p === "Dinheiro na entrega" ? "wallet" : "card")}<span>${p}</span>${ui.foodPayment === p ? icon("check") : ""}</button>`).join("")}</div><p class="demo-note">Não insira dados bancários. Nenhuma cobrança é realizada.</p>`,
+      );
+      break;
+    case "choose-food-payment":
+      ui.foodPayment = el.dataset.payment;
+      closeModal();
+      toast("Forma de pagamento selecionada.");
+      break;
+    case "help":
+      openModal(
+        "Como podemos ajudar?",
+        `<div class="help-topics"><details open><summary>Como funciona esta experiência?</summary><p>Viagens e pedidos são simulações locais. Você pode avançar cada etapa pelos controles de demonstração.</p></details><details><summary>Onde ficam meus dados?</summary><p>Histórico, endereço, favoritos e perfil ficam apenas neste navegador.</p></details><details><summary>Há cobrança ou entrega real?</summary><p>Não. Nenhum valor é cobrado e nenhum pedido ou viagem é enviado às empresas.</p></details></div>`,
+      );
+      break;
+    case "privacy":
+      openModal(
+        "Privacidade",
+        `<div class="privacy-art">${icon("shield")}</div><h3>Seus dados ficam com você</h3><p class="modal-description">Esta demonstração guarda suas preferências neste navegador. Não há cadastro nas empresas. Os tiles do mapa são solicitados ao OpenStreetMap.</p>`,
+      );
+      break;
+    case "safety":
+      openModal(
+        "Recursos de segurança",
+        `<div class="safety-hero">${motion("uber", "safety-shield-animation", "safety-art", false)}</div><h3>Sua segurança importa</h3><div class="account-row">${icon("shield")}<span><strong>Confira as informações da viagem</strong><small>Nome, veículo e placa aparecem no acompanhamento.</small></span></div><div class="account-row">${icon("pin")}<span><strong>Acompanhe seu trajeto</strong><small>Origem e destino ficam visíveis no mapa.</small></span></div><p class="demo-note">Esta demonstração não aciona assistência nem serviços de emergência.</p>`,
+      );
+      break;
+    case "driver-chat":
+      openModal(
+        "Rafael S.",
+        `<div class="driver-message">${icon("phone")}<h3>Motorista de demonstração</h3><p>O contato com motoristas não está conectado nesta experiência.</p></div>`,
+      );
+      break;
     case "close-modal":
       closeModal();
       break;
@@ -633,7 +780,8 @@ document.addEventListener("click", (event) => {
     case "uber-payment":
       openModal(
         "Forma de pagamento",
-        `<p class="modal-description">Escolha uma opção para a demonstração. Não há cobrança nem necessidade de dados bancários.</p><div class="stack">${["Dinheiro", "Pix de demonstração", "Cartão de demonstração"].map((p) => btn(icon(p === "Dinheiro" ? "wallet" : "card") + p, "select-uber-payment", "secondary full", `data-payment="${p}"`)).join("")}</div>`,
+        `<div class="wallet-balance"><span>Uber Cash</span><strong>R$ 0,00</strong><small>Saldo de demonstração</small></div><h3 class="wallet-heading">Formas de pagamento</h3><div class="payment-list">${["Dinheiro", "Pix de demonstração", "Cartão de demonstração"].map((p) => `<button class="account-row payment-method-row" data-action="select-uber-payment" data-payment="${p}">${icon(p === "Dinheiro" ? "wallet" : "card")}<span>${p}</span>${ui.payment === p ? icon("check") : ""}</button>`).join("")}</div><p class="demo-note app-footnote">Nenhuma cobrança será realizada.</p>`,
+        "wallet-dialog",
       );
       break;
     case "select-uber-payment":
@@ -923,8 +1071,9 @@ document.addEventListener("click", (event) => {
       break;
     case "coupons":
       openModal(
-        "Um presente para você",
-        `<div class="notice">${icon("gift")} <strong>BEMVINDO</strong><p>10% de desconto, limitado a R$ 10, no subtotal da sacola. Válido apenas nesta demonstração.</p></div>${btn("Usar cupom", "use-coupon", "red full", 'style="margin-top:20px"')}`,
+        "Seus cupons",
+        `<p class="modal-description">Seu próximo pedido com desconto.</p><div class="coupon-ticket"><div class="coupon-ticket-heading">${icon("gift")}<span><strong>10% de desconto</strong><small>Até R$ 10 para aproveitar</small></span></div><div class="coupon-ticket-body"><strong>BEMVINDO</strong><p>Válido no subtotal da sacola, limitado a R$ 10. Uso disponível neste catálogo de demonstração.</p></div></div>${btn("Usar cupom", "use-coupon", "red full")}`,
+        "coupon-dialog",
       );
       break;
     case "use-coupon":
@@ -1028,13 +1177,11 @@ document.addEventListener("click", (event) => {
     case "food-service": {
       const service = el.dataset.service;
       if (service === "Restaurantes")
-        document
-          .querySelector(".food-topline")
-          ?.scrollIntoView({
-            behavior: matchMedia("(prefers-reduced-motion:reduce)").matches
-              ? "instant"
-              : "smooth",
-          });
+        document.querySelector(".food-topline")?.scrollIntoView({
+          behavior: matchMedia("(prefers-reduced-motion:reduce)").matches
+            ? "instant"
+            : "smooth",
+        });
       else if (service === "Hits") go("ifood/hits");
       else if (service === "Clube")
         document.querySelector(".club-coupon")?.click();
@@ -1181,7 +1328,9 @@ modal.addEventListener("cancel", (e) => {
 });
 window.addEventListener("hashchange", () => {
   closeModal(true);
-  if (route()[0] === "uber" && !route()[1]) ui.stage = "search";
+  if (route()[0] === "uber" && !route()[1] && !ui.pendingRecent)
+    ui.stage = "search";
+  ui.pendingRecent = false;
   render();
   window.scrollTo({ top: 0, behavior: "instant" });
 });

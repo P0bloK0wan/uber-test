@@ -1,0 +1,31 @@
+[
+  {
+    "name": "60fps",
+    "url": "https://60fps.design/apps/uber",
+    "status": 200,
+    "bytes": 979631
+  },
+  {
+    "name": "uber-design",
+    "url": "https://www.uber.design/",
+    "status": 200,
+    "bytes": 12727
+  },
+  {
+    "name": "uber-brand",
+    "url": "https://brand.uber.com/",
+    "status": 200,
+    "bytes": 1897
+  },
+  {
+    "name": "baseweb-motion",
+    "url": "https://raw.githubusercontent.com/uber/baseweb/main/src/themes/shared/motion.ts",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "name": "baseweb-typography",
+    "url": "https://raw.githubusercontent.com/uber/baseweb/main/src/themes/shared/typography.ts",
+    "status": 200,
+    "bytes": 5075
+  }
+]

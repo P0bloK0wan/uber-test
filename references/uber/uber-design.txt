@@ -1,0 +1,82 @@
+
+
+<!doctype html>
+<!-- Created in Figma Sites -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <noscript>
+      <style>
+        #container {
+          display: none;
+        }
+      </style>
+    </noscript>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preload" href="/_runtimes/sites-runtime.e6cc282b962b2fa91f3f69d410687eeb3b54bb71f3d66993b06dd6fe39b9b53b.js" as="script" crossorigin />
+    <link rel="preload" href="/_components/v2/cd66702a8107e8252dfd83e5ffcee17958857e8b.js" as="script" crossorigin />
+    <link rel="preload" href="/_json/70d9c8ff-1b8e-484b-8f30-4e174c269a21/_index.json" as="fetch" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NS75BQHZJZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NS75BQHZJZ');
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied'
+      });
+    </script>
+    <style id="reset-css"> @layer figreset,figoverridable,reset,theme,base,figutils,components,utilities;@layer figoverridable{:root{font-synthesis:none}}@layer figutils{:root{--banner-height:48px;--banner-height-v2:40px;--full-height-with-banner:calc(100dvh - var(--banner-height))}@media (max-width:600px){.banner-v2-container{left:0 !important;right:0 !important;margin:0 auto !important}}.wrapper-with-banner .min-h-screen{min-height:var(--full-height-with-banner)}.wrapper-with-banner .h-screen{height:var(--full-height-with-banner)}}@layer figreset{:root{font-family:var( --default-font-family,ui-sans-serif,system-ui,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji' )}html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased;width:100%}body{margin:0;width:100%}body:has([data-page-overflowx='hidden']){overflow-x:hidden}body:has([data-page-overflowx='auto']){overflow-x:auto}}@layer figutils{#container{width:100%}}@layer figreset{*,*:before,*:after{box-sizing:border-box}a{color:inherit;text-decoration:none}button{border:none;background:none;padding:0}h1,h2,h3,h4,h5,h6,p{font-size:inherit;font-weight:inherit}blockquote,dl,dd,h1,h2,h3,h4,h5,h6,hr,figure,p,pre{margin:0}ol,ul,menu{list-style:none;margin:0;padding-inline-start:0}}@layer figutils{:is(.textContents ul,ul.textContents) > li:before{content:'\2022';margin-left:-1.5em;display:inline-block;text-align:center;width:1.5em;-webkit-background-clip:var(--list-marker-background-clip);-webkit-text-fill-color:var(--list-marker-text-fill-color);background-clip:var(--list-marker-background-clip);color:var(--list-marker-color);font-size:var(--list-marker-font-size);line-height:var(--list-marker-line-height);vertical-align:var(--list-marker-vertical-align)}:is(.textContents ol,ol.textContents) > li::marker{color:var(--list-marker-color);font-size:var(--list-marker-font-size);line-height:var(--list-marker-line-height);vertical-align:var(--list-marker-vertical-align)}:is(.textContents,.textContents *).adjustLetterSpacing:after{content:'';margin-left:calc(var(--letter-spacing) * -1)}}@layer figutils{#container .embed{border:none}}@layer figutils{#container .marquee-container{overflow-x:hidden;display:flex;flex-direction:row;position:relative;width:var(--width);transform:var(--transform);&:hover div{animation-play-state:var(--pause-on-hover)}&:active div{animation-play-state:var(--pause-on-click)}&:focus-within > *{animation-play-state:paused !important}}#container .marquee{flex:0 0 auto;min-width:var(--min-width);display:flex;flex-direction:row;align-items:center;animation:scroll var(--duration) linear var(--delay) var(--iteration-count);animation-delay:var(--delay);animation-direction:var(--direction);animation-timing-function:var(--timing-function)}#container .marquee.reduced-motion{@media (prefers-reduced-motion:reduce){animation:none}}@keyframes scroll{0%{transform:translateX(0%)}100%{transform:translateX(-100%)}}#container .marquee-initial-child-container{flex:0 0 auto;display:flex;min-width:auto;flex-direction:row;align-items:center}#container .marquee-child{transform:var(--transform)}}@layer figutils{.code-behavior-wrapper > *{width:100%;height:100%}}@layer figreset{:root{--100dvw:100vw;--100dvh:100vh}@supports (width:100dvw){:root{--100dvw:100dvw;--100dvh:100dvh}}}@layer figutils{.bypass-link{position:fixed;top:16px;left:0;right:0;display:flex;justify-content:center;align-items:center;opacity:0;pointer-events:none}.bypass-link:focus-within{opacity:1;z-index:10000}.bypass-link > a{background-color:#000;color:#fff;border:1px solid #fff;padding:12px 16px;font-size:16px;border-radius:12px;pointer-events:auto}}@layer figreset{:root{text-align:left;button{text-align:left}}}</style><style id="font-faces-jmzbxz"> @font-face{font-family:"Uber Move:Bold";font-style:normal;src:url("/_user_fonts/v1/58fe8b650f7528290bdf96a750de8d9f423703fc");font-display:block}@font-face{font-family:"Uber Move";font-style:Bold;src:url("/_user_fonts/v1/58fe8b650f7528290bdf96a750de8d9f423703fc");font-display:block;font-weight:700}@font-face{font-family:"Uber Move Text:Medium";font-style:normal;src:url("/_user_fonts/v1/cfcdb1e79186df6bedb68c589ee32f7ed2d6aaf9");font-display:block}@font-face{font-family:"Uber Move Text";font-style:Regular;src:url("/_user_fonts/v1/181a1224f264ad8c784019e692fc8e67077160bd");font-display:block;font-weight:400}@font-face{font-family:"Uber Move Text:Regular";font-style:normal;src:url("/_user_fonts/v1/181a1224f264ad8c784019e692fc8e67077160bd");font-display:block}</style><style id="breakpoint-css">@media (width < 1536px){[data-breakpoint-id="node-40_25"]{display:none !important}}@media (width >= 1536px) or (width < 800px){[data-breakpoint-id="node-40_41"]{display:none !important}}@media (width >= 800px){[data-breakpoint-id="node-40_29"]{display:none !important}}</style><style id="body-background-color">@media (max-width: 799px) { body:has([data-breakpoint-id="node-40_29"]) { background-color: #282828 } }
+@media (max-width: 1535px), (min-width: 800px) { body:has([data-breakpoint-id="node-40_41"]) { background-color: #282828 } }
+@media (min-width: 1536px) { body:has([data-breakpoint-id="node-40_25"]) { background-color: #282828 } }</style><style id="ssr-css">#container .css-i9h3z {position: relative; display: flex; flex-direction: column; align-items: flex-start;}#container .css-j6ldtg {min-width: var(--content-min-width); width: 100%; height: var(--content-min-height);}#container .css-shatam {--content-min-width: 100%; --content-min-height: max(var(--100dvh), 640px); align-content: stretch; overflow: clip; background-color: #282828;}#container .css-uwf2km {position: relative; flex: 1 0 0; display: block;}#container .css-1j74g {min-height: 1px; width: 100%;}#container .css-gxdil1 {overflow: clip;}#container .css-atsdvr {--content-min-width: 100%; --content-min-height: max(var(--100dvh), 768px); align-content: stretch; overflow: clip; background-color: #282828;}#container .css-8n7nil {--content-min-width: 100%; --content-min-height: max(var(--100dvh), 960px); align-content: stretch; overflow: clip; background-color: #282828;}</style><script>window.__serverRenderedCSSClassNames = {"css-i9h3z":"{\"position\":\"relative\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"flex-start\"}","css-j6ldtg":"{\"minWidth\":\"var(--content-min-width)\",\"width\":\"100%\",\"height\":\"var(--content-min-height)\"}","css-shatam":"{\"--content-min-width\":\"100%\",\"--content-min-height\":\"max(var(--100dvh), 640px)\",\"alignContent\":\"stretch\",\"overflow\":\"clip\",\"backgroundColor\":\"#282828\"}","css-uwf2km":"{\"position\":\"relative\",\"flex\":\"1 0 0\",\"display\":\"block\"}","css-1j74g":"{\"minHeight\":1,\"width\":\"100%\"}","css-gxdil1":"{\"overflowX\":\"clip\",\"overflowY\":\"clip\"}","css-atsdvr":"{\"--content-min-width\":\"100%\",\"--content-min-height\":\"max(var(--100dvh), 768px)\",\"alignContent\":\"stretch\",\"overflow\":\"clip\",\"backgroundColor\":\"#282828\"}","css-8n7nil":"{\"--content-min-width\":\"100%\",\"--content-min-height\":\"max(var(--100dvh), 960px)\",\"alignContent\":\"stretch\",\"overflow\":\"clip\",\"backgroundColor\":\"#282828\"}"}</script><meta id="meta-i3kia0" name="description" content="Discover Uber Design - showcasing our team, creative work, design events, and Base Design System. Explore how we shape experiences for millions worldwide."><meta id="meta-1khbs6" name="title" content="Uber Design team"><meta id="meta-yw3oin" name="robots" content="noindex"><meta id="meta-1ab1uk" name="twitter:card" content="summary_large_image"><meta id="meta-fnr44y" name="twitter:url" content="https://uber.design/"><meta id="meta-dqrjk1" name="twitter:title" content="Uber Design team"><meta id="meta-4mi1in" name="twitter:description" content="Discover Uber Design - showcasing our team, creative work, design events, and Base Design System. Explore how we shape experiences for millions worldwide."><meta id="meta-cpcwbe" name="twitter:image" content="https://uber.design/_assets/v11/0192fbe163daaf882ad98bad3bed8b049277b3b1.png"><meta id="meta-pnat3j" name="twitter:image:alt" content="Uber Design team"><meta id="meta-ikgldw" property="og:title" content="Uber Design team"><meta id="meta-lo0nca" property="og:description" content="Discover Uber Design - showcasing our team, creative work, design events, and Base Design System. Explore how we shape experiences for millions worldwide."><meta id="meta-zfz6ci" property="og:type" content="website"><meta id="meta-oncyjb" property="og:url" content="https://uber.design/"><meta id="meta-99mudn" property="og:image" content="https://uber.design/_assets/v11/0192fbe163daaf882ad98bad3bed8b049277b3b1.png"><meta id="meta-k6nrka" property="og:image:alt" content="Uber Design team"><meta id="meta-kvzl4h" property="og:site_name" content="Uber Design team"><link id="link-1arfm4" rel="icon" href="/_assets/v11/7ade46818746539bd5f88e61de8c29c07a07b1b8.png"><title id="title-ffolfz">Uber Design team</title>
+    <link rel="stylesheet" href="/_components/v2/cd66702a8107e8252dfd83e5ffcee17958857e8b.css">
+  </head>
+  <body>
+    
+    
+    <script data-template-id="country-code">window.__cf_country = "BR"</script>
+    <script type="module">
+      import {SitesRuntime} from '/_runtimes/sites-runtime.e6cc282b962b2fa91f3f69d410687eeb3b54bb71f3d66993b06dd6fe39b9b53b.js';
+      const sitesRuntime = new SitesRuntime({
+        container: document.getElementById('container'),
+        env: 'published',
+        bundleId: '70d9c8ff-1b8e-484b-8f30-4e174c269a21',
+        
+        loadComponentsOverNetwork: true,
+        assetsVersion: 'v11',
+        fontsVersion: 'v1',
+        videosVersion: 'v1',
+        codeComponentsVersion: 'v2',
+        withBaseStyles: true,
+        reportingDomain: "https://www.figma.com",
+        bundleCreationDate: '2026-10-03 12:50:30 UTC',
+        isFigmake: false,
+        enableMetaTags: true,
+        renderOptions: {
+          metronomeEnabled: true,
+          transform3dEnabled: false,
+        },
+      });
+    </script>
+    
+    <div id="container"><div data-page-overflowx="hidden" data-breakpoint-id="node-40_29" data-breakpoint="true" data-width="375" data-height="640" class="css-i9h3z css-j6ldtg css-shatam"><div class="css-uwf2km css-1j74g css-gxdil1 tailwind"></div></div><div data-page-overflowx="hidden" data-breakpoint-id="node-40_41" data-breakpoint="true" data-width="800" data-height="768" class="css-i9h3z css-j6ldtg css-atsdvr"><div class="css-uwf2km css-1j74g css-gxdil1 tailwind"></div></div><div data-page-overflowx="hidden" data-breakpoint-id="node-40_25" data-breakpoint="true" data-width="1536" data-height="960" class="css-i9h3z css-j6ldtg css-8n7nil"><div class="css-uwf2km css-1j74g css-gxdil1 tailwind"></div></div></div>
+    
+
+     <noscript data-nosnippet>
+      <main style="height: 100vh; width: 100vw; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+        <h1 style="font-size: 24px; padding: 8px; color: black">
+        This site requires JavaScript
+        </h1>
+        <p style="font-size: 16px; padding: 8px; color: #00000080">To view this website, enable JavaScript in your browser settings and reload the page.</p>
+        <form style="margin-top: 12px;" action="">
+          <button type="submit" style="font-size: 14px; color: black; border: 1px solid #0000001a; border-radius: 5px; width: 256px; height: 32px;">
+          Reload page
+          </button>
+        </form>
+      </main>
+    </noscript>
+  </body>
+</html>

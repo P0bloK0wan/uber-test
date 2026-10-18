@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-18",
+  "provider": "OSRM demonstration server, OpenStreetMap data",
+  "routes": {
+    "paulista/ibirapuera": {
+      "url": "https://router.project-osrm.org/route/v1/driving/-46.6559,-23.5614;-46.6576,-23.5874?overview=full&geometries=geojson",
+      "distance": 5248.4,
+      "duration": 673.3
+    },
+    "paulista/congonhas": {
+      "url": "https://router.project-osrm.org/route/v1/driving/-46.6559,-23.5614;-46.6564,-23.6261?overview=full&geometries=geojson",
+      "distance": 9609.7,
+      "duration": 903
+    },
+    "paulista/pinheiros": {
+      "url": "https://router.project-osrm.org/route/v1/driving/-46.6559,-23.5614;-46.7019,-23.5673?overview=full&geometries=geojson",
+      "distance": 6884.4,
+      "duration": 614.2
+    },
+    "paulista/liberdade": {
+      "url": "https://router.project-osrm.org/route/v1/driving/-46.6559,-23.5614;-46.6357,-23.5586?overview=full&geometries=geojson",
+      "distance": 4695.6,
+      "duration": 568.6
+    },
+    "paulista/villa": {
+      "url": "https://router.project-osrm.org/route/v1/driving/-46.6559,-23.5614;-46.7229,-23.5467?overview=full&geometries=geojson",
+      "distance": 11338.5,
+      "duration": 983.5
+    },
+    "paulista/morumbi": {
+      "url": "https://router.project-osrm.org/route/v1/driving/-46.6559,-23.5614;-46.6986,-23.6224?overview=full&geometries=geojson",
+      "distance": 10079.6,
+      "duration": 825.8
+    },
+    "paulista/republica": {
+      "url": "https://router.project-osrm.org/route/v1/driving/-46.6559,-23.5614;-46.6427,-23.5438?overview=full&geometries=geojson",
+      "distance": 5280.8,
+      "duration": 613.9
+    },
+    "paulista/allianz": {
+      "url": "https://router.project-osrm.org/route/v1/driving/-46.6559,-23.5614;-46.6785,-23.5275?overview=full&geometries=geojson",
+      "distance": 7709.1,
+      "duration": 830.9
+    }
+  }
+}

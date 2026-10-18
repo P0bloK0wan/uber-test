@@ -1,0 +1,1183 @@
+@font-face {
+  font-family: Uber Move;
+  src: url("./assets/fonts/uber-move-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: Uber Move Text;
+  src: url("./assets/fonts/uber-move-text-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Uber Move Text;
+  src: url("./assets/fonts/uber-move-text-medium.woff2") format("woff2");
+  font-weight: 500 600;
+  font-display: swap;
+}
+:root {
+  --uber-enter: cubic-bezier(0.22, 1, 0.36, 1);
+  --uber-exit: cubic-bezier(0.64, 0, 0.78, 0);
+}
+.uber,
+[data-brand="uber"] {
+  font-family:
+    Uber Move Text,
+    Arial,
+    sans-serif;
+}
+.uber h1,
+.uber h2,
+.uber h3,
+.brand-uber {
+  font-family:
+    Uber Move,
+    Arial,
+    sans-serif;
+  font-weight: 700;
+}
+.uber h1 {
+  letter-spacing: -0.7px;
+}
+.uber .btn {
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 8px;
+}
+.brand-uber {
+  letter-spacing: -1.6px;
+  font-size: 34px;
+}
+.uber .demo-badge {
+  font-family:
+    Uber Move Text,
+    Arial,
+    sans-serif;
+}
+.uber-home-tabs,
+.sheet-grip {
+  display: none;
+}
+.ride-picker {
+  margin: 18px 0;
+}
+.ride-card {
+  height: 79px;
+  min-height: 0;
+  margin: 4px 0;
+  padding: 9px 11px;
+  border-radius: 12px;
+  transition:
+    height 300ms var(--uber-enter),
+    background-color 300ms,
+    border-color 300ms;
+  overflow: hidden;
+}
+.ride-card.selected {
+  height: 112px;
+  background: white;
+}
+.ride-card img {
+  width: 70px;
+  height: 66px;
+  transition:
+    width 300ms var(--uber-enter),
+    height 300ms var(--uber-enter),
+    transform 300ms var(--uber-enter);
+}
+.ride-card.selected img {
+  width: 86px;
+  height: 80px;
+  transform: translateY(-3px);
+}
+.ride-card h3 {
+  font-size: 19px;
+  line-height: 24px;
+}
+.ride-card small {
+  font-size: 12px;
+}
+.ride-seats {
+  display: inline-flex !important;
+  gap: 2px;
+  align-items: center;
+  color: #111 !important;
+  margin: 0 !important;
+  vertical-align: middle;
+}
+.ride-seats .icon {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+.ride-card .ride-description {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 300ms var(--uber-enter),
+    opacity 200ms;
+}
+.ride-card.selected .ride-description {
+  max-height: 38px;
+  opacity: 1;
+}
+.ride-card .price {
+  align-self: center;
+  padding-top: 0;
+  font-size: 16px;
+}
+.ride-progress span {
+  transition: background-color 300ms;
+}
+.uber .back {
+  font-size: 14px;
+}
+.map-area {
+  isolation: isolate;
+  z-index: 0;
+  background: #e8e8e4;
+}
+.street-map {
+  height: 100%;
+  min-height: 560px;
+  width: 100%;
+  z-index: 0;
+  background: #e8e8e4;
+  font-family:
+    Uber Move Text,
+    Arial,
+    sans-serif;
+}
+.leaflet-container a {
+  color: #333;
+}
+.leaflet-control-attribution {
+  font-size: 9px !important;
+  background: #ffffffdf !important;
+}
+.map-controls {
+  z-index: 2;
+}
+.map-caption {
+  z-index: 2;
+  bottom: 25px;
+  max-width: calc(100% - 85px);
+}
+.map-fallback {
+  display: none;
+  position: absolute;
+  inset: 40% 15% auto;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  font-size: 13px;
+  z-index: 1;
+}
+.map-unavailable .map-fallback {
+  display: block;
+}
+.origin-marker .native-motion {
+  width: 48px;
+  height: 48px;
+}
+.destination-marker span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: #111;
+  border: 3px solid white;
+  box-shadow: 0 1px 5px #0005;
+}
+.car-marker span {
+  display: block;
+  width: 18px;
+  height: 34px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: linear-gradient(
+    #222 0 15%,
+    #a7bdc5 15% 30%,
+    #242424 30% 70%,
+    #657984 70% 80%,
+    #222 80%
+  );
+  box-shadow: 0 1px 4px #0007;
+  transform: rotate(8deg);
+}
+.native-motion {
+  display: inline-block;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.native-motion svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+.trip-loader {
+  width: 66px;
+  height: 24px;
+}
+.trip-completed {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 8px auto;
+}
+.coupon-motion {
+  display: block;
+  width: 240px;
+  height: 40px;
+  margin: 12px auto 0;
+}
+.order-loader {
+  display: block;
+  width: 84px;
+  height: 34px;
+  margin: 16px 0;
+}
+.favorites-art {
+  display: block;
+  width: 220px;
+  height: 220px;
+  margin: 20px auto -40px;
+}
+.motion-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.motion-gallery article {
+  min-width: 0;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 12px;
+}
+.motion-preview {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 150px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.motion-preview .native-motion {
+  width: 100%;
+  height: 100%;
+}
+.motion-gallery h3 {
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.motion-gallery p,
+.motion-gallery a {
+  font-size: 11px;
+  color: #666;
+}
+.motion-gallery a {
+  text-decoration: underline;
+}
+.launch-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #ea1d2c;
+  display: grid;
+  place-items: center;
+}
+.splash-art {
+  height: 100dvh;
+  width: min(100vw, 60.1dvh);
+}
+.skip-splash {
+  position: absolute;
+  bottom: max(28px, env(safe-area-inset-bottom));
+  right: 24px;
+  color: white;
+  padding: 9px 16px;
+  border: 1px solid #ffffff70;
+  border-radius: 24px;
+  font-size: 12px;
+  background: #0002;
+}
+.food-notifications {
+  display: none;
+}
+.club-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3px 0 26px;
+}
+.club-strip h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.6px;
+  margin-bottom: 5px;
+}
+.club-strip button {
+  color: #6b2299;
+  font-size: 13px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.club-strip button .icon {
+  width: 15px;
+  height: 15px;
+}
+.club-strip .club-coupon {
+  border-radius: 30px;
+  background: #f7edfc;
+  padding: 12px 16px;
+  font-weight: 600;
+  gap: 8px;
+}
+.food-services {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.food-services > button {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  min-width: 0;
+}
+.service-art {
+  display: grid;
+  place-items: center;
+  background: #f5f5f5;
+  border-radius: 12px;
+  width: 100%;
+  height: 86px;
+  overflow: hidden;
+  transition:
+    transform 180ms,
+    background 180ms;
+}
+.service-art > img {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  box-shadow: 0 6px 12px #0002;
+  object-fit: cover;
+}
+.service-art > .icon {
+  width: 40px;
+  height: 40px;
+  stroke-width: 2.3;
+  filter: drop-shadow(0 5px 2px #0001);
+  color: #cb242f;
+}
+.service-farmácias > .icon {
+  background: white;
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px #0001;
+  color: #ef4252;
+}
+.service-turbo > .icon {
+  color: #ff9f0a;
+}
+.service-clube {
+  background: #f7eefb;
+}
+.service-clube > .icon {
+  color: #7b31aa;
+  fill: #b887d433;
+}
+.food-services > button:active .service-art {
+  transform: scale(0.95);
+  background: #eee;
+}
+.offer-carousel {
+  margin: 0 0 28px;
+}
+.offer-slide {
+  width: 100%;
+  height: 238px;
+  background: #e71e32;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 40px;
+  text-align: left;
+  color: white;
+}
+.offer-slide > span:first-child {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.offer-slide small {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
+.offer-slide strong {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.9px;
+}
+.offer-slide strong b {
+  font-size: 38px;
+}
+.offer-slide em {
+  font-size: 11px;
+  font-style: normal;
+  opacity: 0.9;
+  margin-top: 5px;
+}
+.offer-slide > img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: rotate(-12deg);
+  box-shadow: 0 10px 30px #870e2550;
+  margin-right: 12%;
+}
+.offer-page {
+  position: absolute;
+  bottom: 11px;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+}
+.offer-page i {
+  width: 5px;
+  height: 5px;
+  background: #ffffff80;
+  border-radius: 5px;
+}
+.offer-page i:first-child {
+  width: 18px;
+  background: white;
+}
+.recent-heading h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+.recent-heading .text-btn {
+  font-size: 13px;
+  font-weight: 400;
+}
+.recent-stores {
+  display: flex;
+  gap: 22px;
+  overflow: auto;
+  scrollbar-width: none;
+  padding: 12px 0 25px;
+  margin-bottom: 14px;
+}
+.recent-stores a {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 87px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #555;
+}
+.recent-stores img {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+}
+.food-topline {
+  margin: 16px 0 22px;
+}
+.food-topline h1 {
+  font-size: 24px;
+}
+.fave .icon {
+  transition:
+    fill 150ms,
+    color 150ms,
+    transform 200ms;
+}
+.fave:active .icon {
+  transform: scale(0.82);
+}
+.ifood .btn {
+  border-radius: 6px;
+}
+.ifood .bottom-nav a.active {
+  color: #333;
+}
+.ifood .bottom-nav a.active > .icon {
+  fill: #333;
+  stroke: white;
+  stroke-width: 1;
+}
+.ifood .bottom-nav a[href$="/hits"] > .icon {
+  color: #ea1d2c;
+}
+dialog::backdrop {
+  background: #0006;
+  backdrop-filter: none;
+}
+dialog .modal-head {
+  position: relative;
+}
+.btn:active {
+  transition-duration: 80ms;
+}
+.food-main {
+  padding-top: 24px;
+}
+.motion-gallery .native-motion[data-motion$="/loading_white.json"] {
+  background: #222;
+}
+@media (max-width: 1050px) {
+  .food-services {
+    gap: 12px;
+  }
+  .service-art {
+    height: 76px;
+  }
+  .offer-slide > img {
+    margin-right: 3%;
+  }
+  .club-strip {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 760px) {
+  .uber-header {
+    height: 55px;
+    padding: 0 20px;
+    border: 0;
+  }
+  .uber-header .brand-uber {
+    font-size: 28px;
+  }
+  .uber-header .demo-badge {
+    font-size: 8px;
+    padding: 3px 7px;
+  }
+  .uber-header .app-switch {
+    font-size: 9px;
+    padding: 5px 8px;
+  }
+  .uber-panel {
+    padding: 12px 20px 25px;
+  }
+  .uber-search-title {
+    display: none;
+  }
+  .uber-home-tabs {
+    display: flex;
+    gap: 28px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    font-size: 17px;
+  }
+  .uber-home-tabs > * {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0 12px;
+  }
+  .uber-home-tabs strong {
+    border-bottom: 3px solid #111;
+  }
+  .uber-home-tabs .icon {
+    width: 22px;
+  }
+  .uber-schedule {
+    margin: 0 0 12px;
+    font-size: 13px;
+  }
+  .location-fields {
+    margin-top: 0;
+  }
+  .location-input {
+    border-radius: 8px;
+    background: #f1f1f1;
+    border: none;
+    min-height: 52px;
+  }
+  .location-input:focus-within {
+    box-shadow: 0 0 0 2px #111;
+  }
+  .location-input input {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .location-input:first-child {
+    min-height: 40px;
+    background: white;
+    border: 1px solid #eee;
+  }
+  .location-input:first-child input {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .location-fields:before {
+    display: none;
+  }
+  .uber-panel > .btn.full {
+    min-height: 48px;
+    margin-top: 2px;
+  }
+  .uber-panel .section-title {
+    margin: 25px 0 12px;
+  }
+  .uber-panel .section-title h2 {
+    font-size: 22px;
+  }
+  .suggestion {
+    border-radius: 9px;
+    font-size: 14px;
+  }
+  .suggestion img {
+    height: 65px;
+  }
+  .welcome-card {
+    border-radius: 12px;
+    min-height: 165px;
+    background: #eff2ed;
+    padding: 22px;
+  }
+  .welcome-card h3 {
+    font-size: 22px;
+    max-width: 190px;
+    line-height: 1.15;
+  }
+  .welcome-card p {
+    max-width: 175px;
+    font-size: 13px;
+  }
+  .welcome-card img {
+    width: 145px;
+    bottom: -32px;
+    right: -5px;
+  }
+  .uber-layout > .map-area {
+    display: none;
+  }
+  .uber-panel.editing-destination > .suggestion-grid,
+  .uber-panel.editing-destination > .welcome-card,
+  .uber-panel.editing-destination > .section-title {
+    display: none;
+  }
+  .booking-screen .uber-header,
+  .booking-screen .bottom-nav {
+    display: none;
+  }
+  .booking-screen .uber-layout {
+    display: flex;
+    padding: 0;
+    min-height: 100dvh;
+  }
+  .booking-screen .map-area {
+    display: block;
+    order: 0;
+    height: 39dvh;
+    min-height: 220px;
+    margin: 0;
+    border-radius: 0;
+    flex-shrink: 0;
+  }
+  .booking-screen .street-map {
+    min-height: 0;
+    height: 100%;
+  }
+  .booking-screen .uber-panel {
+    order: 1;
+    border-radius: 22px 22px 0 0;
+    margin-top: -22px;
+    background: white;
+    min-height: 63dvh;
+    padding: 12px 20px max(24px, env(safe-area-inset-bottom));
+    box-shadow: 0 -3px 15px #00000012;
+  }
+  .sheet-grip {
+    display: block;
+    width: 38px;
+    height: 4px;
+    border-radius: 3px;
+    background: #ddd;
+    margin: 0 auto 17px;
+  }
+  .booking-screen .uber-panel h1 {
+    font-size: 25px;
+    margin: 0 0 6px;
+    letter-spacing: -0.6px;
+  }
+  .booking-screen .uber-panel > .back {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .ride-picker {
+    margin: 12px -5px;
+  }
+  .ride-card {
+    height: 72px;
+    border-radius: 12px;
+    padding: 6px 9px;
+    gap: 8px;
+  }
+  .ride-card.selected {
+    height: 104px;
+  }
+  .ride-card img {
+    width: 66px;
+    height: 60px;
+  }
+  .ride-card.selected img {
+    width: 78px;
+    height: 74px;
+  }
+  .ride-card h3 {
+    font-size: 18px;
+  }
+  .ride-card small {
+    font-size: 11px;
+    line-height: 15px;
+  }
+  .ride-card .price {
+    font-size: 16px;
+  }
+  .ride-card .ride-description {
+    line-height: 14px;
+  }
+  .payment-row {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+  .booking-screen .demo-note {
+    font-size: 10px;
+  }
+  .booking-screen .map-controls {
+    right: 16px;
+    bottom: 48px;
+  }
+  .booking-screen .map-caption {
+    bottom: 30px;
+    left: 12px;
+    right: auto;
+    font-size: 8px;
+  }
+  .booking-screen .leaflet-control-attribution {
+    margin-bottom: 22px !important;
+  }
+  .booking-screen .map-fallback {
+    inset: 20% 20% auto;
+    font-size: 11px;
+    padding: 12px;
+  }
+  .trip-completed {
+    width: 60px;
+    height: 60px;
+  }
+  .bottom-nav {
+    height: 70px;
+    padding-top: 9px;
+  }
+  .bottom-nav .icon {
+    width: 24px;
+    height: 24px;
+  }
+  .bottom-nav a {
+    font-size: 11px;
+    gap: 5px;
+  }
+  .uber .bottom-nav a.active > .icon {
+    stroke-width: 2.5;
+  }
+  .food-header {
+    height: 56px;
+    padding: 0 18px;
+    justify-content: center;
+    border: 0;
+    position: sticky;
+    top: 0;
+  }
+  .food-header .brand-ifood,
+  .food-header .app-switch {
+    display: none;
+  }
+  .food-header .food-address {
+    max-width: calc(100% - 92px) !important;
+    margin: 0;
+    text-align: center;
+    display: block;
+  }
+  .food-address > .small {
+    display: none;
+  }
+  .food-address strong {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .food-address .icon {
+    color: #ea1d2c;
+    width: 13px;
+  }
+  .food-notifications {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    right: 17px;
+    top: 12px;
+    width: 32px;
+    height: 32px;
+    background: white;
+    color: #ea1d2c;
+  }
+  .food-notifications .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .food-notifications i {
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    background: #ea1d2c;
+    border: 2px solid white;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .food-main {
+    padding: 10px 20px 100px;
+  }
+  .club-strip {
+    margin: 5px 0 23px;
+    min-height: 44px;
+  }
+  .club-strip h1 {
+    font-size: 19px;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+  }
+  .club-strip button {
+    font-size: 11px;
+  }
+  .club-strip .club-coupon {
+    font-size: 11px;
+    padding: 10px 12px;
+    gap: 5px;
+  }
+  .club-strip button .icon {
+    width: 13px;
+    height: 13px;
+  }
+  .food-services {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px 12px;
+    margin: 0 0 26px;
+  }
+  .food-services > button {
+    font-size: 10px;
+    gap: 6px;
+  }
+  .service-art {
+    height: 55px;
+    border-radius: 8px;
+  }
+  .service-art > img {
+    width: 47px;
+    height: 47px;
+  }
+  .service-art > .icon {
+    width: 30px;
+    height: 30px;
+  }
+  .offer-carousel {
+    margin-bottom: 18px;
+  }
+  .offer-slide {
+    height: 167px;
+    border-radius: 9px;
+    padding: 17px 20px;
+  }
+  .offer-slide small {
+    font-size: 7px;
+    letter-spacing: 0.6px;
+  }
+  .offer-slide strong {
+    font-size: 23px;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+  }
+  .offer-slide strong b {
+    font-size: 28px;
+  }
+  .offer-slide em {
+    font-size: 8px;
+    margin-top: 0;
+  }
+  .offer-slide > span:first-child {
+    gap: 6px;
+  }
+  .offer-slide > img {
+    width: 148px;
+    height: 148px;
+    margin: 0 -24px 0 0;
+    box-shadow: 0 6px 12px #8c152d88;
+  }
+  .offer-page {
+    bottom: 8px;
+  }
+  .offer-page i {
+    height: 4px;
+    width: 4px;
+  }
+  .offer-page i:first-child {
+    width: 14px;
+  }
+  .recent-heading h2 {
+    font-size: 19px;
+    letter-spacing: -0.5px;
+  }
+  .recent-heading .text-btn {
+    font-size: 11px;
+  }
+  .recent-stores {
+    gap: 13px;
+    padding: 10px 0 22px;
+    margin-right: -20px;
+    margin-bottom: 8px;
+  }
+  .recent-stores a {
+    width: 66px;
+    font-size: 10px;
+    gap: 8px;
+  }
+  .recent-stores img {
+    width: 55px;
+    height: 55px;
+  }
+  .food-topline {
+    margin: 10px 0 22px;
+  }
+  .food-topline h1 {
+    font-size: 23px;
+    margin-bottom: 14px;
+  }
+  .food-topline .search-box {
+    border: 0;
+    background: #f7f7f7;
+    border-radius: 6px;
+    min-height: 46px;
+  }
+  .food-topline .search-box input {
+    font-size: 12px;
+  }
+  .food-categories {
+    margin-bottom: 17px;
+  }
+  .food-category .category-img {
+    height: 61px;
+  }
+  .food-category {
+    min-width: 72px;
+    font-size: 10px;
+  }
+  .restaurant-card {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #f2f2f2;
+    min-height: 104px;
+    padding: 10px 0;
+    gap: 12px;
+  }
+  .restaurant-cover {
+    width: 64px;
+    height: 64px;
+    min-height: 64px;
+    border-radius: 50%;
+    align-self: center;
+  }
+  .restaurant-cover img {
+    width: 64px;
+    height: 64px;
+  }
+  .restaurant-info {
+    padding: 8px 22px 8px 0;
+  }
+  .restaurant-info h3 {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .restaurant-info .meta {
+    font-size: 11px;
+  }
+  .restaurant-info .delivery {
+    font-size: 11px;
+    margin-top: 8px;
+  }
+  .restaurant-card > .fave {
+    top: 13px;
+    right: 0;
+  }
+  .restaurant-grid {
+    gap: 0;
+  }
+  .ifood .bottom-nav {
+    height: 67px;
+    padding-top: 9px;
+  }
+  .ifood .bottom-nav a {
+    min-width: 50px;
+    font-size: 10px;
+  }
+  .ifood .bottom-nav .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .mobile-cart {
+    bottom: 77px;
+    border-radius: 6px;
+    left: 16px;
+    right: 16px;
+    min-height: 52px;
+  }
+  .restaurant-banner {
+    height: 150px;
+    margin: 0 -20px;
+    border-radius: 0;
+  }
+  .restaurant-heading h1 {
+    font-size: 24px;
+  }
+  .product-card {
+    border: 0;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+    padding: 18px 0;
+    gap: 16px;
+  }
+  .product-card img {
+    width: 98px;
+    height: 98px;
+    border-radius: 6px;
+  }
+  .product-card h3 {
+    font-size: 15px;
+  }
+  .product-card p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .product-card .price {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .product-card .badge {
+    background: white;
+    color: #a57735;
+    padding-left: 0;
+  }
+  .menu-grid {
+    gap: 0;
+  }
+  .food-footer {
+    font-size: 9px;
+  }
+  dialog {
+    margin: auto 0 0;
+    width: 100%;
+    max-width: none;
+    max-height: 94dvh;
+    border-radius: 20px 20px 0 0;
+    padding: 26px 22px 22px;
+    box-shadow: 0 -8px 40px #0002;
+  }
+  dialog:before {
+    content: "";
+    position: absolute;
+    width: 36px;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    left: calc(50% - 18px);
+    top: 10px;
+  }
+  .modal-head {
+    margin-bottom: 20px;
+  }
+  .modal-head h2 {
+    font-size: 21px;
+  }
+  .modal-head .icon-btn {
+    background: #f5f5f5;
+  }
+  .product-photo {
+    height: 240px;
+    border-radius: 8px;
+  }
+  .modal-actions {
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+  }
+  .motion-gallery {
+    gap: 10px;
+  }
+  .motion-preview {
+    height: 130px;
+  }
+  .motion-gallery article {
+    padding: 9px;
+  }
+  .motion-gallery h3 {
+    font-size: 10px;
+  }
+  .motion-gallery p {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .launch-screen {
+    display: none;
+  }
+}
+
+.street-map .leaflet-tile-pane {
+  filter: grayscale(1) brightness(1.04);
+}
+@media (max-width: 760px) {
+  .welcome-card {
+    background: #194e39;
+    color: white;
+  }
+  .welcome-card h3 {
+    max-width: 185px;
+  }
+  .welcome-card p {
+    max-width: 165px;
+  }
+  .welcome-card img {
+    right: 0;
+    bottom: -26px;
+  }
+}

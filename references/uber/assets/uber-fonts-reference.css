@@ -1,0 +1,4 @@
+/* Source: public CSS at https://www.uber.design/, retrieved 2026-10-18. */
+@font-face { font-family: 'Uber Move'; src: url('./uber-move-bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Uber Move Text'; src: url('./uber-move-text-regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Uber Move Text'; src: url('./uber-move-text-medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }

@@ -1,0 +1,50 @@
+[
+  {
+    "file": "search-border.mp4",
+    "duration": 4.483333,
+    "width": 2160,
+    "height": 2160,
+    "fps": "60/1",
+    "frames": "269"
+  },
+  {
+    "file": "loading.mp4",
+    "duration": 4.7,
+    "width": 2160,
+    "height": 2160,
+    "fps": "60/1",
+    "frames": "282"
+  },
+  {
+    "file": "dropoff.mp4",
+    "duration": 12.0,
+    "width": 2160,
+    "height": 2160,
+    "fps": "60/1",
+    "frames": "720"
+  },
+  {
+    "file": "ride-picker.mp4",
+    "duration": 4.55,
+    "width": 2000,
+    "height": 2000,
+    "fps": "60/1",
+    "frames": "273"
+  },
+  {
+    "file": "uber-one.mp4",
+    "duration": 2.018005,
+    "width": 2000,
+    "height": 2000,
+    "fps": "60/1",
+    "frames": "120"
+  },
+  {
+    "file": "verified-tick.mp4",
+    "duration": 2.633333,
+    "width": 2000,
+    "height": 2000,
+    "fps": "60/1",
+    "frames": "158"
+  }
+]

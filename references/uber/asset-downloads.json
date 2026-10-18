@@ -1,0 +1,72 @@
+[
+  {
+    "file": "assets/uber-move-bold.woff2",
+    "url": "https://www.uber.design/_user_fonts/v1/58fe8b650f7528290bdf96a750de8d9f423703fc",
+    "bytes": 29056,
+    "content_type": "font/woff2",
+    "sha256": "6128e6813f444888bddfadd66a305d601260976df06f4bf31f1045ffa68e9340"
+  },
+  {
+    "file": "assets/uber-move-text-medium.woff2",
+    "url": "https://www.uber.design/_user_fonts/v1/cfcdb1e79186df6bedb68c589ee32f7ed2d6aaf9",
+    "bytes": 29584,
+    "content_type": "font/woff2",
+    "sha256": "0ba42888b81195edfb7b2dafbdd9f3613a0553055fd33559b73a4f9bb530d4ac"
+  },
+  {
+    "file": "assets/uber-move-text-regular.woff2",
+    "url": "https://www.uber.design/_user_fonts/v1/181a1224f264ad8c784019e692fc8e67077160bd",
+    "bytes": 28520,
+    "content_type": "font/woff2",
+    "sha256": "4b45e0cdba61e5d00bef1dc95fabe543a8e8ef8be342bce0477f729d80238c65"
+  },
+  {
+    "file": "videos/search-border.mp4",
+    "url": "https://video.gumlet.io/66b49d08225b7b88f78b7b44/6ac725a341d1f14ce09740f3/main.mp4",
+    "bytes": 209919,
+    "content_type": "video/mp4",
+    "sha256": "b1b5d4b9fbb67dc3280bec769eb7a86f881d865419acf12d00a61f828ae5aa64"
+  },
+  {
+    "file": "videos/loading.mp4",
+    "url": "https://video.gumlet.io/66b49d08225b7b88f78b7b44/6ac725a21bbc375977910a8c/main.mp4",
+    "bytes": 147753,
+    "content_type": "video/mp4",
+    "sha256": "4a2b530c3ee8135196b73d81ced73886b3205153baa4ec5c75e61d57e409f7ca"
+  },
+  {
+    "file": "videos/dropoff.mp4",
+    "url": "https://video.gumlet.io/66b49d08225b7b88f78b7b44/69f8d045b73ee3afb2a15cb5/main.mp4",
+    "bytes": 1281122,
+    "content_type": "video/mp4",
+    "sha256": "ec0c58c499a44f504db1982b272ffc8a691a549c5742a8c54910e424adef1fbe"
+  },
+  {
+    "file": "videos/verified-tick.mp4",
+    "url": "https://video.gumlet.io/66b49d08225b7b88f78b7b44/6877a7a20e8590900ee9af1e/main.mp4",
+    "bytes": 228805,
+    "content_type": "video/mp4",
+    "sha256": "ab6e8210771abeaafde449bc0120747d230cbd0e30d88e2485b4129328b72514"
+  },
+  {
+    "file": "videos/uber-one.mp4",
+    "url": "https://video.gumlet.io/66b49d08225b7b88f78b7b44/687314120e3615485c3fbd77/main.mp4",
+    "bytes": 622026,
+    "content_type": "video/mp4",
+    "sha256": "4818b60e5bf66517c2ceca127e0601c3a0d66b91dd057d45f2fe221c317716bf"
+  },
+  {
+    "file": "videos/ride-picker.mp4",
+    "url": "https://video.gumlet.io/66b49d08225b7b88f78b7b44/67e00015586c4a5a5e05bdff/main.mp4",
+    "bytes": 856643,
+    "content_type": "video/mp4",
+    "sha256": "3e718397948742c3360bff2cda27f38a13de3e4432909eaceeebfb47110e6c9b"
+  },
+  {
+    "file": "baseweb-tree.json",
+    "url": "https://api.github.com/repos/uber/baseweb/git/trees/main?recursive=1",
+    "bytes": 790164,
+    "content_type": "application/json; charset=utf-8",
+    "sha256": "811d849e77688029474e3f74615f821ed04a7cc4588533794e05080f750bd551"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "app": "uber",
+  "passed": [
+    "Validated destination, Comfort selection, full ride, rating and reload persistence",
+    "Cancellation requires confirmation and reaches a terminal state",
+    "Nine page/viewport combinations: no horizontal overflow or missing bundled images",
+    "Mobile booking sheet, original location pulse and category morph without remounting",
+    "All recovered animations load, reduced motion pauses playback and Escape closes the sheet",
+    "Standalone route scope and default app"
+  ],
+  "runtime_errors": []
+}
